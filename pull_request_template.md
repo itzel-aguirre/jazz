@@ -1,5 +1,0 @@
-## ¿Qué hice?
-
-- 
-
-## Ejemplo
