@@ -1,0 +1,15 @@
+@import 'colors';
+
+$font-family:'Roboto', sans-serif;
+/*
+ *  Global settings
+ */
+*{
+  font-family: $font-family;
+}
+
+body{
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
