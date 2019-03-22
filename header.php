@@ -12,6 +12,7 @@
   <!--css-->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css">
   <!--fonts-->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 	<!--js-->
@@ -36,4 +37,11 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+  <header class="container-fluid">
+    <div class="row justify-content-center">
+        <a href="http://localhost/jazz/">
+          <img src="images/logo/logo.png" alt="Parker & Lenox Logo" class="img-fluid navbar-brand">
+        </a>
+    </div>
+  </header>
     
