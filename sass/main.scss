@@ -16,3 +16,20 @@ body{
   font-style: normal;
   font-size: 16px;
 }
+
+header{
+  background: $pl-gold;
+}
+
+.footer{
+  background: $pl-black;
+  .link{
+    margin-top: 1rem;
+    color: $pl-gold;
+    font-weight: $font-bold;
+  }
+  .icon{
+    color: $pl-gold;
+    margin: 0 .5rem;
+  }
+}
