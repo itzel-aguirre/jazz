@@ -33,29 +33,29 @@ header {
   &--margin-right {
     margin-right: 0.5rem;
   }
-  &--color-gold{
+  &--color-gold {
     color: $pl-gold;
   }
 }
 
-.first-copy{
+.first-copy {
   text-align: center;
   font-size: 1.2rem;
   margin: 0;
   color: $pl-white;
   padding: 1.5rem 0;
-  @media(min-width:768px){
+  @media (min-width: 768px) {
     font-size: 2rem;
     padding: 2rem 4rem;
   }
-  @media(min-width: 1200px){
+  @media (min-width: 1200px) {
     font-size: 2rem;
     padding: 6rem 24rem;
   }
 }
 
-.row{
-  &--background-blue{
+.row {
+  &--background-blue {
     background: $pl-dark-blue;
   }
 }
