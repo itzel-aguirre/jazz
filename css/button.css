@@ -1,0 +1,19 @@
+/* line 3, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-primary {
+  background-color: #10446E;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  color: #e8e8e8;
+}
+
+/*# sourceMappingURL=button.css.map */

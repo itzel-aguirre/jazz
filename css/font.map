@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "font.css",
+	"sources": [
+		"../sass/font.scss"
+	],
+	"sourcesContent": [
+		"$font-family: \"Roboto\", sans-serif;\r\n$font-light: 300;\r\n$font-normal: 400;\r\n$font-bold: 700;"
+	],
+	"names": [],
+	"mappings": ""
+}
