@@ -1,35 +1,61 @@
-@import 'colors';
+@import "colors";
+@import "button";
+@import "mainSlider";
+@import "font";
 
-$font-family:'Roboto', sans-serif;
-$font-light: 300;
-$font-normal: 400;
-$font-bold: 700;
 /*
  *  Global settings
  */
-*{
+* {
   font-family: $font-family;
 }
 
-body{
+body {
   font-weight: $font-normal;
   font-style: normal;
   font-size: 16px;
 }
 
-header{
+header {
   background: $pl-gold;
 }
 
-.footer{
+.footer {
   background: $pl-black;
-  .link{
+  .link {
     margin-top: 1rem;
     color: $pl-gold;
     font-weight: $font-bold;
   }
-  .icon{
+}
+
+.icon {
+  &--margin-right {
+    margin-right: 0.5rem;
+  }
+  &--color-gold {
     color: $pl-gold;
-    margin: 0 .5rem;
+  }
+}
+
+.first-copy {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
+  color: $pl-white;
+  padding: 1.5rem 0;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+    padding: 2rem 4rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 2rem;
+    padding: 6rem 24rem;
+  }
+}
+
+.row {
+  &--background-blue {
+    background: $pl-dark-blue;
   }
 }

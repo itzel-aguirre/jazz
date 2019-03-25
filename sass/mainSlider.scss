@@ -1,0 +1,65 @@
+@import "colors";
+@import "font";
+
+.main-slider {
+  margin-top: 25px;
+  &.owl-carousel {
+    .owl-item {
+      img {
+        border-bottom-right-radius: 50px;
+      }
+    }
+  }
+  .card {
+    border: none;
+    background-color: $pl-orange;
+    .card-img-top {
+      border-radius: 0;
+    }
+    .card-body {
+      color: $pl-white;
+      padding: 0;
+      .artist-info {
+        padding: 0.875rem 1.25rem;
+        .performer {
+          font-size: 1.2rem;
+          line-height: 1.3rem;
+          text-align: left;
+          display: flex;
+          align-items: center;
+          margin-bottom: 0;
+          min-height: 50px;
+          @media (min-width: 768px) {
+            font-size: 1rem;
+            line-height: 1rem;
+          }
+        }
+        .genre {
+          font-size: 1rem;
+          font-weight: $font-light;
+          margin: 0;
+        }
+      }
+      .event-info {
+        border-top-left-radius: 25px;
+        background: $pl-white;
+        padding: 0.5rem 1.75rem;
+        color: $pl-grey;
+        box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.75);
+        .date,
+        .time,
+        .cover {
+          font-size: 1rem;
+          font-weight: $font-bold;
+          margin: 0;
+        }
+        @media (min-width: 768px) {
+          padding: 0.5rem 1.2rem;
+        }
+        @media (min-width: 1200px) {
+          padding: 0.5rem 1.75rem;
+        }
+      }
+    }
+  }
+}
