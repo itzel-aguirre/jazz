@@ -1,39 +1,181 @@
+/* line 3, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-primary {
+  background-color: #10446E;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  color: #e8e8e8;
+}
+
+/* line 4, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider {
+  margin-top: 25px;
+}
+
+/* line 8, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider.owl-carousel .owl-item img {
+  border-bottom-right-radius: 50px;
+}
+
+/* line 13, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card {
+  border: none;
+  background-color: #c14d14;
+}
+
+/* line 16, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-img-top {
+  border-radius: 0;
+}
+
+/* line 19, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body {
+  color: #e8e8e8;
+  padding: 0;
+}
+
+/* line 22, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body .artist-info {
+  padding: 0.875rem 1.25rem;
+}
+
+/* line 24, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body .artist-info .performer {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  min-height: 50px;
+}
+
+@media (min-width: 768px) {
+  /* line 24, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  .main-slider .card .card-body .artist-info .performer {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+}
+
+/* line 37, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body .artist-info .genre {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* line 43, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body .event-info {
+  border-top-left-radius: 25px;
+  background: #e8e8e8;
+  padding: 0.5rem 1.75rem;
+  color: #5a5a5a;
+  box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* line 49, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+.main-slider .card .card-body .event-info .date,
+.main-slider .card .card-body .event-info .time,
+.main-slider .card .card-body .event-info .cover {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  /* line 43, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  .main-slider .card .card-body .event-info {
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* line 43, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  .main-slider .card .card-body .event-info {
+    padding: 0.5rem 1.75rem;
+  }
+}
+
 /*
  *  Global settings
  */
-/* line 10, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 9, ../../xampp/htdocs/jazz/sass/main.scss */
 * {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 14, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 13, ../../xampp/htdocs/jazz/sass/main.scss */
 body {
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
 }
 
-/* line 20, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 19, ../../xampp/htdocs/jazz/sass/main.scss */
 header {
   background: #bb8b41;
 }
 
-/* line 24, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 23, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer {
   background: #000;
 }
 
-/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 25, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .link {
   margin-top: 1rem;
   color: #bb8b41;
   font-weight: 700;
 }
 
-/* line 31, ../../xampp/htdocs/jazz/sass/main.scss */
-.footer .icon {
+/* line 33, ../../xampp/htdocs/jazz/sass/main.scss */
+.icon--margin-right {
+  margin-right: 0.5rem;
+}
+
+/* line 36, ../../xampp/htdocs/jazz/sass/main.scss */
+.icon--color-gold {
   color: #bb8b41;
-  margin: 0 .5rem;
+}
+
+/* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+.first-copy {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #e8e8e8;
+  padding: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  /* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+  .first-copy {
+    font-size: 2rem;
+    padding: 2rem 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+  .first-copy {
+    font-size: 2rem;
+    padding: 6rem 24rem;
+  }
+}
+
+/* line 58, ../../xampp/htdocs/jazz/sass/main.scss */
+.row--background-blue {
+  background: #10446E;
 }
 
 /*# sourceMappingURL=main.css.map */

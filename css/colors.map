@@ -5,7 +5,7 @@
 		"../sass/colors.scss"
 	],
 	"sourcesContent": [
-		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #fff;\r\n"
+		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #e8e8e8;\r\n$pl-orange: #c14d14;\r\n$pl-grey:#5a5a5a;\r\n"
 	],
 	"names": [],
 	"mappings": ""
