@@ -1,1 +1,39 @@
-*{font-family:"Roboto",sans-serif}body{font-weight:400;font-style:normal;font-size:16px}header{background:#bb8b41}.footer{background:#000}.footer .link{margin-top:1rem;color:#bb8b41;font-weight:700}.footer .icon{color:#bb8b41;margin:0 .5rem}
+/*
+ *  Global settings
+ */
+/* line 10, ../../xampp/htdocs/jazz/sass/main.scss */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 14, ../../xampp/htdocs/jazz/sass/main.scss */
+body {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+/* line 20, ../../xampp/htdocs/jazz/sass/main.scss */
+header {
+  background: #bb8b41;
+}
+
+/* line 24, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer {
+  background: #000;
+}
+
+/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer .link {
+  margin-top: 1rem;
+  color: #bb8b41;
+  font-weight: 700;
+}
+
+/* line 31, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer .icon {
+  color: #bb8b41;
+  margin: 0 .5rem;
+}
+
+/*# sourceMappingURL=main.css.map */

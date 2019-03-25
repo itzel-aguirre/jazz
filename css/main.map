@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"../sass/main.scss",
+		"../sass/colors.scss"
+	],
+	"sourcesContent": [
+		"@import 'colors';\r\n\r\n$font-family:'Roboto', sans-serif;\r\n$font-light: 300;\r\n$font-normal: 400;\r\n$font-bold: 700;\r\n/*\r\n *  Global settings\r\n */\r\n*{\r\n  font-family: $font-family;\r\n}\r\n\r\nbody{\r\n  font-weight: $font-normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n}\r\n\r\nheader{\r\n  background: $pl-gold;\r\n}\r\n\r\n.footer{\r\n  background: $pl-black;\r\n  .link{\r\n    margin-top: 1rem;\r\n    color: $pl-gold;\r\n    font-weight: $font-bold;\r\n  }\r\n  .icon{\r\n    color: $pl-gold;\r\n    margin: 0 .5rem;\r\n  }\r\n}",
+		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #fff;\r\n"
+	],
+	"names": [],
+	"mappings": "AAMA;;GAEG;;AACH,AAAA,CAAC,CAAA;EACC,WAAW,EARA,QAAQ,EAAE,UAAU;CAShC;;;AAED,AAAA,IAAI,CAAA;EACF,WAAW,EAVC,GAAG;EAWf,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,IAAI;CAChB;;;AAED,AAAA,MAAM,CAAA;EACJ,UAAU,ECjBF,OAAO;CDkBhB;;;AAED,AAAA,OAAO,CAAA;EACL,UAAU,ECtBD,IAAI;CDgCd;;;AAXD,AAEE,OAFK,CAEL,KAAK,CAAA;EACH,UAAU,EAAE,IAAI;EAChB,KAAK,ECxBC,OAAO;EDyBb,WAAW,EAvBH,GAAG;CAwBZ;;;AANH,AAOE,OAPK,CAOL,KAAK,CAAA;EACH,KAAK,EC5BC,OAAO;ED6Bb,MAAM,EAAE,OAAO;CAChB"
+}
