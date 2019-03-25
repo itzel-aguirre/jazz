@@ -33,6 +33,10 @@
             font-size: 1rem;
             line-height: 1rem;
           }
+          @media (min-width: 1200px) {
+            font-size: 1.3rem;
+            line-height: 1.3rem;
+          }
         }
         .genre {
           font-size: 1rem;
