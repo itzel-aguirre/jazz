@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  background: $pl-gold;
+  background: $pl-black;
   padding: 0.75rem 0;
 }
 
@@ -84,8 +84,8 @@ header {
 }
 
 .row {
-  &--background-blue {
-    background: $pl-dark-blue;
+  &--background-red {
+    background: $pl-red;
   }
 }
 

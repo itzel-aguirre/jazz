@@ -44,7 +44,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@ include 'header.php';
             </div>
         </div>
     </div>
-    <div class="row row--background-blue">
+    <div class="row row--background-red">
         <div class="col">
             <p class="first-copy">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac
