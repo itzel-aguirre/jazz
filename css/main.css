@@ -16,39 +16,48 @@
   color: #e8e8e8;
 }
 
-/* line 4, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
-.main-slider {
-  margin-top: 25px;
-}
-
-/* line 8, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 7, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider.owl-carousel .owl-item img {
   border-bottom-right-radius: 50px;
 }
 
-/* line 13, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 12, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card {
   border: none;
   background-color: #c14d14;
 }
 
-/* line 16, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 15, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-img-top {
   border-radius: 0;
 }
 
-/* line 19, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 18, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body {
   color: #e8e8e8;
   padding: 0;
 }
 
-/* line 22, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 21, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body .artist-info {
   padding: 0.875rem 1.25rem;
 }
 
-/* line 24, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+@media (min-width: 1200px) {
+  /* line 21, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  .main-slider .card .card-body .artist-info {
+    padding: 0.875rem 0.6rem;
+  }
+}
+
+@media (min-width: 1441px) {
+  /* line 21, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  .main-slider .card .card-body .artist-info {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+/* line 29, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body .artist-info .performer {
   font-size: 1.2rem;
   line-height: 1.3rem;
@@ -60,7 +69,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 24, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  /* line 29, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
   .main-slider .card .card-body .artist-info .performer {
     font-size: 1rem;
     line-height: 1rem;
@@ -68,21 +77,21 @@
 }
 
 @media (min-width: 1200px) {
-  /* line 24, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  /* line 29, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
   .main-slider .card .card-body .artist-info .performer {
-    font-size: 1.3rem;
-    line-height: 1.3rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
   }
 }
 
-/* line 41, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 46, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body .artist-info .genre {
   font-size: 1rem;
   font-weight: 300;
   margin: 0;
 }
 
-/* line 47, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 52, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body .event-info {
   border-top-left-radius: 25px;
   background: #e8e8e8;
@@ -91,7 +100,7 @@
   box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.75);
 }
 
-/* line 53, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+/* line 58, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
 .main-slider .card .card-body .event-info .date,
 .main-slider .card .card-body .event-info .time,
 .main-slider .card .card-body .event-info .cover {
@@ -101,14 +110,14 @@
 }
 
 @media (min-width: 768px) {
-  /* line 47, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  /* line 52, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
   .main-slider .card .card-body .event-info {
     padding: 0.5rem 1.2rem;
   }
 }
 
 @media (min-width: 1200px) {
-  /* line 47, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
+  /* line 52, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
   .main-slider .card .card-body .event-info {
     padding: 0.5rem 1.75rem;
   }
@@ -132,31 +141,70 @@ body {
 /* line 19, ../../xampp/htdocs/jazz/sass/main.scss */
 header {
   background: #bb8b41;
+  padding: 0.75rem 0;
 }
 
-/* line 23, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 24, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer {
   background: #000;
 }
 
-/* line 25, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer .horizontal-line {
+  border: 0;
+  width: 100%;
+  background: #000;
+  background: -moz-linear-gradient(left, #000 0%, #bb8b41 51%, #000 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #000), color-stop(51%, #bb8b41), color-stop(100%, #000));
+  background: -webkit-linear-gradient(left, #000 0%, #bb8b41 51%, #000 100%);
+  background: -o-linear-gradient(left, #000 0%, #bb8b41 51%, #000 100%);
+  background: -ms-linear-gradient(left, #000 0%, #bb8b41 51%, #000 100%);
+  background: linear-gradient(to right, #000 0%, #bb8b41 51%, #000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pl-black', endColorstr='$pl-black', GradientType=1 );
+  height: 2px;
+}
+
+@media (min-width: 1441px) {
+  /* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+  .footer .horizontal-line {
+    width: 70%;
+  }
+}
+
+/* line 42, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer .address {
+  color: #bb8b41;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 50, ../../xampp/htdocs/jazz/sass/main.scss */
+.footer .address .logo {
+  margin-right: 0.875rem;
+}
+
+/* line 54, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .link {
   margin-top: 1rem;
   color: #bb8b41;
   font-weight: 700;
 }
 
-/* line 33, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 62, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--margin-right {
   margin-right: 0.5rem;
 }
 
-/* line 36, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 65, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--color-gold {
   color: #bb8b41;
 }
 
-/* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
 .first-copy {
   text-align: center;
   font-size: 1.2rem;
@@ -166,7 +214,7 @@ header {
 }
 
 @media (min-width: 768px) {
-  /* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 2rem;
     padding: 2rem 4rem;
@@ -174,16 +222,22 @@ header {
 }
 
 @media (min-width: 1200px) {
-  /* line 41, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 2rem;
     padding: 6rem 24rem;
   }
 }
 
-/* line 58, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 87, ../../xampp/htdocs/jazz/sass/main.scss */
 .row--background-blue {
   background: #10446E;
+}
+
+/* line 92, ../../xampp/htdocs/jazz/sass/main.scss */
+.map {
+  width: 100%;
+  height: 250px;
 }
 
 /*# sourceMappingURL=main.css.map */

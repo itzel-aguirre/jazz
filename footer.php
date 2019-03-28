@@ -11,13 +11,19 @@
           </a>
           <i class="mdi mdi-spotify mdi-24px icon icon--margin-right icon--color-gold"></i>
       </div>
-      <div class="row">
-          <div class="col-6">
+      <div class="row justify-content-center">
+          <div class="col-10 col-md-5">
+              <p class="address"><span class="logo"><img src="images/footer/logo-lenox.png" alt="Logotipo Lenox"></span>Milán 14, col. Juárez CDMX</p>
+          </div>
+      </div>
+      <div class="row justify-content-center">
+          <hr class="horizontal-line">
+          <div class="col-6 col-md-4">
               <a href="#">
                   <p class="text-center link">Términos y Condiciones</p>
               </a>
           </div>
-          <div class="col-6">
+          <div class="col-6 col-md-4">
               <a href="#">
                   <p class="text-center link">Política de Privacidad</p>
               </a>

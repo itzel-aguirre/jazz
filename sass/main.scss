@@ -18,10 +18,39 @@ body {
 
 header {
   background: $pl-gold;
+  padding: 0.75rem 0;
 }
 
 .footer {
   background: $pl-black;
+  .horizontal-line {
+    border: 0;
+    width: 100%;
+    background: $pl-black;
+    background: -moz-linear-gradient(left, $pl-black 0%, $pl-gold 51%, $pl-black 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, $pl-black), color-stop(51%, $pl-gold), color-stop(100%, $pl-black));
+    background: -webkit-linear-gradient(left, $pl-black 0%, $pl-gold 51%, $pl-black 100%);
+    background: -o-linear-gradient(left, $pl-black 0%, $pl-gold 51%, $pl-black 100%);
+    background: -ms-linear-gradient(left, $pl-black 0%, $pl-gold 51%, $pl-black 100%);
+    background: linear-gradient(to right, $pl-black 0%, $pl-gold 51%, $pl-black 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pl-black', endColorstr='$pl-black', GradientType=1 );
+    height: 2px;
+    @media (min-width: 1441px) {
+      width: 70%;
+    }
+  }
+  .address {
+    color: $pl-gold;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo {
+      margin-right: 0.875rem;
+    }
+  }
   .link {
     margin-top: 1rem;
     color: $pl-gold;
@@ -58,4 +87,9 @@ header {
   &--background-blue {
     background: $pl-dark-blue;
   }
+}
+
+.map {
+  width: 100%;
+  height: 250px;
 }
