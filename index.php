@@ -44,7 +44,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@ include 'header.php';
                                 <div class="col-6 align-self-center">
                                     <div class="row justify-content-center">
                                         <button type="button" class="btn btn-primary btn-lg">
-                                            <i class="mdi mdi-notebook icon--margin-right"></i>Reserva
+                                            Reserva
                                         </button>
                                     </div>
                                 </div>
@@ -224,12 +224,76 @@ include 'header.php';
             </div>
         </div>
     </div>
-    <div class="row row--background-blue">
+    <div class="row row--background-red">
         <div class="col">
             <p class="first-copy">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac
                 purus eget lectus pharetra consequat.
             </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form action="">
+                <div class="form-row justify-content-center">
+                    <fieldset class="col-12 col-md-6 col-xl-5">
+                        <legend>Información Personal</legend>
+
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input id="name" type="text" class="form-control input-text" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" class="form-control input-text" placeholder="correo@ejemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Celular</label>
+                            <input type="number" id="mobile" class="form-control input-text" placeholder="5540123487">
+                        </div>
+                    </fieldset>
+                    <fieldset  class="col-12 col-md-6 col-xl-5">
+                        <legend>Información del Evento</legend>
+                        <div class="form-group">
+                            <label for="show">Espectáculo</label>
+                            <select id="show" class="form-control" required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="volvo">Ted Crosby</option>
+                                <option value="saab">Homenaje a Amy Winehouse por Xiomara Méndez</option>
+                                <option value="mercedes">Afrobeat</option>
+                                <option value="audi">Nite Jewel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-time">Fecha y hora</label>
+                            <select id="date-time" class="form-control " required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="volvo">26 mar / 22:30</option>
+                            </select>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-6">
+                                <label for="clients"># Personas</label>
+                                <input type="number" id="clients" class="form-control input-text" min="1" max="30" value="1">
+                            </div>
+                            <div class="form-group col-6 align-self-end">
+                                <label for="table">Mesa</label>
+                                <select id="table" class="form-control" required>
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option value="volvo">1</option>
+                                    <option value="volvo">50</option>
+                                    <option value="volvo">23</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row justify-content-end">
+                                <button class="btn btn-primary btn-lg">Enviar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row">

@@ -8,9 +8,20 @@
   align-items: center;
   justify-content: center;
   &.btn-primary {
-    background-color: $pl-dark-blue;
+    background-color: $pl-red;
     border: none;
     border-bottom: 4px solid rgba($pl-black, 0.6);
     color: $pl-white;
+    &:not(:disabled):not(.disabled) {
+      &:focus,
+      &:hover,
+      &:active {
+        background-color: $pl-red;
+        border: none;
+        border-bottom: 4px solid rgba($pl-black, 0.6);
+        outline: none;
+        box-shadow: none;
+      }
+    }
   }
 }

@@ -10,10 +10,19 @@
 
 /* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn.btn-primary {
-  background-color: #10446E;
+  background-color: #721422;
   border: none;
   border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   color: #e8e8e8;
+}
+
+/* line 16, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-primary:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #721422;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  outline: none;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=button.css.map */

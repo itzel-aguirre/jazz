@@ -1,0 +1,40 @@
+/* line 5, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control {
+  border: none;
+  border-bottom: 2px solid #721422;
+  border-radius: 0;
+  height: calc(3.25rem + 2px);
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 12, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control:focus {
+  border: none;
+  border-bottom: 2px solid #c14d14;
+  box-shadow: 0 7px 20px -6px #c14d14;
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid {
+  color: #5a5a5a;
+}
+
+/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option[value=""][disabled] {
+  display: none;
+}
+
+/* line 25, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option {
+  color: #000;
+}
+
+/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option:hover {
+  background: red;
+}
+
+/*# sourceMappingURL=select.css.map */

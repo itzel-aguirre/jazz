@@ -1,0 +1,32 @@
+@import "colors";
+@import "font";
+
+select {
+  &.form-control {
+    border: none;
+    border-bottom: 2px solid $pl-red;
+    border-radius: 0;
+    height: calc(3.25rem + 2px);
+    color: $pl-dark-blue;
+    font-weight: $font-bold;
+    &:focus {
+      border: none;
+      border-bottom: 2px solid $pl-orange;
+      box-shadow: 0 7px 20px -6px $pl-orange;
+      color: $pl-dark-blue;
+      font-weight: $font-bold;
+    }
+  }
+  &:required:invalid {
+    color: $pl-grey;
+    option[value=""][disabled] {
+      display: none;
+    }
+    option {
+      color: $pl-black;
+      &:hover {
+        background: red;
+      }
+    }
+  }
+}
