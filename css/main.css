@@ -132,33 +132,91 @@
   }
 }
 
+/* line 3, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text {
+  border: none;
+  border-bottom: 2px solid #721422;
+  border-radius: 0;
+  height: calc(3.25rem + 2px);
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text:focus {
+  border: none;
+  border-bottom: 2px solid #c14d14;
+  box-shadow: 0 7px 20px -6px #c14d14;
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 5, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control {
+  border: none;
+  border-bottom: 2px solid #721422;
+  border-radius: 0;
+  height: calc(3.25rem + 2px);
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 12, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control:focus {
+  border: none;
+  border-bottom: 2px solid #c14d14;
+  box-shadow: 0 7px 20px -6px #c14d14;
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid {
+  color: #5a5a5a;
+}
+
+/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option[value=""][disabled] {
+  display: none;
+}
+
+/* line 25, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option {
+  color: #000;
+}
+
+/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option:hover {
+  background: red;
+}
+
 /*
  *  Global settings
  */
-/* line 9, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 11, ../../xampp/htdocs/jazz/sass/main.scss */
 * {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 13, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 15, ../../xampp/htdocs/jazz/sass/main.scss */
 body {
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
 }
 
-/* line 19, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 21, ../../xampp/htdocs/jazz/sass/main.scss */
 header {
   background: #000;
   padding: 0.75rem 0;
 }
 
-/* line 24, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer {
   background: #000;
 }
 
-/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 28, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .horizontal-line {
   border: 0;
   width: 100%;
@@ -174,13 +232,13 @@ header {
 }
 
 @media (min-width: 1441px) {
-  /* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 28, ../../xampp/htdocs/jazz/sass/main.scss */
   .footer .horizontal-line {
     width: 70%;
   }
 }
 
-/* line 42, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 75, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .address {
   color: #bb8b41;
   font-size: 1.2rem;
@@ -191,29 +249,29 @@ header {
   justify-content: center;
 }
 
-/* line 50, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 83, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .address .logo {
   margin-right: 0.875rem;
 }
 
-/* line 54, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 87, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .link {
   margin-top: 1rem;
   color: #bb8b41;
   font-weight: 700;
 }
 
-/* line 62, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 95, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--margin-right {
   margin-right: 0.5rem;
 }
 
-/* line 65, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 98, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--color-gold {
   color: #bb8b41;
 }
 
-/* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
 .first-copy {
   text-align: center;
   font-size: 1.2rem;
@@ -223,7 +281,7 @@ header {
 }
 
 @media (min-width: 768px) {
-  /* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 2rem;
     padding: 2rem 4rem;
@@ -231,22 +289,63 @@ header {
 }
 
 @media (min-width: 1200px) {
-  /* line 70, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 2rem;
     padding: 6rem 24rem;
   }
 }
 
-/* line 87, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 120, ../../xampp/htdocs/jazz/sass/main.scss */
 .row--background-red {
   background: #721422;
 }
 
-/* line 92, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 125, ../../xampp/htdocs/jazz/sass/main.scss */
 .map {
   width: 100%;
   height: 250px;
+}
+
+/* line 130, ../../xampp/htdocs/jazz/sass/main.scss */
+form {
+  margin: 1rem 0;
+}
+
+/* line 132, ../../xampp/htdocs/jazz/sass/main.scss */
+form fieldset {
+  margin-bottom: 1.5rem;
+}
+
+/* line 134, ../../xampp/htdocs/jazz/sass/main.scss */
+form fieldset legend {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+/* line 141, ../../xampp/htdocs/jazz/sass/main.scss */
+form fieldset label {
+  color: #5a5a5a;
+  font-size: 1.2rem;
+}
+
+/* line 147, ../../xampp/htdocs/jazz/sass/main.scss */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #10446E;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(187, 139, 65, 0.1) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /*# sourceMappingURL=main.css.map */

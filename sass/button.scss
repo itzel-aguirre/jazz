@@ -12,8 +12,10 @@
     border: none;
     border-bottom: 4px solid rgba($pl-black, 0.6);
     color: $pl-white;
-    &:not(:disabled):not(.disabled){
-      &:focus, &:hover, &:active{
+    &:not(:disabled):not(.disabled) {
+      &:focus,
+      &:hover,
+      &:active {
         background-color: $pl-red;
         border: none;
         border-bottom: 4px solid rgba($pl-black, 0.6);
@@ -21,6 +23,5 @@
         box-shadow: none;
       }
     }
-
   }
 }
