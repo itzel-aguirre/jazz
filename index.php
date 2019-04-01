@@ -8,17 +8,15 @@ include 'header.php';
 
 <!--Carousel Wrapper-->
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12 mh-100 p-0 d-flex align-self-end">
-      <iframe
-        src="https://www.youtube.com/embed/0QVOc1aagSE"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        class="video-yt"
-      ></iframe>
-    </div>
-  </div>
+        <div class="row justify-content-center">
+                <div class="background-image background-image__main-image">
+                  <div class="scroll-down-container">
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                  </div>
+                </div>
+              </div>
   <div class="row row--background-red">
     <div class="col-12">
       <p class="title">Cartelera semanal</p>
