@@ -5,8 +5,24 @@
     <!--metas-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Somefriends">
+    <meta name="description" content="Parker&Lenox Restaurante, bar y foro de música en la Ciudad de México (CDMX). La mejor experiencia en un espacio lleno de magia y las mejores presentaciones en vivo.">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <!-- Metadatos Facebook-->
+    <meta property="og:url" content="http://parker-lenox.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Parker & Lenox" />
+    <meta property="og:description" content="Restaurante, bar y foro de música en la Ciudad de México (CDMX). La mejor experiencia en un espacio lleno de magia y las mejores presentaciones en vivo." />
+    <meta property="og:image" content="http://parker-lenox.com/images/content/mainBG-desk.jpg" />
+
+    <!-- Metadatos Twitter-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@parkerandlenox">
+    <meta name="twitter:creator" content="@parkerandlenox">
+    <meta name="twitter:title" content="Parker & Lenox">
+    <meta name="twitter:description" content="Restaurante, bar y foro de música en la Ciudad de México (CDMX). La mejor experiencia en un espacio lleno de magia y las mejores presentaciones en vivo.">
+    <meta name="twitter:image" content="http://parker-lenox.com/images/content/mainBG-desk.jpg">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Parker & Lenox</title>
@@ -37,6 +53,18 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137244781-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137244781-1');
+    </script>
 </head>
 
 <body>
