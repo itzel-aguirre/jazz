@@ -209,14 +209,15 @@ body {
 header {
   background: #000;
   padding: 0.75rem 0;
+  border-bottom: 2px solid #e8e8e8;
 }
 
-/* line 26, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 27, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer {
   background: #000;
 }
 
-/* line 28, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 29, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .horizontal-line {
   border: 0;
   width: 100%;
@@ -232,13 +233,13 @@ header {
 }
 
 @media (min-width: 1441px) {
-  /* line 28, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 29, ../../xampp/htdocs/jazz/sass/main.scss */
   .footer .horizontal-line {
     width: 70%;
   }
 }
 
-/* line 75, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 76, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .address {
   color: #bb8b41;
   font-size: 1.2rem;
@@ -249,75 +250,177 @@ header {
   justify-content: center;
 }
 
-/* line 83, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 84, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .address .logo {
   margin-right: 0.875rem;
 }
 
-/* line 87, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 88, ../../xampp/htdocs/jazz/sass/main.scss */
 .footer .link {
   margin-top: 1rem;
   color: #bb8b41;
   font-weight: 700;
 }
 
-/* line 95, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 96, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--margin-right {
   margin-right: 0.5rem;
 }
 
-/* line 98, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 99, ../../xampp/htdocs/jazz/sass/main.scss */
 .icon--color-gold {
   color: #bb8b41;
 }
 
-/* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
-.first-copy {
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 0;
-  color: #e8e8e8;
-  padding: 1.5rem 0;
+/* line 104, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image {
+  height: calc(100vh - 65px);
+  min-width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* line 113, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__main-image {
+  background-image: url("../images/content/mobile/mainBG.jpg");
+}
+
+/* line 116, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__second-image {
+  background-image: url("../images/content/mobile/secondBG.jpg");
+  height: 60vh;
+}
+
+@media (min-width: 1200px) {
+  /* line 104, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image {
+    height: 60vh;
+    background-size: contain;
+    background-color: black;
+  }
+  /* line 124, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image__main-image {
+    background-image: url("../images/content/mainBG-desk.jpg");
+  }
+  /* line 127, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image__second-image {
+    background-image: url("../images/content/secondBG-desk.jpg");
+    background-size: cover;
+  }
+}
+
+/* line 132, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__third-image {
+  background-image: url("../images/content/imageBar-desk.jpg");
+  height: 350px;
+}
+
+/* line 136, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__button {
+  height: 40vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 142, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__button a {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 @media (min-width: 768px) {
-  /* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 142, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image__button a {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* line 142, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image__button a {
+    font-size: 6rem;
+  }
+}
+
+/* line 153, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__button--food {
+  background-image: url("../images/content/menu/food.jpg");
+}
+
+/* line 156, ../../xampp/htdocs/jazz/sass/main.scss */
+.background-image__button--drink {
+  background-image: url("../images/content/menu/drinks.jpg");
+}
+
+/* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
+.first-copy {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0;
+  color: #e8e8e8;
+  padding: 4.5rem 0;
+}
+
+@media (min-width: 768px) {
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
-    font-size: 2rem;
-    padding: 2rem 4rem;
+    font-size: 3rem;
+    padding: 6rem 4rem;
   }
 }
 
 @media (min-width: 1200px) {
-  /* line 103, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
-    font-size: 2rem;
-    padding: 6rem 24rem;
+    font-size: 2.5rem;
+    padding: 4rem 24rem;
   }
 }
 
-/* line 120, ../../xampp/htdocs/jazz/sass/main.scss */
+@media (min-width: 1440px) {
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
+  .first-copy {
+    font-size: 2.5rem;
+    padding: 4rem 30rem;
+  }
+}
+
+/* line 183, ../../xampp/htdocs/jazz/sass/main.scss */
 .row--background-red {
   background: #721422;
 }
 
-/* line 125, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 188, ../../xampp/htdocs/jazz/sass/main.scss */
 .map {
   width: 100%;
-  height: 250px;
+  height: 350px;
 }
 
-/* line 130, ../../xampp/htdocs/jazz/sass/main.scss */
+@media (min-width: 768px) {
+  /* line 188, ../../xampp/htdocs/jazz/sass/main.scss */
+  .map {
+    height: 100%;
+  }
+}
+
+/* line 196, ../../xampp/htdocs/jazz/sass/main.scss */
 form {
   margin: 1rem 0;
 }
 
-/* line 132, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 198, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset {
   margin-bottom: 1.5rem;
 }
 
-/* line 134, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 200, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset legend {
   text-align: center;
   margin-bottom: 1rem;
@@ -326,19 +429,17 @@ form fieldset legend {
   color: #5a5a5a;
 }
 
-/* line 141, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 207, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset label {
   color: #5a5a5a;
   font-size: 1.2rem;
 }
 
-/* line 147, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 213, ../../xampp/htdocs/jazz/sass/main.scss */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -346,6 +447,116 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: #10446E;
   -webkit-box-shadow: 0 0 0px 1000px rgba(187, 139, 65, 0.1) inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+/* line 226, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 50px;
+}
+
+/* line 231, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+/* line 238, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+/* line 241, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron::nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+/* line 244, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron:before, .scroll-down-container .chevron:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #fff;
+}
+
+/* line 253, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+/* line 257, ../../xampp/htdocs/jazz/sass/main.scss */
+.scroll-down-container .chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
+}
+
+/* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
+.video-yt {
+  width: 100%;
+  height: 40vh;
+}
+
+@media (min-width: 1200px) {
+  /* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
+  .video-yt {
+    height: 55vh;
+  }
+}
+
+/* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
+.title {
+  font-size: 2rem;
+  background: #721422;
+  color: #e8e8e8;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  /* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
+  .title {
+    margin-left: 5rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
