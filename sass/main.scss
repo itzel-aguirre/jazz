@@ -134,16 +134,20 @@ header {
     height: 350px;
   }
   &__button {
-    height: 30vh;
+    height: 40vh;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     a {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      font-weight: $font-bold;
       color: #fff;
       @media (min-width: 768px) {
         font-size: 3rem;
+      }
+      @media (min-width: 1440px) {
+        font-size: 6rem;
       }
     }
     &--food {
@@ -167,7 +171,11 @@ header {
   }
   @media (min-width: 1200px) {
     font-size: 2.5rem;
-    padding: 4rem 34rem;
+    padding: 4rem 24rem;
+  }
+  @media (min-width: 1440px) {
+    font-size: 2.5rem;
+    padding: 4rem 30rem;
   }
 }
 
@@ -280,9 +288,9 @@ select:-webkit-autofill:focus {
 
 .video-yt {
   width: 100%;
-  height: 400px;
+  height: 40vh;
   @media (min-width: 1200px) {
-    height: 500px;
+    height: 55vh;
   }
 }
 

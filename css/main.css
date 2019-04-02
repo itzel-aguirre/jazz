@@ -321,7 +321,7 @@ header {
 
 /* line 136, ../../xampp/htdocs/jazz/sass/main.scss */
 .background-image__button {
-  height: 30vh;
+  height: 40vh;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -330,7 +330,8 @@ header {
 
 /* line 142, ../../xampp/htdocs/jazz/sass/main.scss */
 .background-image__button a {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #fff;
 }
 
@@ -341,17 +342,24 @@ header {
   }
 }
 
-/* line 149, ../../xampp/htdocs/jazz/sass/main.scss */
+@media (min-width: 1440px) {
+  /* line 142, ../../xampp/htdocs/jazz/sass/main.scss */
+  .background-image__button a {
+    font-size: 6rem;
+  }
+}
+
+/* line 153, ../../xampp/htdocs/jazz/sass/main.scss */
 .background-image__button--food {
   background-image: url("../images/content/menu/food.jpg");
 }
 
-/* line 152, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 156, ../../xampp/htdocs/jazz/sass/main.scss */
 .background-image__button--drink {
   background-image: url("../images/content/menu/drinks.jpg");
 }
 
-/* line 158, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
 .first-copy {
   text-align: center;
   font-size: 1.6rem;
@@ -361,7 +369,7 @@ header {
 }
 
 @media (min-width: 768px) {
-  /* line 158, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 3rem;
     padding: 6rem 4rem;
@@ -369,42 +377,50 @@ header {
 }
 
 @media (min-width: 1200px) {
-  /* line 158, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
   .first-copy {
     font-size: 2.5rem;
-    padding: 4rem 34rem;
+    padding: 4rem 24rem;
   }
 }
 
-/* line 175, ../../xampp/htdocs/jazz/sass/main.scss */
+@media (min-width: 1440px) {
+  /* line 162, ../../xampp/htdocs/jazz/sass/main.scss */
+  .first-copy {
+    font-size: 2.5rem;
+    padding: 4rem 30rem;
+  }
+}
+
+/* line 183, ../../xampp/htdocs/jazz/sass/main.scss */
 .row--background-red {
   background: #721422;
 }
 
-/* line 180, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 188, ../../xampp/htdocs/jazz/sass/main.scss */
 .map {
   width: 100%;
   height: 350px;
 }
 
 @media (min-width: 768px) {
-  /* line 180, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 188, ../../xampp/htdocs/jazz/sass/main.scss */
   .map {
     height: 100%;
   }
 }
 
-/* line 188, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 196, ../../xampp/htdocs/jazz/sass/main.scss */
 form {
   margin: 1rem 0;
 }
 
-/* line 190, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 198, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset {
   margin-bottom: 1.5rem;
 }
 
-/* line 192, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 200, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset legend {
   text-align: center;
   margin-bottom: 1rem;
@@ -413,13 +429,13 @@ form fieldset legend {
   color: #5a5a5a;
 }
 
-/* line 199, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 207, ../../xampp/htdocs/jazz/sass/main.scss */
 form fieldset label {
   color: #5a5a5a;
   font-size: 1.2rem;
 }
 
-/* line 205, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 213, ../../xampp/htdocs/jazz/sass/main.scss */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus textarea:-webkit-autofill,
@@ -433,7 +449,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* line 218, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 226, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container {
   position: relative;
   width: 24px;
@@ -441,7 +457,7 @@ select:-webkit-autofill:focus {
   margin-bottom: 50px;
 }
 
-/* line 223, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 231, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron {
   position: absolute;
   width: 28px;
@@ -451,17 +467,17 @@ select:-webkit-autofill:focus {
   animation: move 3s ease-out infinite;
 }
 
-/* line 230, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 238, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron:first-child {
   animation: move 3s ease-out 1s infinite;
 }
 
-/* line 233, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 241, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron::nth-child(2) {
   animation: move 3s ease-out 2s infinite;
 }
 
-/* line 236, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 244, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron:before, .scroll-down-container .chevron:after {
   content: " ";
   position: absolute;
@@ -471,13 +487,13 @@ select:-webkit-autofill:focus {
   background: #fff;
 }
 
-/* line 245, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 253, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron:before {
   left: 0;
   transform: skew(0deg, 30deg);
 }
 
-/* line 249, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 257, ../../xampp/htdocs/jazz/sass/main.scss */
 .scroll-down-container .chevron:after {
   right: 0;
   width: 50%;
@@ -508,20 +524,20 @@ select:-webkit-autofill:focus {
   }
 }
 
-/* line 281, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
 .video-yt {
   width: 100%;
-  height: 400px;
+  height: 40vh;
 }
 
 @media (min-width: 1200px) {
-  /* line 281, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
   .video-yt {
-    height: 500px;
+    height: 55vh;
   }
 }
 
-/* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
+/* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
 .title {
   font-size: 2rem;
   background: #721422;
@@ -530,14 +546,14 @@ select:-webkit-autofill:focus {
 }
 
 @media (min-width: 768px) {
-  /* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
   .title {
     font-size: 3rem;
   }
 }
 
 @media (min-width: 1200px) {
-  /* line 289, ../../xampp/htdocs/jazz/sass/main.scss */
+  /* line 297, ../../xampp/htdocs/jazz/sass/main.scss */
   .title {
     margin-left: 5rem;
   }
