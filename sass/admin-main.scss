@@ -1,0 +1,77 @@
+@import "colors";
+@import "font";
+@import "button";
+@import "font";
+@import "input";
+@import "select";
+@import "overwrite-bootstrap";
+
+.contenido-login{
+  height: 100vh;
+  .login-wrapper{
+    border: 10px solid rgba($pl-light-blue, 0.60);
+      background: $pl-white;
+      border-radius: 10px;
+      box-shadow: -7px 5px 3px 0em $pl-dark-blue;
+      padding: 40px 35px;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: $pl-dark-blue;
+  -webkit-box-shadow: 0 0 0px 1000px rgba($pl-gold, 0.1) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+header{
+  padding: 0.75rem 1rem;
+  background: $pl-black;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+  .welcome-text{
+    margin: 0;
+    color: $pl-white;
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+  }
+}
+
+.admin-container{
+  @media(min-width: 1440px){
+    padding: 0 4rem;
+  }
+}
+
+.table{
+  &--with-70{
+    width: 70%;
+  }
+  th{
+    font-size:1.2rem; 
+  }
+  td{
+    vertical-align: middle;
+    font-size:1.1rem; 
+  }
+  .actions-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.error{
+  font-size: .875rem;
+  color: $pl-red-error;
+  font-weight: 600;
+}

@@ -14,4 +14,7 @@
     color: $pl-dark-blue;
     font-weight: $font-bold;
   }
+  &--error{
+    border-color: $pl-red-error;
+  }
 }

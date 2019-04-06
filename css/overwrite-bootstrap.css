@@ -1,0 +1,27 @@
+/* line 4, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--background-red {
+  background: #721422;
+}
+
+/* line 7, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--background-black {
+  background: #000;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--margin-top-bottom {
+  margin: 1rem 0;
+}
+
+/* line 16, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.nav-tabs .nav-link {
+  color: #c14d14;
+  font-size: 1.3rem;
+}
+
+/* line 19, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.nav-tabs .nav-link.active {
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=overwrite-bootstrap.css.map */

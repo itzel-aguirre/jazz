@@ -1,0 +1,23 @@
+@import "colors";
+@import "font";
+.row {
+  &--background-red {
+    background: $pl-red;
+  }
+  &--background-black{
+    background: $pl-black;
+  }
+  &--margin-top-bottom{
+    margin: 1rem 0;
+  }
+}
+
+.nav-tabs{
+  .nav-link{
+    color: $pl-orange;
+    font-size: 1.3rem;
+    &.active{
+      font-weight: $font-bold;
+    }
+  }
+} 

@@ -4,6 +4,7 @@
 @import "font";
 @import "input";
 @import "select";
+@import "overwrite-bootstrap";
 
 /*
  *  Global settings
@@ -176,12 +177,6 @@ header {
   @media (min-width: 1440px) {
     font-size: 2.5rem;
     padding: 4rem 30rem;
-  }
-}
-
-.row {
-  &--background-red {
-    background: $pl-red;
   }
 }
 
