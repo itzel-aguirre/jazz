@@ -84,7 +84,6 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" value="" required />
             <p class="error"></p>
           </div>
-          <p class="errorLogin"></p>
           <button type="button" id="btnEnviar" class="btn btn-primary btn-lg float-right">Enviar</button>
         </form>
         <p class="error"></p>
@@ -195,29 +194,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
 
-  <!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        xfbml: true,
-        version: 'v3.2'
-      });
-    };
-
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <!-- Your customer chat code -->
-  <div class="fb-customerchat" attribution=install_email page_id="388926777938003">
-  </div>
   <!--Checkboxes script-->
   <script>
     $(document).ready(function() {
@@ -229,48 +205,55 @@
   <script>
     $(document).ready(function() {
       $("#admin").hide();
-      $("#btnEnviar").click(function() {
-
-        if (validateRequiredFileds("#login-form")) {
-          if (validateEmail($("#email").val())) {
-            $("#email").removeClass("input-text--error")
-            const email = $("#email").val();
-            const password = $("#password").val();
-            let datosLogin = {
-              "email": email,
-              "pass": password
-            }
-            $.ajax({
-              type: "POST",
-              url: "controller/controller-login.php",
-              data: JSON.stringify({
-                Usuario: datosLogin
-              }),
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(data) {
-                alert(data);
-                $("#admin").show();
-                $("#login").hide();
-              },
-              failure: function(errMsg) {
-                $("#login.form").siblings(".error").text("Correo / contraseña inválidos")
-              }
-            });
-          } else {
-            $("#email").siblings(".error").show()
-            $("#email").siblings(".error").text("Ingresa un correo electrónico válido")
-            $("#email").addClass("input-text--error")
-          }
+      $('#login-form').keydown(function(e) {
+        if (e.keyCode == 13) {
+          login();
         }
+      })
+      $("#btnEnviar").click(function() {
+        login();
       });
     });
 
+    function login() {
+      if (validateRequiredFileds("#login-form")) {
+        if (validateEmail($("#email").val())) {
+          $("#email").removeClass("input-text--error")
+          const email = $("#email").val();
+          const password = $("#password").val();
+          let loginData = {
+            "email": email,
+            "password": password
+          }
+          $.ajax({
+            type: "POST",
+            url: "controller/controller-login.php",
+            data: JSON.stringify(loginData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+              $(".welcome-text").text("Bienvenido " + data.name)
+              $("#admin").show();
+              $("#login").hide();
+            },
+            error: function(errMsg) {
+              console.error(errMsg.responseJSON.error);
+              $("#login-form").siblings(".error").text(errMsg.responseJSON.error)
+            }
+          });
+        } else {
+          $("#email").siblings(".error").show()
+          $("#email").siblings(".error").text("Ingresa un correo electrónico válido")
+          $("#email").addClass("input-text--error")
+        }
+      }
+    }
+
     function validateEmail(email) {
       const emailRegex = /(.+.*@.+.*\..+.*)/;
-      if (email.match((emailRegex)))
+      if (email.match(emailRegex))
         return true;
-      return false
+      return false;
     }
 
     function validateRequiredFileds(form) {
