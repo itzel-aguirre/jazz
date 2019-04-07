@@ -18,7 +18,7 @@
 		{
 			$this->host="127.0.0.1";
                         $this->username="root";
-                        $this->password="";
+                        $this->password="123456789";
 			$this->dbname="parkerlenox";
 			$this->port="3306";
 		}
