@@ -96,7 +96,7 @@
       <div class="col-12 p-0">
         <header>
           <p class="welcome-text">Bienvenido usuario</p>
-          <button class="btn btn-primary btn-lg">Cerrar Sesión</button>
+          <button id="logout" class="btn btn-primary btn-lg">Cerrar Sesión</button>
         </header>
       </div>
     </div>
@@ -212,6 +212,10 @@
       })
       $("#btnEnviar").click(function() {
         login();
+      });
+      $("#logout").click(function() {
+        $("#admin").hide();
+        $("#login").show();
       });
     });
 
