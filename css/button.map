@@ -8,7 +8,7 @@
 	],
 	"sourcesContent": [
 		"@import \"colors\";\r\n@import \"font\";\r\n.btn {\r\n  cursor: pointer;\r\n  font-weight: 300;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  &.btn-primary {\r\n    background-color: $pl-red;\r\n    border: none;\r\n    border-bottom: 4px solid rgba($pl-black, 0.6);\r\n    color: $pl-white;\r\n    &:not(:disabled):not(.disabled) {\r\n      &:focus,\r\n      &:hover,\r\n      &:active {\r\n        background-color: $pl-red;\r\n        border: none;\r\n        border-bottom: 4px solid rgba($pl-black, 0.6);\r\n        outline: none;\r\n        box-shadow: none;\r\n      }\r\n    }\r\n  }\r\n}\r\n",
-		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #e8e8e8;\r\n$pl-orange: #c14d14;\r\n$pl-grey:#5a5a5a;\r\n$pl-red: #721422;\r\n",
+		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #e8e8e8;\r\n$pl-orange: #c14d14;\r\n$pl-grey:#5a5a5a;\r\n$pl-red: #721422;\r\n$pl-red-error: #d61b36;\r\n",
 		"$font-family: \"Roboto\", sans-serif;\r\n$font-light: 300;\r\n$font-normal: 400;\r\n$font-bold: 700;"
 	],
 	"names": [],

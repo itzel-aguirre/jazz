@@ -17,4 +17,9 @@
   font-weight: 700;
 }
 
+/* line 17, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text--error {
+  border-color: #d61b36;
+}
+
 /*# sourceMappingURL=input.css.map */

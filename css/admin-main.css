@@ -1,0 +1,201 @@
+/* line 3, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-primary {
+  background-color: #721422;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  color: #e8e8e8;
+}
+
+/* line 16, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-primary:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #721422;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  outline: none;
+  box-shadow: none;
+}
+
+/* line 3, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text {
+  border: none;
+  border-bottom: 2px solid #721422;
+  border-radius: 0;
+  height: calc(3.25rem + 2px);
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text:focus {
+  border: none;
+  border-bottom: 2px solid #c14d14;
+  box-shadow: 0 7px 20px -6px #c14d14;
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 17, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text--error {
+  border-color: #d61b36;
+}
+
+/* line 5, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control {
+  border: none;
+  border-bottom: 2px solid #721422;
+  border-radius: 0;
+  height: calc(3.25rem + 2px);
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 12, ../../xampp/htdocs/jazz/sass/select.scss */
+select.form-control:focus {
+  border: none;
+  border-bottom: 2px solid #c14d14;
+  box-shadow: 0 7px 20px -6px #c14d14;
+  color: #10446E;
+  font-weight: 700;
+}
+
+/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid {
+  color: #5a5a5a;
+}
+
+/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option[value=""][disabled] {
+  display: none;
+}
+
+/* line 25, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option {
+  color: #000;
+}
+
+/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
+select:required:invalid option:hover {
+  background: red;
+}
+
+/* line 4, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--background-red {
+  background: #721422;
+}
+
+/* line 7, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--background-black {
+  background: #000;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.row--margin-top-bottom {
+  margin: 1rem 0;
+}
+
+/* line 16, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.nav-tabs .nav-link {
+  color: #c14d14;
+  font-size: 1.3rem;
+}
+
+/* line 19, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.nav-tabs .nav-link.active {
+  font-weight: 700;
+}
+
+/* line 9, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.contenido-login {
+  height: 100vh;
+}
+
+/* line 11, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.contenido-login .login-wrapper {
+  border: 10px solid rgba(65, 133, 187, 0.6);
+  background: #e8e8e8;
+  border-radius: 10px;
+  box-shadow: -7px 5px 3px 0em #10446E;
+  padding: 40px 35px;
+}
+
+/* line 20, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #10446E;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(187, 139, 65, 0.1) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* line 33, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+header {
+  padding: 0.75rem 1rem;
+  background: #000;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+/* line 40, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+header .welcome-text {
+  margin: 0;
+  color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+@media (min-width: 1440px) {
+  /* line 49, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+  .admin-container {
+    padding: 0 4rem;
+  }
+}
+
+/* line 56, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.table--with-70 {
+  width: 70%;
+}
+
+/* line 59, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.table th {
+  font-size: 1.2rem;
+}
+
+/* line 62, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.table td {
+  vertical-align: middle;
+  font-size: 1.1rem;
+}
+
+/* line 66, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.table .actions-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* line 73, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.error {
+  font-size: .875rem;
+  color: #d61b36;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=admin-main.css.map */
