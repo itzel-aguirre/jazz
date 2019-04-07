@@ -2,13 +2,13 @@
 
 class Show{
   //Attributes
-  private id_show;
-  private id_genre;
-  private id_date_hr;
-  private artist;
-  private amount;
-  private url_img_mobile;
-  private url_img_desktop;
+  private $id_show;
+  private $id_genre;
+  private $id_date_hr;
+  private $artist;
+  private $amount;
+  private $url_img_mobile;
+  private $url_img_desktop;
   //Constructor
   public function __construct()
   {
