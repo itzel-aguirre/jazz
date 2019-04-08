@@ -1,16 +1,10 @@
 <?php
-include_once 'ConectaBD.php';
+include_once 'ConectDB.php';
 include_once 'User.php';
+
 class UserBO
 {
-  //Atributos
-  private $post;
-
-  //Constructor
-  public function __construct($post)
-  {
-    $this->post = $post;
-  }
+  //Atributtes
 
   //Methods
   public function Login($loginData)
@@ -18,16 +12,17 @@ class UserBO
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
     $query = "SELECT usuarios.USUARIO, usuarios.ROL FROM `usuarios` WHERE usuarios.CORREO = '".$loginData->email."' AND usuarios.CONTRASEÑA= '".$loginData->password."'";
-    $user = $databaseConected->consulta($query);
+    $userInfo = $databaseConected->consulta($query);
     $databaseConected->desconectar();
 
-    if ($user->num_rows > 0) {
-        $info = $$user->fetch_fields();
-        $row = mysqli_fetch_array($info, MYSQLI_ASSOC);
-
-        return  $row["USUARIO"] . $row["ROL"];
+    if ($userInfo->num_rows > 0) {
+        $dataUserObj = new User();
+        $row = $userInfo->fetch_assoc();
+        $dataUserObj->type = $row["ROL"];
+        $dataUserObj->name = $row["USUARIO"];
+        return  $dataUserObj;
       } else {
-      return json_encode (array('error'=>'No existe usuario'));
+      return false;
     }
   }
 
@@ -38,3 +33,5 @@ class UserBO
   public function CreateUser($userData)
   { }
 }
+
+?>

@@ -1,6 +1,6 @@
 <?php
 
-class UserBO
+class User
 {
   //Attributes
   private $id_user;
@@ -12,7 +12,13 @@ class UserBO
   //Constructor
   public function __construct()
   {
-
+    
+  }
+  public static function constructPost( $dataUser ) {
+    $instance = new self();
+    $instance->email = $dataUser->email;
+    $instance->password = $dataUser->password;
+    return $instance;
   }
   //Methods
   // Getter/Setter not defined so set as property of object
@@ -35,4 +41,3 @@ class UserBO
       return null;
   }
 }
-?>
