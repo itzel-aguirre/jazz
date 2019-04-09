@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="css/admin-main.css">
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+
 
   <!--fonts-->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -118,7 +120,7 @@
           <div class="row">
             <div class="col-12">
               <div class="row row--margin-top-bottom justify-content-end">
-                <button class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
+                <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
               </div>
             </div>
           </div>
@@ -137,8 +139,8 @@
                     <td>26 mar</td>
                     <td>22:30 h</td>
                     <td class="actions-buttons">
-                      <button class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
-                      <button class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
+                      <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
+                      <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -163,6 +165,22 @@
                         <option value="jquery">Jquery</option>
                         <option value=".net">.Net</option>
                       </select>
+                    </div>
+                  </fieldset>
+                  <fieldset class="col-12 col-md-6 col-xl-12">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <p>Fecha(s) del espectáculo</p>
+                          <div id="dateShow"></div>
+                          <button type="button" id="addDateTime" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>
+                        </div>
+                        <div class="col-xl-6">
+                          <ol id="date-timeShowList">
+
+                          </ol>     
+                        </div>
+                      </div>
                     </div>
                   </fieldset>
                   <fieldset class="col-12 col-md-6 col-xl-12">
@@ -193,18 +211,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
   <!--Checkboxes script-->
   <script>
     $(document).ready(function() {
       $('#multiple-checkboxes').multiselect({
         includeSelectAllOption: true,
       });
+
+      $('#dateShow').datetimepicker({
+                inline: true,
+                sideBySide: true,
+                icons: {
+                    time: "mdi mdi-clock-outline",
+                    date: "mdi mdi-calendar-range",
+                    up: "mdi mdi-chevron-up mdi-24px",
+                    down: "mdi mdi-chevron-down mdi-24px"
+                },
+                locale: 'es'
+      });
+
     });
   </script>
   <script>
     $(document).ready(function() {
-      $("#admin").hide();
+      //$("#admin").hide();
+      $("#admin").show();
+      $("#login").hide();
+
+      let dateTimes = [];
+
       $('#login-form').keydown(function(e) {
         if (e.keyCode == 13) {
           login();
@@ -217,6 +255,19 @@
         $("#admin").hide();
         $("#login").show();
       });
+
+      $("#addDateTime").click(function(){
+        const dateTimeInfo =$('#dateShow').datetimepicker('date')
+        $("#date-timeShowList").append("<li>"+dateTimeInfo.format('LLL')+"</li>");
+        dateTimes.push({'date': dateTimeInfo.format('YYYY-MM-DD'),'time': dateTimeInfo.format('HH:mm')})
+
+        console.log(dateTimes)
+      });
+      $('#date-timeShowList').on('click', 'li', function(events){
+        $(this).remove();
+      });
+
+
     });
 
     function login() {
