@@ -14,14 +14,25 @@
 }
 
 /* line 16, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.col--border-red {
+  border: 2px solid #721422;
+  border-radius: 5px;
+}
+
+/* line 23, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link {
   color: #c14d14;
   font-size: 1.3rem;
 }
 
-/* line 19, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 26, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link.active {
   font-weight: 700;
+}
+
+/* line 32, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.bootstrap-datetimepicker-widget table td.separator {
+  width: 1px;
 }
 
 /*# sourceMappingURL=overwrite-bootstrap.css.map */

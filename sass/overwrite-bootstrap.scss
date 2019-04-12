@@ -12,6 +12,13 @@
   }
 }
 
+.col{
+  &--border-red{
+    border: 2px solid $pl-red;
+    border-radius: 5px;
+  }
+}
+
 .nav-tabs{
   .nav-link{
     color: $pl-orange;
@@ -21,3 +28,7 @@
     }
   }
 } 
+
+.bootstrap-datetimepicker-widget table td.separator{
+  width: 1px;
+}

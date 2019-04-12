@@ -28,10 +28,10 @@
   <title>Admin | Parker & Lenox</title>
   <!--css-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/admin-main.css">
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  <link rel="stylesheet" href="css/admin-main.css">
 
 
   <!--fonts-->
@@ -117,83 +117,108 @@
       </ul>
       <div class="tab-content" id="adminTabsContent">
         <div class="tab-pane fade show active" id="show" role="tabpanel" aria-labelledby="show-tab">
-          <div class="row">
-            <div class="col-12">
-              <div class="row row--margin-top-bottom justify-content-end">
-                <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
+          <div class="container-fluid" id="list-show">
+            <div class="row">
+              <div class="col-12">
+                <div class="row row--margin-top-bottom justify-content-end">
+                  <button type="button" id="add-show" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table table--with-70 table-hover">
+                  <thead>
+                    <th>Artista</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Abel Mirales Cuarteto</td>
+                      <td>26 mar</td>
+                      <td>22:30 h</td>
+                      <td class="actions-buttons">
+                        <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
+                        <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="table-responsive">
-              <table class="table table--with-70 table-hover">
-                <thead>
-                  <th>Artista</th>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Abel Mirales Cuarteto</td>
-                    <td>26 mar</td>
-                    <td>22:30 h</td>
-                    <td class="actions-buttons">
-                      <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
-                      <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <form action="">
-                <div class="form-row justify-content-center">
-                  <fieldset class="col-12 col-md-6 col-xl-12">
-                    <div class="form-group">
-                      <label for="nameShow">Nombre espectáculo</label>
-                      <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="100" />
-                    </div>
-                    <div class="form-group">
-                      <select id="multiple-checkboxes" multiple="multiple">
-                        <option value="php">PHP</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="java">Java</option>
-                        <option value="sql">SQL</option>
-                        <option value="jquery">Jquery</option>
-                        <option value=".net">.Net</option>
-                      </select>
-                    </div>
-                  </fieldset>
-                  <fieldset class="col-12 col-md-6 col-xl-12">
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-xl-6">
-                          <p>Fecha(s) del espectáculo</p>
-                          <div id="dateShow"></div>
-                          <button type="button" id="addDateTime" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>
-                        </div>
-                        <div class="col-xl-6">
-                          <ol id="date-timeShowList">
+          <div class="container-fluid" id="add-newShow">
+            <div class="row">
+              <div class="col-12">
+                <p class="title">Crear nuevo espectáculo</p>
+                <form action="" class="form-add-newshow">
+                  <div class="form-row justify-content-center">
+                    <fieldset class="col-12 col-md-6 col-xl-3 mr-sm-3">
+                      <div class="form-group">
+                        <label for="nameShow" class="label">Nombre espectáculo</label>
+                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="100" />
+                      </div>
+                      <div class="form-group">
+                        <label for="money" class="label">Costo</label>
+                        <input id="money" type="text" class="form-control input-text" placeholder="$150.00" maxlength="100" />
+                      </div>
 
-                          </ol>     
+                      <div class="form-group">
+                        <label for="nameShow" class="label">Género(s) del espectáculo</label>
+                        <select id="multiple-checkboxes" multiple="multiple">
+                          <option value="php">PHP</option>
+                          <option value="javascript">JavaScript</option>
+                          <option value="java">Java</option>
+                          <option value="sql">SQL</option>
+                          <option value="jquery">Jquery</option>
+                          <option value=".net">.Net</option>
+                        </select>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="col-12 col-md-6 col-xl-6">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-xl-7">
+                            <div class="labels">
+                              <label for="dateShow" class="label">Fecha(s) del espectáculo</label>
+                              <label for="dateShow" class="label">Hora del espectáculo</label>
+                            </div>
+
+                            <div id="dateShow"></div>
+                            <div class="col-12">
+                              <div class="row row--margin-top-bottom justify-content-end">
+                                <button type="button" id="addDateTime" class="btn btn--margin-top btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-xl-4 col--border-red">
+                            <label class="label">Fecha(s) capturadas</label>
+                            <ol id="date-timeShowList">
+
+                            </ol>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </fieldset>
-                  <fieldset class="col-12 col-md-6 col-xl-12">
-                    <div class="col-12">
-                      <div class="row justify-content-end">
-                        <button class="btn btn-primary btn-lg">Enviar</button>
+                    </fieldset>
+                    <fieldset class="col-12 col-md-6 col-xl-8">
+                      <div class="col-12">
+                        <div class="row justify-content-end">
+                          <button type="button" id="cancel-new-show" class="btn btn--margin-right btn-secundary btn-lg">Cancelar</button>
+                          <button type="button" id="save-new-show" class="btn btn-primary btn-lg">Guardar</button>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
+                    </fieldset>
+                  </div>
+                </form>
+              </div>
             </div>
+
           </div>
+
         </div>
         <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">...
 
@@ -213,7 +238,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
   <!--Checkboxes script-->
   <script>
     $(document).ready(function() {
@@ -222,15 +247,15 @@
       });
 
       $('#dateShow').datetimepicker({
-                inline: true,
-                sideBySide: true,
-                icons: {
-                    time: "mdi mdi-clock-outline",
-                    date: "mdi mdi-calendar-range",
-                    up: "mdi mdi-chevron-up mdi-24px",
-                    down: "mdi mdi-chevron-down mdi-24px"
-                },
-                locale: 'es'
+        inline: true,
+        sideBySide: true,
+        icons: {
+          time: "mdi mdi-clock-outline",
+          date: "mdi mdi-calendar-range",
+          up: "mdi mdi-chevron-up mdi-24px",
+          down: "mdi mdi-chevron-down mdi-24px"
+        },
+        locale: 'es'
       });
 
     });
@@ -242,6 +267,7 @@
       $("#login").hide();
 
       let dateTimes = [];
+      let id = 0;
 
       $('#login-form').keydown(function(e) {
         if (e.keyCode == 13) {
@@ -256,17 +282,34 @@
         $("#login").show();
       });
 
-      $("#addDateTime").click(function(){
-        const dateTimeInfo =$('#dateShow').datetimepicker('date')
-        $("#date-timeShowList").append("<li>"+dateTimeInfo.format('LLL')+"</li>");
-        dateTimes.push({'date': dateTimeInfo.format('YYYY-MM-DD'),'time': dateTimeInfo.format('HH:mm')})
+      /**
+      Date time functions
+       */
 
-        console.log(dateTimes)
+      $("#addDateTime").click(function() {
+        const dateTimeInfo = $('#dateShow').datetimepicker('date')
+        $("#date-timeShowList").append("<li id='" + id + "'>" + dateTimeInfo.format('LLL') + "<i class='mdi mdi-delete mdi-18px'></li>");
+        dateTimes.push({
+          'id': id++,
+          'date': dateTimeInfo.format('YYYY-MM-DD'),
+          'time': dateTimeInfo.format('HH:mm')
+        })
       });
-      $('#date-timeShowList').on('click', 'li', function(events){
+      $('#date-timeShowList').on('click', 'li', function(events) {
         $(this).remove();
+        dateTimes.splice(dateTimes.findIndex(source => source.id == $(this).attr('id')), 1)
       });
 
+      /*Mask money*/
+      const formatter = new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+        minimumFractionDigits: 2
+      })
+      $('#money').change(function() {
+        var num = $(this).val().match(/(?=.)^\$?(([1-9][0-9]{0,2}(,[0-9]{3})*)|0)?(\.[0-9]{1,2})?$/) && $(this).val();
+        $(this).val(formatter.format(num));
+      });
 
     });
 
@@ -327,6 +370,23 @@
       });
       return isValid;
     }
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("#add-newShow").hide();
+      $("#add-show").click(function() {
+        $("#add-newShow").show();
+        $("#list-show").hide();
+      });
+      $("#cancel-new-show").click(function() {
+        $("#add-newShow").hide();
+        $("#list-show").show();
+      });
+      $("#save-new-show").click(function() {
+        $("#add-newShow").hide();
+        $("#list-show").show();
+      });
+    });
   </script>
 </body>
 

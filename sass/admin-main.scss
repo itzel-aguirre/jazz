@@ -75,3 +75,23 @@ header{
   color: $pl-red-error;
   font-weight: 600;
 }
+
+.form-add-newshow{
+  fieldset{
+    margin: 1.5rem 0;
+  }
+  .label{
+    font-size: 1.2rem;
+    font-weight: $font-bold;
+  }
+  .labels{
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.title{
+  font-size: 2rem;
+  font-weight: $font-bold;
+  color:$pl-orange;
+}
