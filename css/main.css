@@ -9,7 +9,7 @@
 }
 
 /* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
-.btn.btn-primary {
+.btn.btn-primary, .btn.btn-default {
   background-color: #721422;
   border: none;
   border-bottom: 4px solid rgba(0, 0, 0, 0.6);
@@ -17,12 +17,39 @@
 }
 
 /* line 16, ../../xampp/htdocs/jazz/sass/button.scss */
-.btn.btn-primary:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):active {
+.btn.btn-primary:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):active, .btn.btn-default:not(:disabled):not(.disabled):focus, .btn.btn-default:not(:disabled):not(.disabled):hover, .btn.btn-default:not(:disabled):not(.disabled):active {
   background-color: #721422;
   border: none;
   border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   outline: none;
   box-shadow: none;
+}
+
+/* line 27, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-secundary {
+  background-color: #5a5a5a;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  color: #e8e8e8;
+}
+
+/* line 33, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn.btn-secundary:not(:disabled):not(.disabled):focus, .btn.btn-secundary:not(:disabled):not(.disabled):hover, .btn.btn-secundary:not(:disabled):not(.disabled):active {
+  background-color: #5a5a5a;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+  outline: none;
+  box-shadow: none;
+}
+
+/* line 44, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn--margin-top {
+  margin-top: 1.5rem;
+}
+
+/* line 47, ../../xampp/htdocs/jazz/sass/button.scss */
+.btn--margin-right {
+  margin-right: 1.5rem;
 }
 
 /* line 7, ../../xampp/htdocs/jazz/sass/mainSlider.scss */
@@ -143,6 +170,11 @@
 }
 
 /* line 10, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+/* line 13, ../../xampp/htdocs/jazz/sass/input.scss */
 .input-text:focus {
   border: none;
   border-bottom: 2px solid #c14d14;
@@ -151,7 +183,7 @@
   font-weight: 700;
 }
 
-/* line 17, ../../xampp/htdocs/jazz/sass/input.scss */
+/* line 20, ../../xampp/htdocs/jazz/sass/input.scss */
 .input-text--error {
   border-color: #d61b36;
 }
@@ -211,14 +243,25 @@ select:required:invalid option:hover {
 }
 
 /* line 16, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.col--border-red {
+  border: 2px solid #721422;
+  border-radius: 5px;
+}
+
+/* line 23, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link {
   color: #c14d14;
   font-size: 1.3rem;
 }
 
-/* line 19, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 26, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link.active {
   font-weight: 700;
+}
+
+/* line 32, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.bootstrap-datetimepicker-widget table td.separator {
+  width: 1px;
 }
 
 /*
