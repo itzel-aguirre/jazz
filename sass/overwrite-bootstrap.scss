@@ -32,3 +32,12 @@
 .bootstrap-datetimepicker-widget table td.separator{
   width: 1px;
 }
+
+.multiselect-container{
+  &.dropdown-menu {
+    &.show{
+      width: 50rem;
+      columns: auto 4;
+    }
+  }
+} 
