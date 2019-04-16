@@ -11,6 +11,8 @@ class Show implements JsonSerializable{
   protected $time;
   protected $url_img_mobile;
   protected $url_img_desktop;
+  protected $genres;
+  protected $datesTime;
   //Constructor
   public function __construct()
   {
@@ -25,6 +27,18 @@ class Show implements JsonSerializable{
     $instance->time = $time;
     return $instance;
   }
+
+  public static function constructShowJson($showData){
+    $instance = new self();
+    $instance->artist = $showData->artist;
+    $instance->amount = $showData->amount;
+    $instance->genres = $showData->genres;
+    $instance->datesTime = $showData->datesTime;
+    $instance->url_img_mobile = $showData->imgMobile;
+    $instance->url_img_desktop = $showData->imgDesktop;
+    return $instance;
+  }
+
   //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
@@ -58,6 +72,7 @@ class Show implements JsonSerializable{
         'id_date_hr'=> $this->id_date_hr,
         'url_img_mobile' => $this->url_img_mobile,
         'url_img_desktop' => $this->url_img_desktop,
+        'genres' => $this->genres,
       ];
   }
 }

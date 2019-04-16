@@ -28,3 +28,20 @@ function validateRequiredFileds(form) {
     });
   return isValid;
 }
+
+function validateArray(array,element,errorText){
+  if(array.length>0){
+    $(element).siblings(".error")
+    .hide();
+    return true
+  }
+  else{
+    $(element)
+        .siblings(".error")
+        .show();
+      $(element)
+        .siblings(".error")
+        .text(errorText);
+        return false;
+  }
+}

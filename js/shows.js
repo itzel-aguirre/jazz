@@ -1,5 +1,5 @@
+let dateTimes = [];
 jQuery(function($) {
-  let dateTimes = [];
   let id = 0;
   /**
      Date time functions
@@ -51,12 +51,20 @@ jQuery(function($) {
   });
 
   $("#money").change(function() {
-    var num =
+    if (
       $(this)
         .val()
-        .match(/(?=.)^\$?(([1-9][0-9]{0,2}(,[0-9]{3})*)|0)?(\.[0-9]{1,2})?$/) &&
-      $(this).val();
-    $(this).val(formatter.format(num));
+        .match(/^\$?\d+(,\d{3})*(\.\d*)?$/)
+    ) {
+      let num = Number(
+        $(this)
+          .val()
+          .replace(/[\$,]/g, "")
+      );
+      $(this).val(formatter.format(num));
+    } else {
+      $(this).val(formatter.format(0));
+    }
   });
 
   $("#add-newShow").hide();
@@ -70,14 +78,12 @@ jQuery(function($) {
     $("#add-newShow").hide();
     $("#list-show").show();
   });
-
-
 });
-
 
 /*
 Gets shows list to display
-*/ 
+*/
+
 jQuery(function($) {
   $.ajax({
     type: "GET",
@@ -85,53 +91,125 @@ jQuery(function($) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(shows) {
-      fillTableShows(shows)
+      fillTableShows(shows);
     }
   });
 });
 //Builds the table body
-function fillTableShows(shows){
-  let tr = ''
+function fillTableShows(shows) {
+  let tr = "";
 
-  if(shows.length > 0){
-    shows.forEach(show =>{
-      const information = '<td>'+show.artist+'</td>'+
-      '<td>'+moment(show.date).format("DD/MMMM/YYYY")+'</td>'+
-      '<td>'+`${moment(show.time).format("HH:mm")} h`+'</td>'+
-      '<td class="actions-buttons">'+
-      '<button show-id="'+show.id_show+'" type="button" class="btn btn-primary btn-lg update-show"><i class="mdi mdi-pencil mdi-24px"></i></button>'+
-      '<button show-id="'+show.id_show+'" type="button" class="btn btn-primary btn-lg delete-show"><i class="mdi mdi-delete mdi-24px"></i></button>'+
-     ' </td>'
-  
-      tr += '<tr>'+information+'</tr>'
-    })
-  }
-  else{
-    tr='<tr><td colspan="4" class="text-center">No hay resultados</td></tr>'
+  if (shows.length > 0) {
+    shows.forEach(show => {
+      const information =
+        "<td>" +
+        show.artist +
+        "</td>" +
+        "<td>" +
+        moment(show.date).format("DD/MMMM/YYYY") +
+        "</td>" +
+        "<td>" +
+        `${moment(show.time).format("HH:mm")} h` +
+        "</td>" +
+        '<td class="actions-buttons">' +
+        '<button show-id="' +
+        show.id_show +
+        '" type="button" class="btn btn-primary btn-lg update-show"><i class="mdi mdi-pencil mdi-24px"></i></button>' +
+        '<button show-id="' +
+        show.id_show +
+        '" type="button" class="btn btn-primary btn-lg delete-show"><i class="mdi mdi-delete mdi-24px"></i></button>' +
+        " </td>";
+
+      tr += "<tr>" + information + "</tr>";
+    });
+  } else {
+    tr = '<tr><td colspan="4" class="text-center">No hay resultados</td></tr>';
   }
 
-  $("#table-shows tbody").html(tr)
+  $("#table-shows tbody").html(tr);
 }
 
 //Handle Update buttons show
 jQuery(function($) {
-  $('#table-shows tbody').on('click', 'button.update-show', function() {
-    alert($(this).attr("show-id"))
+  $("#table-shows tbody").on("click", "button.update-show", function() {
+    alert($(this).attr("show-id"));
   });
 });
 
 //Handle Delete buttons show
 jQuery(function($) {
-  $('#table-shows tbody').on('click', 'button.delete-show', function() {
-    alert($(this).attr("show-id"))
+  $("#table-shows tbody").on("click", "button.delete-show", function() {
+    alert($(this).attr("show-id"));
   });
 });
 
-
-//Handle create new show
+/*Handle create new show
+  Gets all the values from the form
+*/
 jQuery(function($) {
+
   $("#save-new-show").click(function() {
-    $("#add-newShow").hide();
-    $("#list-show").show();
+    if (validateRequiredFileds(".form-add-newshow")) {
+      let genres = [];
+      $("#multiple-checkboxes option:selected").each(function() {
+        genres.push($(this).val());
+      });
+      if (
+        validateArray(
+          genres,
+          ".multiselect-native-select",
+          "Selecciona al menos un género"
+        ) &&
+        validateArray(dateTimes, "#dateShow", "Asigna al menos una fecha")
+      ) {
+        const showData = {
+          artist: $("#nameShow").val(),
+          amount:$("#money").val(),
+          genres: genres,
+          datesTime: dateTimes,
+          imgMobile: $('#img-mobile')[0].files[0].name,
+          imgDesktop: $("#img-desktop")[0].files[0].name,
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "controller/controller-create-shows.php",
+          data: JSON.stringify(showData),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(data) {
+            console.log(data)
+            sendImages()
+          },
+          error: function(errMsg) {
+            console.error(errMsg.responseJSON.error);
+          }
+        });
+
+      }
+    }
   });
 });
+
+function sendImages(){
+  const form_data = new FormData();                  
+  form_data.append('img-desktop', $("#img-desktop").prop('files')[0]);
+  form_data.append('img-mobile', $("#img-mobile").prop('files')[0]);
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-create-shows-images.php",
+    data: form_data,
+    cache: false,
+    contentType: false,
+    processData: false,
+
+    success: function(data) {
+      console.log(data)
+      /*$("#add-newShow").hide();
+      $("#list-show").show();*/
+    },
+    error: function(errMsg) {
+      console.error(errMsg.responseJSON.error);
+    }
+  });
+}

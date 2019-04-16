@@ -145,28 +145,35 @@
             <div class="row">
               <div class="col-12">
                 <p class="title">Crear nuevo espectáculo</p>
-                <form action="" class="form-add-newshow">
+                <form action="" class="form-add-newshow" enctype="multipart/form-data">
                   <div class="form-row justify-content-center">
                     <fieldset class="col-12 col-md-6 col-xl-3 mr-sm-3">
                       <div class="form-group">
                         <label for="nameShow" class="label">Nombre espectáculo</label>
-                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="100" required/>
+                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="50" required/>
+                        <p class="error"></p>
                       </div>
                       <div class="form-group">
-                        <label for="money" class="label">Costo</label>
-                        <input id="money" type="text" class="form-control input-text" placeholder="$150.00" maxlength="100" />
+                        <label for="img-mobile" class="label">Imagen Móvil</label>
+                        <input id="img-mobile" type="file" class="form-control input-text" accept=".png,.jpg"  required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="img-desktop" class="label">Imagen Desktop</label>
+                        <input id="img-desktop" type="file" class="form-control input-text" accept=".png,.jpg" required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="money" class="label">Costo <span class="small-info">($0.00 = No cover)</span></label>
+                        <input id="money" type="text" class="form-control input-text" value="$0.00" maxlength="100" />
                       </div>
 
                       <div class="form-group">
                         <label for="nameShow" class="label">Género(s) del espectáculo</label>
+                        
                         <select id="multiple-checkboxes" multiple="multiple">
-                          <option value="php">PHP</option>
-                          <option value="javascript">JavaScript</option>
-                          <option value="java">Java</option>
-                          <option value="sql">SQL</option>
-                          <option value="jquery">Jquery</option>
-                          <option value=".net">.Net</option>
                         </select>
+                        <p class="error"></p>
                       </div>
                     </fieldset>
 
@@ -180,6 +187,7 @@
                             </div>
 
                             <div id="dateShow"></div>
+                            <p class="error"></p>
                             <div class="col-12">
                               <div class="row row--margin-top-bottom justify-content-end">
                                 <button type="button" id="addDateTime" class="btn btn--margin-top btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>

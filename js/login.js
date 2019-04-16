@@ -1,6 +1,7 @@
 jQuery(function($) {
   $("#admin").show();
   $("#login").hide();
+  //$("#admin").hide();
 
   $("#login-form").keydown(function(e) {
     if (e.keyCode == 13) {
@@ -22,7 +23,7 @@ function login() {
       $("#email").removeClass("input-text--error");
       const email = $("#email").val();
       const password = $("#password").val();
-      let loginData = {
+      const loginData = {
         email: email,
         password: password
       };

@@ -271,4 +271,11 @@ header .welcome-text {
   color: #c14d14;
 }
 
+/* line 99, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.small-info {
+  font-size: .875rem;
+  font-weight: 400;
+  color: #5a5a5a;
+}
+
 /*# sourceMappingURL=admin-main.css.map */
