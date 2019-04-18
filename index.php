@@ -50,7 +50,7 @@ include 'header.php';
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="">
+            <form id="reserveForm" action="">
                 <div class="form-row justify-content-center">
                     <fieldset class="col-12 col-md-6 col-xl-5">
                         <div class="form-group">
@@ -70,11 +70,7 @@ include 'header.php';
                         <div class="form-group">
                             <label for="show">Espectáculo</label>
                             <select id="show" class="form-control" required>
-                                <option value="" disabled selected>Selecciona</option>
-                                <option value="volvo">Ted Crosby</option>
-                                <option value="saab">Homenaje a Amy Winehouse por Xiomara Méndez</option>
-                                <option value="mercedes">Afrobeat</option>
-                                <option value="audi">Nite Jewel</option>
+
                             </select>
                         </div>
                         <div class="form-group">

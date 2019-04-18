@@ -36,12 +36,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <script src="js/slider.js"></script>
-  <!-- Carousel -->
-  <script type="text/javascript">
-      $(document).ready(function() {
-          
-      });
-  </script>
+ 
   <!-- End Carousel -->
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>

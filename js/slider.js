@@ -30,6 +30,7 @@ jQuery(function($) {
               }
           }
       });
+      fillCombobox(shows)
     }
   });
 });
@@ -72,7 +73,7 @@ function fillSlider(shows){
                           '</div>'+
                           '<div class="col-6 align-self-center">'+
                             '<div class="row justify-content-center">'+
-                              '<button type="button" class="btn btn-primary btn-lg">'+
+                              '<button show-id='+show.id_show+' type="button" class="btn btn-primary btn-lg reserve">'+
                                 'Reserva'+
                               '</button>'+
                             '</div>'+
@@ -84,4 +85,55 @@ function fillSlider(shows){
             '</div>';
     });
   $(".main-slider").html(items);
+}
+
+function fillCombobox(shows){
+  let options ='<option value="" disabled selected>Selecciona</option>'
+    shows.forEach(show => {
+      options+='<option value="'+show.id_show+'">'+show.artist+'</option>'
+    });
+    $("#show").html(options);
+}
+
+//Handle the show selected and sets the value on the form
+jQuery(function($) {
+  $(".main-slider ").on('click','button.reserve',function() {
+    const id_show = $(this).attr("show-id")
+    $("#show").val(id_show);
+    getsSchedules(id_show)
+    $('html,body').animate({
+      scrollTop: $("#reserveForm").offset().top},
+      'slow'); 
+  });
+});
+
+//Handle Date and time by show
+jQuery(function($) {
+  $('#show').change(function(){
+    getsSchedules($('#show').val())
+  });
+});
+
+function getsSchedules(id_show){
+  const showData = {
+    id_show:id_show,
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-getschedule-show.php",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify(showData),
+    dataType: "json",
+    success: function(schedules) {
+      fillSchedules(schedules)
+    }
+  });
+}
+
+function fillSchedules(schedules){
+  let options ='<option value="" disabled selected>Selecciona</option>'
+  schedules.forEach(schedule => {
+      options+='<option value="'+schedule.id_date_hr+'">'+`${moment(schedule.date).format("DD MMM")} / ${moment(schedule.time).format("HH:mm")}`+'</option>'
+    });
+    $("#date-time").html(options);
 }

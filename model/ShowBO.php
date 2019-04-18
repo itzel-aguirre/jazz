@@ -114,4 +114,26 @@ class ShowBO
 
     return $shows;
   }
+
+  public function ListShedules($id_show){
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+    $schedules = array();
+    $query = "SELECT ID_FECHA_HR ,FECHA, HORA FROM `fecha_hr_espectaculo` 
+    WHERE ID_ESPECTACULO = ".$id_show." ORDER BY FECHA ASC";
+    
+    $scheduleInfo = $databaseConected->consulta($query);
+     if ( $scheduleInfo->num_rows > 0) {
+      while ($row =  $scheduleInfo->fetch_assoc()) {
+        $show = new Show();
+        $show->date = $row['FECHA'];
+        $show->time = $row['HORA'];
+        $show->id_date_hr = $row['ID_FECHA_HR'];
+        $schedules[] = $show;
+      }
+    }
+    $databaseConected->desconectar();
+
+    return $schedules;
+  }
 }
