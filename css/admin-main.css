@@ -157,6 +157,12 @@ select:required:invalid option:hover {
   width: 1px;
 }
 
+/* line 38, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.multiselect-container.dropdown-menu.show {
+  width: 50rem;
+  columns: auto 4;
+}
+
 /* line 9, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .contenido-login {
   height: 100vh;
@@ -263,6 +269,34 @@ header .welcome-text {
   font-size: 2rem;
   font-weight: 700;
   color: #c14d14;
+}
+
+/* line 99, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.small-info {
+  font-size: .875rem;
+  font-weight: 400;
+  color: #5a5a5a;
+}
+
+/* line 105, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container {
+  position: relative;
+}
+
+/* line 107, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container .alert {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  top: 3.8rem;
+  left: 35%;
+  width: 500px;
+  left: calc(50% - 250px);
+}
+
+/* line 115, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container .alert .information {
+  margin: 0;
 }
 
 /*# sourceMappingURL=admin-main.css.map */

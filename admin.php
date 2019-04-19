@@ -104,6 +104,11 @@
     </div>
 
     <div class="admin-container">
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p class="information"><strong>¡Éxito!</strong>  </p>
+      </div>
+
       <ul class="nav nav-tabs" id="adminTabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="show-tab" data-toggle="tab" href="#show" role="tab" aria-controls="show" aria-selected="true">Espectáculos</a>
@@ -127,7 +132,7 @@
             </div>
             <div class="row">
               <div class="table-responsive">
-                <table class="table table--with-70 table-hover">
+                <table id="table-shows" class="table table--with-70 table-hover">
                   <thead>
                     <th>Artista</th>
                     <th>Fecha</th>
@@ -135,15 +140,7 @@
                     <th></th>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Abel Mirales Cuarteto</td>
-                      <td>26 mar</td>
-                      <td>22:30 h</td>
-                      <td class="actions-buttons">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
-                      </td>
-                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -153,28 +150,35 @@
             <div class="row">
               <div class="col-12">
                 <p class="title">Crear nuevo espectáculo</p>
-                <form action="" class="form-add-newshow">
+                <form action="" class="form-add-newshow" enctype="multipart/form-data">
                   <div class="form-row justify-content-center">
                     <fieldset class="col-12 col-md-6 col-xl-3 mr-sm-3">
                       <div class="form-group">
                         <label for="nameShow" class="label">Nombre espectáculo</label>
-                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="100" />
+                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="50" required/>
+                        <p class="error"></p>
                       </div>
                       <div class="form-group">
-                        <label for="money" class="label">Costo</label>
-                        <input id="money" type="text" class="form-control input-text" placeholder="$150.00" maxlength="100" />
+                        <label for="img-mobile" class="label">Imagen Móvil</label>
+                        <input id="img-mobile" type="file" class="form-control input-text" accept=".png,.jpg"  required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="img-desktop" class="label">Imagen Desktop</label>
+                        <input id="img-desktop" type="file" class="form-control input-text" accept=".png,.jpg" required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="money" class="label">Costo <span class="small-info">($0.00 = No cover)</span></label>
+                        <input id="money" type="text" class="form-control input-text" value="$0.00" maxlength="100" />
                       </div>
 
                       <div class="form-group">
                         <label for="nameShow" class="label">Género(s) del espectáculo</label>
+                        
                         <select id="multiple-checkboxes" multiple="multiple">
-                          <option value="php">PHP</option>
-                          <option value="javascript">JavaScript</option>
-                          <option value="java">Java</option>
-                          <option value="sql">SQL</option>
-                          <option value="jquery">Jquery</option>
-                          <option value=".net">.Net</option>
                         </select>
+                        <p class="error"></p>
                       </div>
                     </fieldset>
 
@@ -188,6 +192,7 @@
                             </div>
 
                             <div id="dateShow"></div>
+                            <p class="error"></p>
                             <div class="col-12">
                               <div class="row row--margin-top-bottom justify-content-end">
                                 <button type="button" id="addDateTime" class="btn btn--margin-top btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>
@@ -240,154 +245,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
   <!--Checkboxes script-->
-  <script>
-    $(document).ready(function() {
-      $('#multiple-checkboxes').multiselect({
-        includeSelectAllOption: true,
-      });
-
-      $('#dateShow').datetimepicker({
-        inline: true,
-        sideBySide: true,
-        icons: {
-          time: "mdi mdi-clock-outline",
-          date: "mdi mdi-calendar-range",
-          up: "mdi mdi-chevron-up mdi-24px",
-          down: "mdi mdi-chevron-down mdi-24px"
-        },
-        locale: 'es'
-      });
-
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      //$("#admin").hide();
-      $("#admin").show();
-      $("#login").hide();
-
-      let dateTimes = [];
-      let id = 0;
-
-      $('#login-form').keydown(function(e) {
-        if (e.keyCode == 13) {
-          login();
-        }
-      })
-      $("#btnEnviar").click(function() {
-        login();
-      });
-      $("#logout").click(function() {
-        $("#admin").hide();
-        $("#login").show();
-      });
-
-      /**
-      Date time functions
-       */
-
-      $("#addDateTime").click(function() {
-        const dateTimeInfo = $('#dateShow').datetimepicker('date')
-        $("#date-timeShowList").append("<li id='" + id + "'>" + dateTimeInfo.format('LLL') + "<i class='mdi mdi-delete mdi-18px'></li>");
-        dateTimes.push({
-          'id': id++,
-          'date': dateTimeInfo.format('YYYY-MM-DD'),
-          'time': dateTimeInfo.format('HH:mm')
-        })
-      });
-      $('#date-timeShowList').on('click', 'li', function(events) {
-        $(this).remove();
-        dateTimes.splice(dateTimes.findIndex(source => source.id == $(this).attr('id')), 1)
-      });
-
-      /*Mask money*/
-      const formatter = new Intl.NumberFormat('es-MX', {
-        style: 'currency',
-        currency: 'MXN',
-        minimumFractionDigits: 2
-      })
-      $('#money').change(function() {
-        var num = $(this).val().match(/(?=.)^\$?(([1-9][0-9]{0,2}(,[0-9]{3})*)|0)?(\.[0-9]{1,2})?$/) && $(this).val();
-        $(this).val(formatter.format(num));
-      });
-
-    });
-
-    function login() {
-      if (validateRequiredFileds("#login-form")) {
-        if (validateEmail($("#email").val())) {
-          $("#email").removeClass("input-text--error")
-          const email = $("#email").val();
-          const password = $("#password").val();
-          let loginData = {
-            "email": email,
-            "password": password
-          }
-          $.ajax({
-            type: "POST",
-            url: "controller/controller-login.php",
-            data: JSON.stringify(loginData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data) {
-              $(".welcome-text").text("Bienvenido " + data.name)
-              $("#admin").show();
-              $("#login").hide();
-            },
-            error: function(errMsg) {
-              console.error(errMsg.responseJSON.error);
-              $("#login-form").siblings(".error").text(errMsg.responseJSON.error)
-            }
-          });
-        } else {
-          $("#email").siblings(".error").show()
-          $("#email").siblings(".error").text("Ingresa un correo electrónico válido")
-          $("#email").addClass("input-text--error")
-        }
-      }
-    }
-
-    function validateEmail(email) {
-      const emailRegex = /(.+.*@.+.*\..+.*)/;
-      if (email.match(emailRegex))
-        return true;
-      return false;
-    }
-
-    function validateRequiredFileds(form) {
-      let isValid = false
-      $(form).find('input').each(function() {
-        if ($(this).prop('required') && $(this).val().length === 0) {
-          $(this).siblings(".error").text("Campo requerido");
-          $(this).siblings(".error").show()
-          $(this).addClass("input-text--error")
-          isValid = false
-        } else {
-          $(this).siblings(".error").hide()
-          isValid = true
-          $(this).removeClass("input-text--error")
-        }
-      });
-      return isValid;
-    }
-  </script>
-  <script>
-    $(document).ready(function() {
-      $("#add-newShow").hide();
-      $("#add-show").click(function() {
-        $("#add-newShow").show();
-        $("#list-show").hide();
-      });
-      $("#cancel-new-show").click(function() {
-        $("#add-newShow").hide();
-        $("#list-show").show();
-      });
-      $("#save-new-show").click(function() {
-        $("#add-newShow").hide();
-        $("#list-show").show();
-      });
-    });
-  </script>
+  <script src="js/utils.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/shows.js"></script>
+  <script src="js/genre.js"></script>
 </body>
 
 </html>

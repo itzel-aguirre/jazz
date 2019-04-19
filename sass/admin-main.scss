@@ -95,3 +95,25 @@ header{
   font-weight: $font-bold;
   color:$pl-orange;
 }
+
+.small-info{
+  font-size: .875rem;
+  font-weight: $font-normal;
+  color:$pl-grey;
+}
+
+.admin-container{
+  position: relative;
+  .alert{
+    display: none;
+    z-index: 10;
+    position: absolute;
+    top: 3.8rem;
+    left: 35%;
+    width: 500px;
+    left: calc(50% - 250px);
+    .information{
+      margin: 0;
+    }
+  }
+}

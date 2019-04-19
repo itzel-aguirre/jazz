@@ -264,6 +264,12 @@ select:required:invalid option:hover {
   width: 1px;
 }
 
+/* line 38, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.multiselect-container.dropdown-menu.show {
+  width: 50rem;
+  columns: auto 4;
+}
+
 /*
  *  Global settings
  */
