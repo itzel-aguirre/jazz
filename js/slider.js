@@ -38,6 +38,7 @@ jQuery(function($) {
 function fillSlider(shows){
   let items =''
     shows.forEach(show => {
+      const amount = show.amount==='$0.00'?'No cover':show.amount
       items +='<div class="item">'+
                 '<div class="card">'+
                   '<picture>'+
@@ -68,7 +69,7 @@ function fillSlider(shows){
                             '</p>'+
                             '<p class="cover">'+
                               '<i class="mdi mdi-cash icon--margin-right"></i>'+
-                                show.amount+
+                                amount+
                               '</p>'+
                           '</div>'+
                           '<div class="col-6 align-self-center">'+

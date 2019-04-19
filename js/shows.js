@@ -83,8 +83,10 @@ jQuery(function($) {
 /*
 Gets shows list to display
 */
-
 jQuery(function($) {
+  getShowList()
+});
+function getShowList(){
   $.ajax({
     type: "GET",
     url: "controller/controller-list-shows.php",
@@ -94,7 +96,8 @@ jQuery(function($) {
       fillTableShows(shows);
     }
   });
-});
+}
+
 //Builds the table body
 function fillTableShows(shows) {
   let tr = "";
@@ -178,7 +181,6 @@ jQuery(function($) {
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data) {
-            console.log(data)
             sendImages()
           },
           error: function(errMsg) {
@@ -202,14 +204,21 @@ function sendImages(){
     cache: false,
     contentType: false,
     processData: false,
-
-    success: function(data) {
-      console.log(data)
-      /*$("#add-newShow").hide();
-      $("#list-show").show();*/
+    success: function() {
+      notifications ("Espectáculo creado.", 'success')
+      $("#add-newShow").hide();
+      getShowList()
+      $("#list-show").show();
     },
     error: function(errMsg) {
       console.error(errMsg.responseJSON.error);
     }
   });
+}
+
+function resetForm(){
+  $('.form-add-newshow').trigger("reset");
+  dateTimes = [];
+  $("#date-timeShowList").empty();
+  $('#multiple-checkboxes').multiselect('updateButtonText');
 }

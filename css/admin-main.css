@@ -278,4 +278,25 @@ header .welcome-text {
   color: #5a5a5a;
 }
 
+/* line 105, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container {
+  position: relative;
+}
+
+/* line 107, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container .alert {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  top: 3.8rem;
+  left: 35%;
+  width: 500px;
+  left: calc(50% - 250px);
+}
+
+/* line 115, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+.admin-container .alert .information {
+  margin: 0;
+}
+
 /*# sourceMappingURL=admin-main.css.map */

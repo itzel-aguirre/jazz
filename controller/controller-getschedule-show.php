@@ -12,5 +12,3 @@ $schedules = $showLogic->ListShedules($id_show);
 
 header('Content-Type: application/json');
 print json_encode($schedules);
-
-?>

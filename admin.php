@@ -104,6 +104,11 @@
     </div>
 
     <div class="admin-container">
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p class="information"><strong>¡Éxito!</strong>  </p>
+      </div>
+
       <ul class="nav nav-tabs" id="adminTabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="show-tab" data-toggle="tab" href="#show" role="tab" aria-controls="show" aria-selected="true">Espectáculos</a>

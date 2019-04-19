@@ -1,9 +1,9 @@
-<?php 
+<?php
 include 'header.php';
 /**
-* 	@author Amilkhael Chávez Delgado;
-*	Documento: Index del la landing
-*/
+ * 	@author Amilkhael Chávez Delgado;
+ *	Documento: Index del la landing
+ */
 ?>
 
 <!--Carousel Wrapper-->
@@ -20,7 +20,7 @@ include 'header.php';
     </div>
     <div class="row">
         <div class="main-slider owl-carousel">
-            
+
         </div>
     </div>
     <div class="row row--background-red">
@@ -32,14 +32,14 @@ include 'header.php';
     </div>
     <div class="row">
         <div class="col-6 col-xl-6 mh-100 p-0">
-          <div class="background-image background-image__button background-image__button--drink">
-              <a href="downloads/bebidas.pdf" target="_blank">Coctelería</a>
-          </div>
+            <div class="background-image background-image__button background-image__button--drink">
+                <a href="downloads/bebidas.pdf" target="_blank">Coctelería</a>
+            </div>
         </div>
         <div class="col-6 col-xl-6 mh-100 p-0">
-          <div class="background-image background-image__button background-image__button--food">
-            <a href="downloads/comida.pdf" target="_blank">Gastronomía</a>
-          </div>
+            <div class="background-image background-image__button background-image__button--food">
+                <a href="downloads/comida.pdf" target="_blank">Gastronomía</a>
+            </div>
 
         </div>
     </div>
@@ -115,4 +115,4 @@ include 'header.php';
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d517.8516407387972!2d-99.15644784371455!3d19.43061077713533!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x232dad92e8d474db!2sParker+%26+Lenox!5e0!3m2!1sen!2smx!4v1553575383953" class="map d-block d-sm-none" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 </div>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>

@@ -9,6 +9,14 @@ $json_obj = json_decode($json_str);
 
 $showLogic = new ShowBO();
 $showData = Show::constructShowJson($json_obj);
-$showLogic->CreateShow($showData);
-print $json_str;
+try{
+  $showLogic->CreateShow($showData);
+  print true;
+}
+catch(Exception $e){
+  header('HTTP/1.1 420 Method Failure');
+  header('Content-Type: application/json; charset=UTF-8');
+  die(json_encode (array('error'=>'Error al crear un nuevo show')));
+}
+
 ?>

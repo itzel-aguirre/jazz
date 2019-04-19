@@ -16,32 +16,37 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
+ 
     $query = "INSERT INTO `ESPECTACULOS` (`ID_ESPECTACULO`,  `ARTISTA`, `COVER`, `IMAGEN_MOVIL`, `IMAGEN_LAP`) VALUES (NULL, '" . $showData->artist . "', '" . $showData->amount . "', '" . $showData->url_img_desktop . "', '" . $showData->url_img_mobile . "');";
-    $databaseConected->consulta($query);
-    $idShow = $databaseConected->getMYSQLI()->insert_id;
-
-    for ($i = 0; $i < sizeof($showData->genres); $i++) {
-      $query = "INSERT INTO `espectaculo-genero` (`id_espectaculo`, `id_genero`) VALUES (".$idShow.", ".$showData->genres[$i].");";
-      $databaseConected->consulta($query);
+    $is_success = $databaseConected->consulta($query);
+    
+    if($is_success){
+      $idShow = $databaseConected->getMYSQLI()->insert_id;
+      for ($i = 0; $i < sizeof($showData->genres); $i++) {
+          $query = "INSERT INTO `espectaculo-genero` (`id_espectaculo`, `id_genero`) VALUES (".$idShow.", ".$showData->genres[$i].");";
+          $databaseConected->consulta($query);
+      }
+    
+      foreach ($showData->datesTime as $dateTime) {
+          $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`) VALUES (NULL, ".$idShow.", '".$dateTime->date."', '".date("Y-m-d H:i:s", strtotime($dateTime->time))."');";
+          $databaseConected->consulta($query);
+      }
+        $databaseConected->desconectar();
     }
-
-    foreach ($showData->datesTime as $dateTime) {
-      $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`) VALUES (NULL, ".$idShow.", '".$dateTime->date."', '".date("Y-m-d H:i:s", strtotime($dateTime->time))."');";
-      $databaseConected->consulta($query);
-    }
-
-    $databaseConected->desconectar();
   }
   public function saveImages($files){
+    $is_success = false;
     $imagesDir =  '../images/slider/';
     $name= $files['img-desktop']['name'];
     $tmp_name = $files['img-desktop']['tmp_name'];
-    move_uploaded_file($tmp_name, $imagesDir.$name);
+    $is_success = move_uploaded_file($tmp_name, $imagesDir.$name);
 
     $imagesDir =  '../images/slider/mobile/';
     $name= $files['img-mobile']['name'];
     $tmp_name = $files['img-mobile']['tmp_name'];
-    move_uploaded_file($tmp_name, $imagesDir.$name);
+    $is_success = move_uploaded_file($tmp_name, $imagesDir.$name);
+
+    return $is_success;
   }
   public function DeleteShow($idShow)
   { }
