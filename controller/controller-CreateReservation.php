@@ -13,7 +13,6 @@ $ResponseDataReservation = $reservationLogic->CreateReservation($json_obj);
 
 if($ResponseDataReservation){
   header('Content-Type: application/json');
-  //$arrayReponse = array('name'=>$usrResponse);
   print json_encode($ResponseDataReservation);
 
 }
@@ -23,37 +22,4 @@ else{
   die(json_encode (array('error'=>'Incorrecto')));
 } 
 
-
-/* 
-$genreLogic = new GenreBO();
-$genres = $genreLogic->ListGenres();
-
-header('Content-Type: application/json');
-print json_encode($genres); */
-
-/* 
-include_once '../model/Show_GenreBO.php';
-
-$ShowGenreDat = new Show_GenreBO();
-$ShowGenreList = $ShowGenreDat->ShowGenre();
-//$ShowGenreList = $ShowGenreDat->CreateShowGenre(1,15);
-//$ShowGenreList = $ShowGenreDat->UpdateShowGenre(1,7);
-//$ShowGenreList=$ShowGenreDat->DeleteShowGenre(1, 15);
-header('Content-Type: application/json');
-$arrayReponse = array('id_espectaculo'=>$ShowGenreList->id_show,'ID_GENERO'=>$ShowGenreList->id_genre, 'GENERO'=>$ShowGenreList->genre);
-print json_encode($ShowGenreList); */
-
-
-
-/* include_once '../model/GenerousBO.php';
-
-$ShowGenreDat = new GenreBO();
-//$ShowGenreList = $ShowGenreDat->Generous();
-//$ShowGenreList = $ShowGenreDat->DeleteGenerous(13);
-$prueba = new GenreBO();
-$prueba->id_genre = 17; // $dataGenreInfo->id_genre;
-$prueba->genre = 'Swing'; // $dataGenreInfo->genre;
-$ShowGenreList = $ShowGenreDat->Generous();
-header('Content-Type: application/json');
-print json_encode($ShowGenreList); */
 ?>
