@@ -24,7 +24,7 @@
               </a>
           </div>
           <div class="col-6 col-md-4">
-              <a href="#">
+              <a href="privacidad.php">
                   <p class="text-center link">Política de Privacidad</p>
               </a>
           </div>
@@ -36,7 +36,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <script src="js/slider.js"></script>
- 
+
   <!-- End Carousel -->
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -63,4 +63,4 @@
   </div>
   </body>
 
-  </html> 
+  </html>

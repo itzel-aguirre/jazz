@@ -22,7 +22,6 @@ body {
 header {
   background: $pl-black;
   padding: 0.75rem 0;
-  border-bottom: 2px solid $pl-white;
 }
 
 .footer {
@@ -91,6 +90,9 @@ header {
     color: $pl-gold;
     font-weight: $font-bold;
   }
+  a:hover{
+    text-decoration: none;
+  }
 }
 
 .icon {
@@ -148,11 +150,11 @@ header {
         font-size: 3rem;
       }
       @media (min-width: 1440px) {
-        font-size: 6rem;
+        font-size: 3rem;
       }
     }
     &--food {
-      background-image: url("../images/content/menu/food.jpg");
+      background-image:  url("../images/content/menu/food.jpg");
     }
     &--drink {
       background-image: url("../images/content/menu/drinks.jpg");
@@ -171,12 +173,12 @@ header {
     padding: 6rem 4rem;
   }
   @media (min-width: 1200px) {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     padding: 4rem 24rem;
   }
   @media (min-width: 1440px) {
-    font-size: 2.5rem;
-    padding: 4rem 30rem;
+    font-size: 2.3rem;
+    padding: 4rem 40rem;
   }
 }
 
@@ -285,19 +287,31 @@ select:-webkit-autofill:focus {
   width: 100%;
   height: 40vh;
   @media (min-width: 1200px) {
-    height: 55vh;
+    height: 70vh;
   }
 }
 
 .title {
   font-size: 2rem;
-  background: $pl-red;
   color: $pl-white;
-  margin-top: 1rem;
+  margin: 1rem 0;
   @media (min-width: 768px) {
     font-size: 3rem;
   }
   @media (min-width: 1200px) {
-    margin-left: 5rem;
+    margin-left: 3.5rem;
+    &--marginleft-less{
+      margin-left:0; 
+    }
+  }
+}
+
+.paragraph-privacy{
+  margin: 2.4rem 0;
+  font-size: 1.2rem;
+  @media (min-width: 1200px) {
+    margin: 2.4rem 0;
+    padding: 0 6rem;
+    text-align: justify;
   }
 }

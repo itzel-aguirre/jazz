@@ -50,11 +50,10 @@
         }
       }
       .event-info {
-        border-top-left-radius: 25px;
         background: $pl-white;
         padding: 0.5rem 1.75rem;
         color: $pl-grey;
-        box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.75);
         .date,
         .time,
         .cover {

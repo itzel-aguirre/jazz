@@ -7,10 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  &.btn-primary, &.btn-default {
+  border-radius: 0;
+  line-height: 18px;
+  &.btn-primary,
+  &.btn-default {
     background-color: $pl-red;
     border: none;
-    border-bottom: 4px solid rgba($pl-black, 0.6);
+
     color: $pl-white;
     &:not(:disabled):not(.disabled) {
       &:focus,
@@ -18,7 +21,7 @@
       &:active {
         background-color: $pl-red;
         border: none;
-        border-bottom: 4px solid rgba($pl-black, 0.6);
+
         outline: none;
         box-shadow: none;
       }
@@ -27,7 +30,6 @@
   &.btn-secundary {
     background-color: $pl-grey;
     border: none;
-    border-bottom: 4px solid rgba($pl-black, 0.6);
     color: $pl-white;
     &:not(:disabled):not(.disabled) {
       &:focus,
@@ -35,16 +37,15 @@
       &:active {
         background-color: $pl-grey;
         border: none;
-        border-bottom: 4px solid rgba($pl-black, 0.6);
         outline: none;
         box-shadow: none;
       }
     }
   }
-  &--margin-top{
+  &--margin-top {
     margin-top: 1.5rem;
   }
-  &--margin-right{
+  &--margin-right {
     margin-right: 1.5rem;
   }
 }
