@@ -99,8 +99,8 @@ include 'lib/PHPExcel/Writer/Excel2007.php'; */
                         <div class="col-12">
                             <div class="row justify-content-end">
                                 <button type="button" class="btn btn-primary btn-lg" id="btnEnviar">Enviar</button>
-                                <a href ="http://localhost/jazz/temp/Reservaciones.xlsx" descarga>  
-	                            <button type="button" class="btn btn-primary btn-lg"> Descargar </button>
+                                <!-- <a href ="http://localhost/jazz/temp/Reservaciones.xlsx" descarga>  
+	                            <button type="button" class="btn btn-primary btn-lg"> Descargar </button> -->
                                 </a>
                             </div>
                         </div>

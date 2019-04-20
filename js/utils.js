@@ -83,7 +83,7 @@ function notifications (text, type){
 }
 
 function validarReservation(){
-  if (validateRequiredFileds("#reservations-form")) {
+  if (validateRequiredFileds("#reserveForm")) {
 
       if (validateEmail($("#email").val())) {
     
@@ -119,7 +119,7 @@ function validarReservation(){
               },
               error: function(errMsg) {
                console.error(errMsg);
-              $("#login-form").siblings(".error").text(errMsg)
+              $("#reserveForm").siblings(".error").text(errMsg)
               }
           });
           }
