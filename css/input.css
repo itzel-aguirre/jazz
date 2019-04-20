@@ -9,6 +9,11 @@
 }
 
 /* line 10, ../../xampp/htdocs/jazz/sass/input.scss */
+.input-text::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+/* line 13, ../../xampp/htdocs/jazz/sass/input.scss */
 .input-text:focus {
   border: none;
   border-bottom: 2px solid #c14d14;
@@ -17,7 +22,7 @@
   font-weight: 700;
 }
 
-/* line 17, ../../xampp/htdocs/jazz/sass/input.scss */
+/* line 20, ../../xampp/htdocs/jazz/sass/input.scss */
 .input-text--error {
   border-color: #d61b36;
 }

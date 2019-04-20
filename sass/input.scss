@@ -7,6 +7,9 @@
   height: calc(3.25rem + 2px);
   color: $pl-dark-blue;
   font-weight: $font-bold;
+  &::-webkit-input-placeholder {
+    font-weight: $font-normal;
+  }
   &:focus {
     border: none;
     border-bottom: 2px solid $pl-orange;

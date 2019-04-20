@@ -7,10 +7,10 @@
 		"../sass/font.scss"
 	],
 	"sourcesContent": [
-		"@import \"colors\";\r\n@import \"font\";\r\n.input-text {\r\n  border: none;\r\n  border-bottom: 2px solid $pl-red;\r\n  border-radius: 0;\r\n  height: calc(3.25rem + 2px);\r\n  color: $pl-dark-blue;\r\n  font-weight: $font-bold;\r\n  &:focus {\r\n    border: none;\r\n    border-bottom: 2px solid $pl-orange;\r\n    box-shadow: 0 7px 20px -6px $pl-orange;\r\n    color: $pl-dark-blue;\r\n    font-weight: $font-bold;\r\n  }\r\n  &--error{\r\n    border-color: $pl-red-error;\r\n  }\r\n}\r\n",
+		"@import \"colors\";\r\n@import \"font\";\r\n.input-text {\r\n  border: none;\r\n  border-bottom: 2px solid $pl-red;\r\n  border-radius: 0;\r\n  height: calc(3.25rem + 2px);\r\n  color: $pl-dark-blue;\r\n  font-weight: $font-bold;\r\n  &::-webkit-input-placeholder {\r\n    font-weight: $font-normal;\r\n  }\r\n  &:focus {\r\n    border: none;\r\n    border-bottom: 2px solid $pl-orange;\r\n    box-shadow: 0 7px 20px -6px $pl-orange;\r\n    color: $pl-dark-blue;\r\n    font-weight: $font-bold;\r\n  }\r\n  &--error{\r\n    border-color: $pl-red-error;\r\n  }\r\n}\r\n",
 		"//Parker and Lenox Palette\r\n\r\n$pl-black: #000;\r\n$pl-gold: #bb8b41;\r\n$pl-dark-blue: #10446E;\r\n$pl-light-blue: #4185BB;\r\n$pl-brown: #6E4E1B;\r\n$pl-sand: #FFC872;\r\n$pl-white: #e8e8e8;\r\n$pl-orange: #c14d14;\r\n$pl-grey:#5a5a5a;\r\n$pl-red: #721422;\r\n$pl-red-error: #d61b36;\r\n",
 		"$font-family: \"Roboto\", sans-serif;\r\n$font-light: 300;\r\n$font-normal: 400;\r\n$font-bold: 700;"
 	],
 	"names": [],
-	"mappings": ";AAEA,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG,CAAC,KAAK,CCOjB,OAAO;EDNd,aAAa,EAAE,CAAC;EAChB,MAAM,EAAE,mBAAmB;EAC3B,KAAK,ECHQ,OAAO;EDIpB,WAAW,EELD,GAAG;CFgBd;;;AAjBD,AAOE,WAPS,AAOR,MAAM,CAAC;EACN,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG,CAAC,KAAK,CCFhB,OAAO;EDGf,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,IAAI,CAAE,IAAG,CCHnB,OAAO;EDIf,KAAK,ECTM,OAAO;EDUlB,WAAW,EEXH,GAAG;CFYZ;;;AACA,AAAD,kBAAQ,CAAA;EACN,YAAY,ECLD,OAAO;CDMnB"
+	"mappings": ";AAEA,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG,CAAC,KAAK,CCOjB,OAAO;EDNd,aAAa,EAAE,CAAC;EAChB,MAAM,EAAE,mBAAmB;EAC3B,KAAK,ECHQ,OAAO;EDIpB,WAAW,EELD,GAAG;CFmBd;;;AApBD,AAOE,WAPS,AAOR,2BAA2B,CAAC;EAC3B,WAAW,EERD,GAAG;CFSd;;;AATH,AAUE,WAVS,AAUR,MAAM,CAAC;EACN,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG,CAAC,KAAK,CCLhB,OAAO;EDMf,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,IAAI,CAAE,IAAG,CCNnB,OAAO;EDOf,KAAK,ECZM,OAAO;EDalB,WAAW,EEdH,GAAG;CFeZ;;;AACA,AAAD,kBAAQ,CAAA;EACN,YAAY,ECRD,OAAO;CDSnB"
 }

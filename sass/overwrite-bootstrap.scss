@@ -12,12 +12,32 @@
   }
 }
 
+.col{
+  &--border-red{
+    border: 2px solid $pl-red;
+    border-radius: 5px;
+  }
+}
+
 .nav-tabs{
   .nav-link{
     color: $pl-orange;
     font-size: 1.3rem;
     &.active{
       font-weight: $font-bold;
+    }
+  }
+} 
+
+.bootstrap-datetimepicker-widget table td.separator{
+  width: 1px;
+}
+
+.multiselect-container{
+  &.dropdown-menu {
+    &.show{
+      width: 50rem;
+      columns: auto 4;
     }
   }
 } 

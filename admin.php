@@ -28,9 +28,11 @@
   <title>Admin | Parker & Lenox</title>
   <!--css-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/admin-main.css">
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  <link rel="stylesheet" href="css/admin-main.css">
+
 
   <!--fonts-->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -102,6 +104,11 @@
     </div>
 
     <div class="admin-container">
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p class="information"><strong>¡Éxito!</strong>  </p>
+      </div>
+
       <ul class="nav nav-tabs" id="adminTabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="show-tab" data-toggle="tab" href="#show" role="tab" aria-controls="show" aria-selected="true">Espectáculos</a>
@@ -115,67 +122,108 @@
       </ul>
       <div class="tab-content" id="adminTabsContent">
         <div class="tab-pane fade show active" id="show" role="tabpanel" aria-labelledby="show-tab">
-          <div class="row">
-            <div class="col-12">
-              <div class="row row--margin-top-bottom justify-content-end">
-                <button class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
+          <div class="container-fluid" id="list-show">
+            <div class="row">
+              <div class="col-12">
+                <div class="row row--margin-top-bottom justify-content-end">
+                  <button type="button" id="add-show" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Espectáculo</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="table-responsive">
+                <table id="table-shows" class="table table--with-70 table-hover">
+                  <thead>
+                    <th>Artista</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="table-responsive">
-              <table class="table table--with-70 table-hover">
-                <thead>
-                  <th>Artista</th>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Abel Mirales Cuarteto</td>
-                    <td>26 mar</td>
-                    <td>22:30 h</td>
-                    <td class="actions-buttons">
-                      <button class="btn btn-primary btn-lg"><i class="mdi mdi-pencil mdi-24px"></i></button>
-                      <button class="btn btn-primary btn-lg"><i class="mdi mdi-delete mdi-24px"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <form action="">
-                <div class="form-row justify-content-center">
-                  <fieldset class="col-12 col-md-6 col-xl-12">
-                    <div class="form-group">
-                      <label for="nameShow">Nombre espectáculo</label>
-                      <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="100" />
-                    </div>
-                    <div class="form-group">
-                      <select id="multiple-checkboxes" multiple="multiple">
-                        <option value="php">PHP</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="java">Java</option>
-                        <option value="sql">SQL</option>
-                        <option value="jquery">Jquery</option>
-                        <option value=".net">.Net</option>
-                      </select>
-                    </div>
-                  </fieldset>
-                  <fieldset class="col-12 col-md-6 col-xl-12">
-                    <div class="col-12">
-                      <div class="row justify-content-end">
-                        <button class="btn btn-primary btn-lg">Enviar</button>
+          <div class="container-fluid" id="add-newShow">
+            <div class="row">
+              <div class="col-12">
+                <p class="title">Crear nuevo espectáculo</p>
+                <form action="" class="form-add-newshow" enctype="multipart/form-data">
+                  <div class="form-row justify-content-center">
+                    <fieldset class="col-12 col-md-6 col-xl-3 mr-sm-3">
+                      <div class="form-group">
+                        <label for="nameShow" class="label">Nombre espectáculo</label>
+                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="50" required/>
+                        <p class="error"></p>
                       </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
+                      <div class="form-group">
+                        <label for="img-mobile" class="label">Imagen Móvil</label>
+                        <input id="img-mobile" type="file" class="form-control input-text" accept=".png,.jpg"  required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="img-desktop" class="label">Imagen Desktop</label>
+                        <input id="img-desktop" type="file" class="form-control input-text" accept=".png,.jpg" required/>
+                        <p class="error"></p>
+                      </div>
+                      <div class="form-group">
+                        <label for="money" class="label">Costo <span class="small-info">($0.00 = No cover)</span></label>
+                        <input id="money" type="text" class="form-control input-text" value="$0.00" maxlength="100" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="nameShow" class="label">Género(s) del espectáculo</label>
+                        
+                        <select id="multiple-checkboxes" multiple="multiple">
+                        </select>
+                        <p class="error"></p>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="col-12 col-md-6 col-xl-6">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-xl-7">
+                            <div class="labels">
+                              <label for="dateShow" class="label">Fecha(s) del espectáculo</label>
+                              <label for="dateShow" class="label">Hora del espectáculo</label>
+                            </div>
+
+                            <div id="dateShow"></div>
+                            <p class="error"></p>
+                            <div class="col-12">
+                              <div class="row row--margin-top-bottom justify-content-end">
+                                <button type="button" id="addDateTime" class="btn btn--margin-top btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar fecha</button>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-xl-4 col--border-red">
+                            <label class="label">Fecha(s) capturadas</label>
+                            <ol id="date-timeShowList">
+
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <fieldset class="col-12 col-md-6 col-xl-8">
+                      <div class="col-12">
+                        <div class="row justify-content-end">
+                          <button type="button" id="cancel-new-show" class="btn btn--margin-right btn-secundary btn-lg">Cancelar</button>
+                          <button type="button" id="save-new-show" class="btn btn-primary btn-lg">Guardar</button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </form>
+              </div>
             </div>
+
           </div>
+
         </div>
         <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">...
 
@@ -193,111 +241,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
   <!--Checkboxes script-->
-  <script>
-    $(document).ready(function() {
-      $('#multiple-checkboxes').multiselect({
-        includeSelectAllOption: true,
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      $("#admin").hide();
-      $('#login-form').keydown(function(e) {
-        if (e.keyCode == 13) {
-          login();
-          prueba();
-        }
-      })
-      $("#btnEnviar").click(function() {
-        login();
-        prueba();
-      });
-      $("#logout").click(function() {
-        $("#admin").hide();
-        $("#login").show();
-      });
-    });
-
-    function login() {
-      if (validateRequiredFileds("#login-form")) {
-        if (validateEmail($("#email").val())) {
-          $("#email").removeClass("input-text--error")
-          const email = $("#email").val();
-          const password = $("#password").val();
-          let loginData = {
-            "email": email,
-            "password": password
-          }
-          $.ajax({
-            type: "POST",
-            url: "controller/controller-login.php",
-            data: JSON.stringify(loginData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data) {
-              $(".welcome-text").text("Bienvenido " + data.name)
-              $("#admin").show();
-              $("#login").hide();
-            },
-            error: function(errMsg) {
-              console.error(errMsg.responseJSON.error);
-              $("#login-form").siblings(".error").text(errMsg.responseJSON.error)
-            }
-          });
-        } else {
-          $("#email").siblings(".error").show()
-          $("#email").siblings(".error").text("Ingresa un correo electrónico válido")
-          $("#email").addClass("input-text--error")
-        }
-      }
-    }
-
-    function validateEmail(email) {
-      const emailRegex = /(.+.*@.+.*\..+.*)/;
-      if (email.match(emailRegex))
-        return true;
-      return false;
-    }
-
-    function validateRequiredFileds(form) {
-      let isValid = false
-      $(form).find('input').each(function() {
-        if ($(this).prop('required') && $(this).val().length === 0) {
-          $(this).siblings(".error").text("Campo requerido");
-          $(this).siblings(".error").show()
-          $(this).addClass("input-text--error")
-          isValid = false
-        } else {
-          $(this).siblings(".error").hide()
-          isValid = true
-          $(this).removeClass("input-text--error")
-        }
-      });
-      return isValid;
-    }
-
-//PRUEBA 
-    function prueba() {
-          $.ajax({
-            type: "POST",
-            url: "controller/prueba.php",
-            data: JSON.stringify($showGenreDData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data) {
-            },
-            error: function(errMsg) {
-              console.error(errMsg.responseJSON.error);
-              $("#login-form").siblings(".error").text(errMsg.responseJSON.error)
-            }
-          });
-    }
-
-    // PRUEBA
-  </script>
+  <script src="js/utils.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/shows.js"></script>
+  <script src="js/genre.js"></script>
 </body>
 
 </html>
