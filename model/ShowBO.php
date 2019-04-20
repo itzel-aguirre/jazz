@@ -1,7 +1,6 @@
 <?php
 include_once 'ConectDB.php';
 include_once 'Show.php';
-
 class ShowBO
 {
   //Attributes
@@ -49,9 +48,35 @@ class ShowBO
     return $is_success;
   }
   public function DeleteShow($idShow)
-  { }
+  { 
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+    $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`=".$idShow."";
+    $ShowInfo = $databaseConected->consulta($query);
+    if ($databaseConected->query($query) == TRUE) {
+      $databaseConected->desconectar();
+      return  json_encode(TRUE); 
+    }
+    else{
+        $databaseConected->desconectar();
+        return json_encode (array('error'=>"Error: " . mysqli_error($databaseConected)));
+    }
+  }
   public function UpdateShow($showData)
-  { }
+  { 
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+    $query = "UPDATE `espectaculos` SET  `ARTISTA`='".$showData->artist."', `COVER`=".$showData->amount.", `IMAGEN_MOVIL`='".$showData->url_img_mobile."', `IMAGEN_LAP`='".$showData->url_img_desktop."' WHERE `ID_ESPECTACULO`= ".$showData->id_show."; ";
+    $ShowInfo = $databaseConected->consulta($query);
+    if ($databaseConected->query($query) === TRUE) {
+        $databaseConected->desconectar();
+        return json_encode(TRUE);  
+    }
+    else{
+        $databaseConected->desconectar();
+        return json_encode (array('error'=>"Error: " . mysqli_error($databaseConected)));
+   }
+  }
 
   public function ListOneShow()
   { }

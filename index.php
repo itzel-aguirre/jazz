@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+
 /**
  * 	@author Amilkhael Chávez Delgado;
  *	Documento: Index del la landing
@@ -55,54 +56,57 @@ include 'header.php';
                     <fieldset class="col-12 col-md-6 col-xl-5">
                         <div class="form-group">
                             <label for="name">Nombre completo</label>
-                            <input id="name" type="text" class="form-control input-text" placeholder="Nombre" />
+                            <input id="name" type="text" class="form-control input-text" placeholder="Nombre" required/>
+                            <p class="error"></p>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" class="form-control input-text" placeholder="correo@ejemplo.com" />
+                            <input type="email" id="email" class="form-control input-text" placeholder="correo@ejemplo.com" required/>
+                            <p class="error"></p>
                         </div>
                         <div class="form-group">
                             <label for="mobile">Celular</label>
-                            <input type="number" id="mobile" class="form-control input-text" placeholder="5540123487" />
+                            <input type="number" id="mobile" class="form-control input-text" placeholder="5540123487" required/>
+                            <p class="error"></p>
                         </div>
                     </fieldset>
                     <fieldset class="col-12 col-md-6 col-xl-5">
                         <div class="form-group">
                             <label for="show">Espectáculo</label>
                             <select id="show" class="form-control" required>
-
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="date-time">Fecha y hora</label>
                             <select id="date-time" class="form-control " required>
                                 <option value="" disabled selected>Selecciona</option>
-                                <option value="volvo">26 mar / 22:30</option>
                             </select>
+                            <p class="error"></p>
                         </div>
                         <div class="row ">
                             <div class="form-group col-6">
                                 <label for="clients"># Personas</label>
-                                <input type="number" id="clients" class="form-control input-text" min="1" max="30" value="1" />
+                                <input type="number" id="clients" class="form-control input-text" min="1" max="30" value="" required/>
+                                <p class="error"></p>
                             </div>
                             <div class="form-group col-6 align-self-end">
                                 <label for="table">Mesa</label>
                                 <select id="table" class="form-control" required>
                                     <option value="" disabled selected>Selecciona</option>
-                                    <option value="volvo">1</option>
-                                    <option value="volvo">50</option>
-                                    <option value="volvo">23</option>
                                 </select>
+                                <p class="error"></p>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="row justify-content-end">
-                                <button class="btn btn-primary btn-lg">Enviar</button>
+                                <button type="button" class="btn btn-primary btn-lg" id="btnEnviar">Enviar</button>
+                                </a>
                             </div>
                         </div>
                     </fieldset>
                 </div>
             </form>
+            <p class="error"></p>
         </div>
     </div>
     <div class="row">

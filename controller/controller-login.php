@@ -15,7 +15,7 @@ $usrResponse = $userLogic->Login($userData);
 if($usrResponse){
   header('Content-Type: application/json');
   $arrayReponse = array('name'=>$usrResponse->name, 'type'=>$usrResponse->type);
-  print json_encode($arrayReponse);
+  print json_encode($usrResponse);
 }
 else{
   header('HTTP/1.1 420 Method Failure');
