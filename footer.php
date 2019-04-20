@@ -35,8 +35,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="js/utils.js"></script>
   <script src="js/slider.js"></script>
-
+  <script src="js/table.js"></script>
+  <script src="js/reservation.js"></script>
   <!-- End Carousel -->
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -55,7 +57,8 @@
           js.id = id;
           js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
           fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+     }(document, 'script', 'facebook-jssdk'));
+
   </script>
 
   <!-- Your customer chat code -->

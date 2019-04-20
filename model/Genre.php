@@ -9,6 +9,14 @@ class Genre implements JsonSerializable{
   {
 
   }
+
+  public static function constructPost($dataGenreInfo){
+    $instance = new self();
+    $instance->id_genre = $dataGenreInfo->id_genre;
+    $instance->genre = $dataGenreInfo->genre;
+    return $instance;
+  }
+
   public static function constructNewGenre( $id_genre, $genre ) {
     $instance = new self();
     $instance->id_genre = $id_genre;
