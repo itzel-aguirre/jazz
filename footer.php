@@ -24,7 +24,7 @@
               </a>
           </div>
           <div class="col-6 col-md-4">
-              <a href="#">
+              <a href="privacidad.php">
                   <p class="text-center link">Política de Privacidad</p>
               </a>
           </div>
@@ -66,4 +66,4 @@
   </div>
   </body>
 
-  </html> 
+  </html>

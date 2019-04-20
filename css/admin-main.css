@@ -6,48 +6,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 0;
+  line-height: 18px;
 }
 
-/* line 10, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 12, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn.btn-primary, .btn.btn-default {
   background-color: #721422;
   border: none;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   color: #e8e8e8;
 }
 
-/* line 16, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 19, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn.btn-primary:not(:disabled):not(.disabled):focus, .btn.btn-primary:not(:disabled):not(.disabled):hover, .btn.btn-primary:not(:disabled):not(.disabled):active, .btn.btn-default:not(:disabled):not(.disabled):focus, .btn.btn-default:not(:disabled):not(.disabled):hover, .btn.btn-default:not(:disabled):not(.disabled):active {
   background-color: #721422;
   border: none;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   outline: none;
   box-shadow: none;
 }
 
-/* line 27, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 30, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn.btn-secundary {
   background-color: #5a5a5a;
   border: none;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   color: #e8e8e8;
 }
 
-/* line 33, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 35, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn.btn-secundary:not(:disabled):not(.disabled):focus, .btn.btn-secundary:not(:disabled):not(.disabled):hover, .btn.btn-secundary:not(:disabled):not(.disabled):active {
   background-color: #5a5a5a;
   border: none;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
   outline: none;
   box-shadow: none;
 }
 
-/* line 44, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 45, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn--margin-top {
   margin-top: 1.5rem;
 }
 
-/* line 47, ../../xampp/htdocs/jazz/sass/button.scss */
+/* line 48, ../../xampp/htdocs/jazz/sass/button.scss */
 .btn--margin-right {
   margin-right: 1.5rem;
 }

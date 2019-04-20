@@ -9,49 +9,56 @@ include 'header.php';
 
 <!--Carousel Wrapper-->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mh-100 p-0 d-flex align-self-end">
-            <iframe src="https://www.youtube.com/embed/O0rUauUjKVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-yt"></iframe>
-        </div>
+  <div class="row">
+    <div class="col-12 mh-100 p-0 d-flex align-self-end">
+      <iframe
+        src="https://www.youtube.com/embed/O0rUauUjKVg"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        class="video-yt"
+      ></iframe>
     </div>
-    <div class="row row--background-red">
-        <div class="col-12">
-            <p class="title">Cartelera semanal</p>
-        </div>
+  </div>
+  <div class="row row--background-red">
+    <div class="col-12">
+      <p class="title">Cartelera semanal</p>
     </div>
-    <div class="row">
-        <div class="main-slider owl-carousel">
-
-        </div>
+  </div>
+  <div class="row">
+    <div class="main-slider owl-carousel"></div>
+  </div>
+  <div class="row row--background-red">
+    <div class="col">
+      <p class="first-copy">
+        Escuchar música no es suficiente; tienes que ser capaz de verla.
+      </p>
     </div>
-    <div class="row row--background-red">
-        <div class="col">
-            <p class="first-copy">
-                Escuchar música no es suficiente; tienes que ser capaz de verla.
-            </p>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-xl-6 mh-100 p-0">
+      <div
+        class="background-image background-image__button background-image__button--drink"
+      >
+        <a href="downloads/bebidas.pdf" target="_blank">Coctelería</a>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-6 col-xl-6 mh-100 p-0">
-            <div class="background-image background-image__button background-image__button--drink">
-                <a href="downloads/bebidas.pdf" target="_blank">Coctelería</a>
-            </div>
-        </div>
-        <div class="col-6 col-xl-6 mh-100 p-0">
-            <div class="background-image background-image__button background-image__button--food">
-                <a href="downloads/comida.pdf" target="_blank">Gastronomía</a>
-            </div>
-
-        </div>
+    <div class="col-6 col-xl-6 mh-100 p-0">
+      <div
+        class="background-image background-image__button background-image__button--food"
+      >
+        <a href="downloads/comida.pdf" target="_blank">Gastronomía</a>
+      </div>
     </div>
-    <div class="row row--background-red">
-        <div class="col-12">
-            <p class="title">Reservaciones</p>
-        </div>
+  </div>
+  <div class="row row--background-red">
+    <div class="col-12">
+      <p class="title">Reservaciones</p>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <form id="reserveForm" action="">
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <form id="reserveForm" action="">
                 <div class="form-row justify-content-center">
                     <fieldset class="col-12 col-md-6 col-xl-5">
                         <div class="form-group">
@@ -106,17 +113,21 @@ include 'header.php';
                     </fieldset>
                 </div>
             </form>
-            <p class="error"></p>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-6 d-none d-md-block mh-100 p-0">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d517.8516407387972!2d-99.15644784371455!3d19.43061077713533!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x232dad92e8d474db!2sParker+%26+Lenox!5e0!3m2!1sen!2smx!4v1553575383953" class="map d-xs-none" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class="col-6 d-none d-md-block mh-100 p-0">
-            <div class="background-image background-image__third-image"></div>
-        </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d517.8516407387972!2d-99.15644784371455!3d19.43061077713533!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x232dad92e8d474db!2sParker+%26+Lenox!5e0!3m2!1sen!2smx!4v1553575383953" class="map d-block d-sm-none" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+  <div class="row">
+    <div class="col-6 d-none d-md-block mh-100 p-0">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d517.8516407387972!2d-99.15644784371455!3d19.43061077713533!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x232dad92e8d474db!2sParker+%26+Lenox!5e0!3m2!1sen!2smx!4v1553575383953"
+        class="map d-xs-none"
+        frameborder="0"
+        style="border:0"
+        allowfullscreen
+      ></iframe>
     </div>
+    <div class="col-6 d-none d-md-block mh-100 p-0">
+      <div class="background-image background-image__third-image"></div>
+    </div>
+  </div>
 </div>
 <?php include 'footer.php'; ?>
