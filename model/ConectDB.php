@@ -19,7 +19,7 @@
 			$this->host="127.0.0.1";
                         $this->username="root";
                         $this->password="";
-			$this->dbname="parkerlenox";
+			$this->dbname="parker_lenox";
 			$this->port="3306";
 		}
 		//Metodos

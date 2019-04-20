@@ -208,10 +208,12 @@
       $('#login-form').keydown(function(e) {
         if (e.keyCode == 13) {
           login();
+          prueba();
         }
       })
       $("#btnEnviar").click(function() {
         login();
+        prueba();
       });
       $("#logout").click(function() {
         $("#admin").hide();
@@ -276,6 +278,25 @@
       });
       return isValid;
     }
+
+//PRUEBA 
+    function prueba() {
+          $.ajax({
+            type: "POST",
+            url: "controller/prueba.php",
+            data: JSON.stringify($showGenreDData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+            },
+            error: function(errMsg) {
+              console.error(errMsg.responseJSON.error);
+              $("#login-form").siblings(".error").text(errMsg.responseJSON.error)
+            }
+          });
+    }
+
+    // PRUEBA
   </script>
 </body>
 

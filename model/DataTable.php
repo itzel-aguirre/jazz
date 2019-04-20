@@ -1,15 +1,21 @@
 <?php
-class GenerousBO
+class DataTable implements JsonSerializable
 {
-//Attributes
-private $id_gender;
-private $gender;
-
+ //Attributes
+ protected $id_table;
+ protected $no_table;
  //Constructor
  public function __construct()
  {
-
+     
  }
+
+ public static function constructNewTable($id_table, $no_table) {
+    $instance = new self();
+    $instance->id_table = $id_table;
+    $instance->no_table = $no_table;
+    return $instance; 
+  }
 //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
@@ -29,6 +35,15 @@ private $gender;
         return $this->$name;
       }
       return null;
+  }
+
+  public function jsonSerialize(){
+    return
+    [
+      'no_table' => $this->no_table,
+      'no_people_min' => $this->no_people_min,
+      'no_people_max' => $this->no_people_max,
+    ];
   }
 }
 ?>
