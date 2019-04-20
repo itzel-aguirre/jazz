@@ -81,19 +81,21 @@ include 'lib/PHPExcel/Writer/Excel2007.php'; */
                             <label for="date-time">Fecha y hora</label>
                             <select id="date-time" class="form-control " required>
                                 <option value="" disabled selected>Selecciona</option>
-                                <option value="1">26 mar / 22:30</option>
                             </select>
+                            <p class="error"></p>
                         </div>
                         <div class="row ">
                             <div class="form-group col-6">
                                 <label for="clients"># Personas</label>
-                                <input type="number" id="clients" class="form-control input-text" min="1" max="30" value="" />
+                                <input type="number" id="clients" class="form-control input-text" min="1" max="30" value="" required/>
+                                <p class="error"></p>
                             </div>
                             <div class="form-group col-6 align-self-end">
                                 <label for="table">Mesa</label>
                                 <select id="table" class="form-control" required>
                                     <option value="" disabled selected>Selecciona</option>
                                 </select>
+                                <p class="error"></p>
                             </div>
                         </div>
                         <div class="col-12">

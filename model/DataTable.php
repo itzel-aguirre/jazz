@@ -41,6 +41,7 @@ class DataTable implements JsonSerializable
     return
     [
       'no_table' => $this->no_table,
+      'id_table' => $this->id_table,
       'no_people_min' => $this->no_people_min,
       'no_people_max' => $this->no_people_max,
     ];

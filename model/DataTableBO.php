@@ -22,7 +22,7 @@ class DataTableBO
         $query .= " WHERE ";
         $query .= " (mesas.NO_PERSONAS_MIN>= '".$listData->no_people."' AND '".$listData->no_people."' <= mesas.NO_PERSONAS_MAX) ";
         $query .= " OR (mesas.NO_PERSONAS_MIN >= '".$listData->no_people."' OR '".$listData->no_people."' <= mesas.NO_PERSONAS_MAX) ";
-        $query .= " )  MESAS WHERE ID_MESA NOT IN (SELECT ID_MESA FROM reservaciones) ";
+        $query .= " )  MESAS WHERE ID_MESA NOT IN (SELECT ID_MESA FROM reservaciones WHERE reservaciones.ID_FECHA_HR = '".$listData->fecha_Hr."') ";
 
         $resultQuery = $databaseConected->consulta($query);
 
