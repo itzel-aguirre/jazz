@@ -146,7 +146,5 @@ class ReservationsBO
   $objWriter->save('../temp/Reservaciones.xlsx'); //Almacenar reporte en carpeta
   exit;
   }
-
-
 }
 ?>
