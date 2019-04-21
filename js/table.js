@@ -28,9 +28,10 @@ function llenarMesas(){
       dataType: "json",
       success: function(data) {
           $("#table").find('option').remove();
-          $.each(data, function(id, mesa){
+          $.each(data, function(id,mesa){
               $("#table").append('<option value="'+mesa.id_table+'">'+mesa.no_table+'</option>');
            });
+           $("#table").append('<option value="" disabled="" selected="">Selecciona</option>');
       },
       error: function(errMsg) {
           console.error(errMsg);

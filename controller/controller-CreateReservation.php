@@ -15,7 +15,6 @@ $ResponseDataReservation = $reservationLogic->CreateReservation($reservationData
 if($ResponseDataReservation){
   header('Content-Type: application/json');
   print json_encode($ResponseDataReservation);
-
 }
 else{
   header('HTTP/1.1 420 Method Failure');

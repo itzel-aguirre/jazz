@@ -33,7 +33,9 @@ function validarReservation() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data) {
-          console.log(data)
+          $('#reserveForm').trigger("reset");
+          $("#table").find('option').remove();
+          $("#table").append('<option value="" disabled="" selected="">Selecciona</option>');
         },
         error: function(errMsg) {
           console.error(errMsg);

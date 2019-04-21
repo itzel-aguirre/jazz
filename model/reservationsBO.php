@@ -197,11 +197,11 @@ class ReservationsBO
         <p>Tu experiencia Parker & Lenox comienza ahora, prepárate para disfrutar de una mágica experiencia sonora, la mejor gastronómica y una exclusiva selección de cócteles clásicos y de autor.</p>
         <p><strong>Datos de la reservación</strong></p>
         <ul>
-          <li>Reservación a nombre de: '.$reservation->full_name.'</li>
-          <li>Día y Horario:'.$reservation->date.'/'.$reservation->hour.'h</li>
-          <li>Número de mesa:'.$reservation->no_table.'</li>
-          <li>Espectáculo:'.$reservation->artist.'</li>
-          <li>Folio:'.$reservation->folio.'</li>
+          <li><strong>Reservación a nombre de: </strong>'.$reservation->full_name.'</li>
+          <li><strong>Día y Horario: </strong>'.$reservation->date.' / '.$reservation->hour.'h</li>
+          <li><strong>Número de mesa: </strong>'.$reservation->no_table.'</li>
+          <li><strong>Espectáculo: </strong>'.$reservation->artist.'</li>
+          <li><strong>Folio: </strong>'.$reservation->folio.'</li>
         </ul>
         <p>Recuerda que tu reservación tiene un tiempo máximo de 15 minutos de tolerancia, después de dicho tiempo se cancelará automáticamente y deberás pasar a la lista de espera presencial. El cover lo pagarás al acceder al evento y el pago es únicamente en efectivo. </p>
       </body>
@@ -217,7 +217,6 @@ class ReservationsBO
     $headers[] = 'From: Somefriends <contacto@somefriends.pro>';
 
     // Mail it
-    mail($to, $subject, $message, implode("\r\n", $headers));
-    echo $reservation;
+    mail($to, $subject, wordwrap($message, 80), implode("\r\n", $headers));
   }
 }
