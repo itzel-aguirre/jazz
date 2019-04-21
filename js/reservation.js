@@ -32,7 +32,9 @@ function validarReservation() {
         data: JSON.stringify(loginData),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data) {},
+        success: function(data) {
+          console.log(data)
+        },
         error: function(errMsg) {
           console.error(errMsg);
           $("#login-form")
