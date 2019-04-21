@@ -80,12 +80,13 @@ include 'header.php';
                     <fieldset class="col-12 col-md-6 col-xl-5">
                         <div class="form-group">
                             <label for="show">Espectáculo</label>
-                            <select id="show" class="form-control" required>
+                            <select id="show" class="form-control select-text" required>
                             </select>
+                            <p class="error"></p>
                         </div>
                         <div class="form-group">
                             <label for="date-time">Fecha y hora</label>
-                            <select id="date-time" class="form-control " required>
+                            <select id="date-time" class="form-control select-text" required>
                                 <option value="" disabled selected>Selecciona</option>
                             </select>
                             <p class="error"></p>
@@ -98,7 +99,7 @@ include 'header.php';
                             </div>
                             <div class="form-group col-6 align-self-end">
                                 <label for="table">Mesa</label>
-                                <select id="table" class="form-control" required>
+                                <select id="table" class="form-control select-text" required>
                                     <option value="" disabled selected>Selecciona</option>
                                 </select>
                                 <p class="error"></p>
