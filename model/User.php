@@ -1,6 +1,6 @@
 <?php
 
-class User
+class User implements JsonSerializable
 {
   //Attributes
   private $id_user;
@@ -39,5 +39,13 @@ class User
         return $this->$name;
       }
       return null;
+  }
+  public function jsonSerialize()
+  {
+      return 
+      [
+        'name' => $this->name,
+        'type' => $this->type,
+      ];
   }
 }
