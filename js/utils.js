@@ -26,6 +26,28 @@ function validateRequiredFileds(form) {
         $(this).removeClass("input-text--error");
       }
     });
+
+    $(form)
+    .find("select")
+    .each(function() {
+     
+      if ($(this).prop("required")) {
+        $(this)
+          .siblings(".error")
+          .text("Campo requerido");
+        $(this)
+          .siblings(".error")
+          .show();
+        $(this).addClass("select-text--error");
+        isValid = false;
+      } else {
+        $(this)
+          .siblings(".error")
+          .hide();
+        isValid = true;
+        $(this).removeClass("select-text--error");
+      }
+    });
   return isValid;
 }
 
@@ -130,4 +152,5 @@ function validarReservation(){
         }
   }
 }
+
 

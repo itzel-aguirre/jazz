@@ -8,7 +8,7 @@ jQuery(function($) {
 
 function validarReservation(){
     if (validateRequiredFileds("#reserveForm")) {
-        if (validateEmail($("#email").val())) {
+            if (validateEmail($("#email").val())) {
       
                 $("#email").removeClass("input-text--error")
                 $("#name").removeClass("input-text--error")
@@ -30,25 +30,25 @@ function validarReservation(){
                 "table": table
                }
                 $.ajax({
-                type: "POST",
-                url: "controller/controller-CreateReservation.php",
-                data: JSON.stringify(loginData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data) {
-                //$("#login-form").text("Reservación registrada")
-                },
-                error: function(errMsg) {
+                 type: "POST",
+                 url: "controller/controller-CreateReservation.php",
+                 data: JSON.stringify(loginData),
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function(data) {
+               
+                 },
+                 error: function(errMsg) {
                  console.error(errMsg);
-                $("#login-form").siblings(".error").text(errMsg)
-                }
-            });
+                 $("#login-form").siblings(".error").text(errMsg)
+                 }
+                });
             }
             else {
              $("#email").siblings(".error").show()
              $("#email").siblings(".error").text("Ingresa un correo electrónico válido")
              $("#email").addClass("input-text--error")
-          }
+            }
     }
 }
 

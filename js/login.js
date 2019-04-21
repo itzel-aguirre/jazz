@@ -1,7 +1,7 @@
 jQuery(function($) {
-  $("#admin").show();
-  $("#login").hide();
-  //$("#admin").hide();
+  //$("#admin").show();
+  //$("#login").hide();
+  $("#admin").hide();
 
   $("#login-form").keydown(function(e) {
     if (e.keyCode == 13) {
