@@ -98,14 +98,10 @@
   font-weight: 700;
 }
 
-/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
-.select-text--error {
-  border-color: #d61b36;
-}
-
-/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
+/* line 21, ../../xampp/htdocs/jazz/sass/select.scss */
 .select-text--error:required:invalid {
   color: #5a5a5a;
+  border-color: #d61b36;
 }
 
 /* line 24, ../../xampp/htdocs/jazz/sass/select.scss */
