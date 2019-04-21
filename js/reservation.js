@@ -5,9 +5,7 @@ jQuery(function($) {
 });
 
 function validarReservation() {
-    console.log(validateRequiredFileds("#reserveForm"))
-  
-    if (validateRequiredFileds("#reserveForm")) {
+  if (validateRequiredFileds("#reserveForm")) {
     const email = $("#email").val();
     if (validateEmail(email, "#email")) {
       $("#name").removeClass("input-text--error");

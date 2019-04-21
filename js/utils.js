@@ -25,7 +25,6 @@ function validateRequiredFileds(form) {
         if (simbling.className === "error") {
           simbling.innerText = "Campo Requerido";
         }
-
         if (
           simbling.localName !== "label" &&
           !simbling.className.includes("--error") &&

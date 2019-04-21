@@ -8,4 +8,3 @@ if($is_success == false){
   header('Content-Type: application/json; charset=UTF-8');
   die(json_encode (array('error'=>'Error al salvar las imágenes show')));
 }
-?>

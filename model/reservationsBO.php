@@ -26,7 +26,7 @@ class ReservationsBO
     $query .= " INNER JOIN `espectaculos` ON `reservaciones`.`ID_ESPECTACULO` = `espectaculos`.`ID_ESPECTACULO`";
     $query .= " INNER JOIN `fecha_hr_espectaculo` ON reservaciones.ID_FECHA_HR = fecha_hr_espectaculo.ID_FECHA_HR";
     $query .= " INNER JOIN `mesas` ON reservaciones.ID_MESA = mesas.ID_MESA";
-    //$query .= " WHERE reservaciones.ID_RESERVACION= '".$ReservationData->id_reservation."'";
+    
     $resultQuery = $databaseConected->consulta($query);
     
 
@@ -79,14 +79,21 @@ class ReservationsBO
   public function CreateReservation($ReservationData)
   {  $databaseConected = new ConectDB();
     $databaseConected->conectar();
+    $var_Folio; 
+
+    $query = "SELECT FECHA FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO = ".$ReservationData->show." AND ID_FECHA_HR = ".$ReservationData->dateTime." ";
+    $resultQueryFecha = $databaseConected->consulta($query);
+    
+    while($row = $resultQueryFecha->fetch_assoc()) {
+      $var_Folio= "PL" . str_replace("-", "", $row["FECHA"]) . $ReservationData->clients;
+    }
+
     $query ="INSERT INTO `RESERVACIONES` "; 
-    $query .="(`ID_ESPECTACULO`, `ID_MESA`, `ID_FECHA_HR`, `NOMBRE_COMPLETO`, `CORREO`, `CELULAR`, `DEPOSITO_REALIZADO`, `NO_PERSONAS`) VALUES ";
-    $query .="(".$ReservationData->show.", ".$ReservationData->table.", ".$ReservationData->dateTime.", '".$ReservationData->name."', '".$ReservationData->email."', ".$ReservationData->mobile.", '0', ".$ReservationData->clients.")";
+    $query .="(`ID_ESPECTACULO`, `ID_MESA`, `ID_FECHA_HR`, `NOMBRE_COMPLETO`, `CORREO`, `CELULAR`, `DEPOSITO_REALIZADO`, `NO_PERSONAS`, `FOLIO`) VALUES ";
+    $query .="(".$ReservationData->show.", ".$ReservationData->table.", ".$ReservationData->dateTime.", '".$ReservationData->name."', '".$ReservationData->email."', ".$ReservationData->mobile.", '0', ".$ReservationData->clients.", '".$var_Folio."')";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
-      //Obtenemos el ID del registro
-      //$IdReservation = $databaseConected->insert_id;
         return json_encode(TRUE);  
     }
     else{
@@ -147,4 +154,3 @@ class ReservationsBO
   exit;
   }
 }
-?>
