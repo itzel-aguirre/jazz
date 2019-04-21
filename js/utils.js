@@ -1,7 +1,19 @@
-function validateEmail(email) {
+function validateEmail(email,idInput) {
   const emailRegex = /(.+.*@.+.*\..+.*)/;
-  if (email.match(emailRegex)) return true;
-  return false;
+  if (email.match(emailRegex)){
+    $(idInput).removeClass("input-text--error");
+    return true;
+  } else{
+    $(idInput)
+    .siblings(".error")
+    .show();
+    $(idInput)
+    .siblings(".error")
+    .text("Ingresa un correo electrónico válido");
+    $(idInput).addClass("input-text--error");
+    return false;
+  }
+  
 }
 
 function validateRequiredFileds(form) {

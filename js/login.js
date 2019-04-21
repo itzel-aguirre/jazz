@@ -1,28 +1,44 @@
 jQuery(function($) {
-  //$("#admin").show();
-  //$("#login").hide();
-  $("#admin").hide();
 
+  $("#admin").hide();
+  if (typeof(Storage) !== "undefined") {
+    
+    if (sessionStorage.loginData) {
+      loginData = JSON.parse(sessionStorage.getItem("loginData"))
+      login(loginData.email,loginData.password)
+    } 
+  }
+  else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+  
   $("#login-form").keydown(function(e) {
-    if (e.keyCode == 13) {
-      login();
+    if(e.keyCode == 13){
+      const email = $("#email").val()
+      const password =  $("#password").val()
+      if (validateRequiredFileds("#login-form") && validateEmail(email,"#email")){ 
+        login(email,password);
+      }  
     }
   });
   $("#btnEnviar").click(function() {
-    login();
+    const email = $("#email").val()
+    const password =  $("#password").val()
+    
+    if (validateRequiredFileds("#login-form") && validateEmail(email,"#email")){ 
+      login(email,password);
+    }  
   });
   $("#logout").click(function() {
     $("#admin").hide();
     $("#login").show();
+    sessionStorage.clear();
   });
+ 
+
 });
 
-function login() {
-  if (validateRequiredFileds("#login-form")) {
-    if (validateEmail($("#email").val())) {
-      $("#email").removeClass("input-text--error");
-      const email = $("#email").val();
-      const password = $("#password").val();
+function login(email,password) {
       const loginData = {
         email: email,
         password: password
@@ -37,6 +53,12 @@ function login() {
           $(".welcome-text").text("Bienvenido " + data.name);
           $("#admin").show();
           $("#login").hide();
+          if (typeof(Storage) !== "undefined") {
+            sessionStorage.setItem("loginData", JSON.stringify(loginData));
+           
+          } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+          }
         },
         error: function(errMsg) {
           console.error(errMsg.responseJSON.error);
@@ -45,14 +67,4 @@ function login() {
             .text(errMsg.responseJSON.error);
         }
       });
-    } else {
-      $("#email")
-        .siblings(".error")
-        .show();
-      $("#email")
-        .siblings(".error")
-        .text("Ingresa un correo electrónico válido");
-      $("#email").addClass("input-text--error");
-    }
-  }
 }
