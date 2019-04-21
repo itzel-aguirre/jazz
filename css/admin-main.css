@@ -80,7 +80,7 @@
 }
 
 /* line 5, ../../xampp/htdocs/jazz/sass/select.scss */
-select.form-control {
+.select-text.form-control {
   border: none;
   border-bottom: 2px solid #721422;
   border-radius: 0;
@@ -90,7 +90,7 @@ select.form-control {
 }
 
 /* line 12, ../../xampp/htdocs/jazz/sass/select.scss */
-select.form-control:focus {
+.select-text.form-control:focus {
   border: none;
   border-bottom: 2px solid #c14d14;
   box-shadow: 0 7px 20px -6px #c14d14;
@@ -98,23 +98,24 @@ select.form-control:focus {
   font-weight: 700;
 }
 
-/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid {
+/* line 21, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid {
   color: #5a5a5a;
+  border-color: #d61b36;
 }
 
-/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option[value=""][disabled] {
+/* line 24, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option[value=""][disabled] {
   display: none;
 }
 
-/* line 25, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option {
+/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option {
   color: #000;
 }
 
-/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option:hover {
+/* line 29, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option:hover {
   background: red;
 }
 
@@ -161,12 +162,19 @@ select:required:invalid option:hover {
   columns: auto 4;
 }
 
-/* line 9, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 3, ../../xampp/htdocs/jazz/sass/common.scss */
+.error {
+  font-size: .875rem;
+  color: #d61b36;
+  font-weight: 700;
+}
+
+/* line 10, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .contenido-login {
   height: 100vh;
 }
 
-/* line 11, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 12, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .contenido-login .login-wrapper {
   border: 10px solid rgba(65, 133, 187, 0.6);
   background: #e8e8e8;
@@ -175,7 +183,7 @@ select:required:invalid option:hover {
   padding: 40px 35px;
 }
 
-/* line 20, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 21, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus textarea:-webkit-autofill,
@@ -189,7 +197,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* line 33, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 34, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 header {
   padding: 0.75rem 1rem;
   background: #000;
@@ -199,7 +207,7 @@ header {
   margin-bottom: 2rem;
 }
 
-/* line 40, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 41, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 header .welcome-text {
   margin: 0;
   color: #e8e8e8;
@@ -209,79 +217,72 @@ header .welcome-text {
 }
 
 @media (min-width: 1440px) {
-  /* line 49, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+  /* line 50, ../../xampp/htdocs/jazz/sass/admin-main.scss */
   .admin-container {
     padding: 0 4rem;
   }
 }
 
-/* line 56, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 57, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .table--with-70 {
   width: 70%;
 }
 
-/* line 59, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 60, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .table th {
   font-size: 1.2rem;
 }
 
-/* line 62, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 63, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .table td {
   vertical-align: middle;
   font-size: 1.1rem;
 }
 
-/* line 66, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 67, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .table .actions-buttons {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-/* line 73, ../../xampp/htdocs/jazz/sass/admin-main.scss */
-.error {
-  font-size: .875rem;
-  color: #d61b36;
-  font-weight: 600;
-}
-
-/* line 80, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 75, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .form-add-newshow fieldset {
   margin: 1.5rem 0;
 }
 
-/* line 83, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 78, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .form-add-newshow .label {
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-/* line 87, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 82, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .form-add-newshow .labels {
   display: flex;
   justify-content: space-around;
 }
 
-/* line 93, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 88, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .title {
   font-size: 2rem;
   font-weight: 700;
   color: #c14d14;
 }
 
-/* line 99, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 94, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .small-info {
   font-size: .875rem;
   font-weight: 400;
   color: #5a5a5a;
 }
 
-/* line 105, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 100, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .admin-container {
   position: relative;
 }
 
-/* line 107, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 102, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .admin-container .alert {
   display: none;
   z-index: 10;
@@ -292,7 +293,7 @@ header .welcome-text {
   left: calc(50% - 250px);
 }
 
-/* line 115, ../../xampp/htdocs/jazz/sass/admin-main.scss */
+/* line 110, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .admin-container .alert .information {
   margin: 0;
 }

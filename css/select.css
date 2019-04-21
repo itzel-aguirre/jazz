@@ -1,5 +1,5 @@
 /* line 5, ../../xampp/htdocs/jazz/sass/select.scss */
-select.form-control {
+.select-text.form-control {
   border: none;
   border-bottom: 2px solid #721422;
   border-radius: 0;
@@ -9,7 +9,7 @@ select.form-control {
 }
 
 /* line 12, ../../xampp/htdocs/jazz/sass/select.scss */
-select.form-control:focus {
+.select-text.form-control:focus {
   border: none;
   border-bottom: 2px solid #c14d14;
   box-shadow: 0 7px 20px -6px #c14d14;
@@ -17,23 +17,24 @@ select.form-control:focus {
   font-weight: 700;
 }
 
-/* line 20, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid {
+/* line 21, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid {
   color: #5a5a5a;
+  border-color: #d61b36;
 }
 
-/* line 22, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option[value=""][disabled] {
+/* line 24, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option[value=""][disabled] {
   display: none;
 }
 
-/* line 25, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option {
+/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option {
   color: #000;
 }
 
-/* line 27, ../../xampp/htdocs/jazz/sass/select.scss */
-select:required:invalid option:hover {
+/* line 29, ../../xampp/htdocs/jazz/sass/select.scss */
+.select-text--error:required:invalid option:hover {
   background: red;
 }
 

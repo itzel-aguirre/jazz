@@ -1,7 +1,7 @@
 @import "colors";
 @import "font";
 
-select {
+.select-text {
   &.form-control {
     border: none;
     border-bottom: 2px solid $pl-red;
@@ -17,16 +17,21 @@ select {
       font-weight: $font-bold;
     }
   }
-  &:required:invalid {
-    color: $pl-grey;
-    option[value=""][disabled] {
-      display: none;
-    }
-    option {
-      color: $pl-black;
-      &:hover {
-        background: red;
+  &--error{   
+    &:required:invalid {
+      color: $pl-grey;
+      border-color: $pl-red-error;
+      option[value=""][disabled] {
+        display: none;
+      }
+      option {
+        color: $pl-black;
+        &:hover {
+          background: red;
+        }
       }
     }
+  
+    
   }
 }

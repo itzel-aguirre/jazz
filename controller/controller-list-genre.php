@@ -1,4 +1,4 @@
-<?php
+s<?php
 include_once '../model/GenreBO.php';
 
 $genreLogic = new GenreBO();

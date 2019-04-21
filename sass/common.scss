@@ -1,0 +1,7 @@
+@import "colors";
+@import "font";
+.error{
+  font-size: .875rem;
+  color: $pl-red-error;
+  font-weight: $font-bold;
+}

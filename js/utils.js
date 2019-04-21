@@ -1,65 +1,52 @@
-function validateEmail(email,idInput) {
+function validateEmail(email, idInput) {
   const emailRegex = /(.+.*@.+.*\..+.*)/;
-  if (email.match(emailRegex)){
+  if (email.match(emailRegex)) {
     $(idInput).removeClass("input-text--error");
     return true;
-  } else{
+  } else {
     $(idInput)
-    .siblings(".error")
-    .show();
+      .siblings(".error")
+      .show();
     $(idInput)
-    .siblings(".error")
-    .text("Ingresa un correo electrónico válido");
+      .siblings(".error")
+      .text("Ingresa un correo electrónico válido");
     $(idInput).addClass("input-text--error");
     return false;
   }
-  
 }
 
 function validateRequiredFileds(form) {
-  let isValid = false;
-  $(form)
-    .find("input")
-    .each(function() {
-      if ($(this).prop("required") && $(this).val().length === 0) {
-        $(this)
-          .siblings(".error")
-          .text("Campo requerido");
-        $(this)
-          .siblings(".error")
-          .show();
-        $(this).addClass("input-text--error");
-        isValid = false;
-      } else {
-        $(this)
-          .siblings(".error")
-          .hide();
-        isValid = true;
-        $(this).removeClass("input-text--error");
-      }
-    });
-
-  $(form)
-    .find("select")
-    .each(function() {
-      if ($(this).prop("required") && !$(this).val()) {
-        $(this)
-          .siblings(".error")
-          .text("Campo requerido");
-        $(this)
-          .siblings(".error")
-          .show();
-        $(this).addClass("select-text--error");
-        isValid = false;
-      } else {
-        $(this)
-          .siblings(".error")
-          .hide();
-        isValid = true;
-        $(this).removeClass("select-text--error");
-      }
-    });
-  return isValid;
+  const requiredFields = Array.from(
+    document.querySelectorAll(`${form} *:required`)
+  ).filter(field => {
+    const simblings = Array.from(field.parentNode.children);
+    if (!field.value) {
+      simblings.find(simbling => {
+        if (simbling.className === "error") {
+          simbling.innerText = "Campo Requerido";
+        }
+        if (
+          simbling.localName !== "label" &&
+          !simbling.className.includes("--error") &&
+          simbling.localName !== "p"
+        ) {
+          const modifier = simbling.classList[1] + "--error";
+          simbling.className += ` ${modifier}`;
+        }
+      });
+    } else {
+      simblings.find(simbling => {
+        if (simbling.className === "error") simbling.innerText = "";
+        if (simbling.localName !== "label") {
+          simbling.classList = Array.from(simbling.classList)
+            .filter(classN => !classN.includes("--error"))
+            .join(" ");
+        }
+      });
+    }
+    return field.value === "";
+  });
+  return requiredFields.length > 0 ? false : true;
 }
 
 function validateArray(array, element, errorText) {
