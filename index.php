@@ -108,6 +108,7 @@ include 'header.php';
                         <div class="col-12">
                             <div class="row justify-content-end">
                                 <button type="button" class="btn btn-primary btn-lg" id="btnEnviar">Enviar</button>
+                                <button type="button" class="btn btn-primary btn-lg" id="btnEliminar">Eliminar</button>
                                 </a>
                             </div>
                         </div>

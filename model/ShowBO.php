@@ -166,4 +166,8 @@ class ShowBO
 
     return $schedules;
   }
+
+  public function deleteImage(){
+    
+  }
 }
