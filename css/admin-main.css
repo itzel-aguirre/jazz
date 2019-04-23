@@ -162,6 +162,16 @@
   columns: auto 4;
 }
 
+/* line 44, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.alert {
+  display: none;
+}
+
+/* line 46, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.alert .information {
+  margin: 0;
+}
+
 /* line 3, ../../xampp/htdocs/jazz/sass/common.scss */
 .error {
   font-size: .875rem;
@@ -284,18 +294,12 @@ header .welcome-text {
 
 /* line 102, ../../xampp/htdocs/jazz/sass/admin-main.scss */
 .admin-container .alert {
-  display: none;
   z-index: 10;
   position: absolute;
   top: 3.8rem;
   left: 35%;
   width: 500px;
   left: calc(50% - 250px);
-}
-
-/* line 110, ../../xampp/htdocs/jazz/sass/admin-main.scss */
-.admin-container .alert .information {
-  margin: 0;
 }
 
 /*# sourceMappingURL=admin-main.css.map */

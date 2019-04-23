@@ -2,6 +2,7 @@ jQuery(function($) {
   $("#btnEnviar").click(function() {
     validarReservation();
   });
+ 
 });
 
 function validarReservation() {
@@ -32,7 +33,12 @@ function validarReservation() {
         data: JSON.stringify(loginData),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data) {},
+        success: function(data) {
+          notifications ("Reservación realizada exitosamente.", 'success')
+          $('#reserveForm').trigger("reset");
+          $("#table").find('option').remove();
+          $("#table").append('<option value="" disabled="" selected="">Selecciona</option>');
+        },
         error: function(errMsg) {
           console.error(errMsg);
           $("#login-form")
