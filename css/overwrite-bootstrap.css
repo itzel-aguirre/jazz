@@ -41,4 +41,14 @@
   columns: auto 4;
 }
 
+/* line 44, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.alert {
+  display: none;
+}
+
+/* line 46, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+.alert .information {
+  margin: 0;
+}
+
 /*# sourceMappingURL=overwrite-bootstrap.css.map */

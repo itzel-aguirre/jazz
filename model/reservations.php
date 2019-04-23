@@ -16,6 +16,7 @@ class Reservations implements JsonSerializable
  protected $date;
  protected $hour;
  protected $no_table;
+ protected $folio;
 
   //Constructor
   public function __construct()
@@ -23,7 +24,6 @@ class Reservations implements JsonSerializable
     
   }
   public static function constructNewReservation($id_reservation, $id_show, $id_table, $id_date_hr, $full_name, $mail, $cell_phone, $deposit_made, $no_people, $artist, $cover, $date, $hour, $no_table) {
-    //public static function constructNewReservation($id_reservation, $id_show, $id_table, $id_date_hr, $full_name, $mail, $cell_phone, $deposit_made, $no_people, $artist, $cover, $date, $hour, $no_table) {
     $instance = new self();
     
     $instance->id_reservation = $id_reservation;
@@ -41,6 +41,17 @@ class Reservations implements JsonSerializable
     $instance->hour = $hour;
     $instance->no_table = $no_table;
    
+    return $instance; 
+  }
+  public static function constructPost($reservation){
+    $instance = new self();
+    $instance->id_show = $reservation->show;
+    $instance->id_table =  $reservation->table;
+    $instance->id_date_hr =  $reservation->dateTime;
+    $instance->full_name= $reservation->name;
+    $instance->mail =  $reservation->email;
+    $instance->cell_phone =  $reservation->mobile;
+    $instance->no_people =$reservation->clients;
     return $instance; 
   }
 //Methods
@@ -82,7 +93,7 @@ class Reservations implements JsonSerializable
       'date' => $this->date,
       'hour' => $this->hour,
       'no_table' => $this->no_table,
+      'folio' => $this->folio,
     ];
   }
 }
-?>
