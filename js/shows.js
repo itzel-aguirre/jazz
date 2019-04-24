@@ -142,7 +142,9 @@ jQuery(function($) {
 //Handle Delete buttons show
 jQuery(function($) {
   $("#table-shows tbody").on("click", "button.delete-show", function() {
-    alert($(this).attr("show-id"));
+    //alert($(this).attr("show-id"));
+    const idShow = $(this).attr("show-id");
+    deleteImage(idShow);
   });
 });
 
@@ -222,3 +224,46 @@ function resetForm(){
   $("#date-timeShowList").empty();
   $('#multiple-checkboxes').multiselect('updateButtonText');
 }
+
+function deleteImage(idShow){
+  const showData = {
+    idShow: idShow
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-deleteImage.php",
+    data: JSON.stringify(showData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data) {
+      deleteShow(idShow);
+    },
+    error: function(errMsg) {
+      console.error(errMsg.responseJSON.error);
+    }
+  });
+
+}
+
+  function deleteShow(idShow){
+   
+    const showData = {
+      idShow: idShow
+    };
+    $.ajax({
+      type: "POST",
+      url: "controller/controller-deleteShow.php",
+      data: JSON.stringify(showData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(showData) {
+        notifications ("Espectaculo eliminado exitosamente.", 'success')
+        $("#add-newShow").hide();
+        getShowList()
+        $("#list-show").show();
+      },
+      error: function(errMsg) {
+        console.error(errMsg);
+      }
+    });
+  }

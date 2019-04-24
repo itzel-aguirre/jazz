@@ -8,15 +8,15 @@ $json_obj = json_decode($json_str);
 
 $idShow = $json_obj->idShow;
 $showLogic = new ShowBO();
+$deleteShow = $showLogic->DeleteShow($idShow);
 
-try{
-  $deleteImage = $showLogic->deleteImage($idShow);
-  print true;
+if($deleteShow){
+  header('Content-Type: application/json');
+  print json_encode($deleteShow);
 }
-catch(Exception $e){
+else{
   header('HTTP/1.1 420 Method Failure');
   header('Content-Type: application/json; charset=UTF-8');
-  die(json_encode (array('error'=>'Error al crear un nuevo show')));
-}
-
+  die(json_encode (array('error'=>'Incorrecto')));
+} 
 ?>

@@ -51,15 +51,24 @@ class ShowBO
   { 
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`=".$idShow."";
-    $ShowInfo = $databaseConected->consulta($query);
-    if ($databaseConected->query($query) == TRUE) {
-      $databaseConected->desconectar();
-      return  json_encode(TRUE); 
-    }
-    else{
-        $databaseConected->desconectar();
-        return json_encode (array('error'=>"Error: " . mysqli_error($databaseConected)));
+
+    $query ="DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = ".$idShow.";";
+    $resultReservation = $databaseConected->consulta($query);
+  
+        $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  ".$idShow.";";
+        $resultShowGenre = $databaseConected->consulta($query);
+
+          $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO=  ".$idShow."; ";
+          $resultDateHr = $databaseConected->consulta($query);
+
+              $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`= ".$idShow."";
+              $ShowInfo = $databaseConected->consulta($query);
+          
+    $databaseConected->desconectar();
+    if ($ShowInfo) {
+      return json_encode(TRUE);
+    } else {
+      return json_encode(array('error' => FALSE));
     }
   }
   public function UpdateShow($showData)
@@ -68,14 +77,12 @@ class ShowBO
     $databaseConected->conectar();
     $query = "UPDATE `espectaculos` SET  `ARTISTA`='".$showData->artist."', `COVER`=".$showData->amount.", `IMAGEN_MOVIL`='".$showData->url_img_mobile."', `IMAGEN_LAP`='".$showData->url_img_desktop."' WHERE `ID_ESPECTACULO`= ".$showData->id_show."; ";
     $ShowInfo = $databaseConected->consulta($query);
-    if ($databaseConected->query($query) === TRUE) {
-        $databaseConected->desconectar();
-        return json_encode(TRUE);  
+    $databaseConected->desconectar();
+    if ($ShowInfo) {
+      return json_encode(TRUE);
+    } else {
+      return json_encode(array('error' => FALSE));
     }
-    else{
-        $databaseConected->desconectar();
-        return json_encode (array('error'=>"Error: " . mysqli_error($databaseConected)));
-   }
   }
 
   public function ListOneShow()
@@ -167,7 +174,31 @@ class ShowBO
     return $schedules;
   }
 
-  public function deleteImage(){
-    
+  public function deleteImage($id_show){
+    $is_success = true;
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+
+    $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` WHERE ID_ESPECTACULO= ".$id_show.";";
+    $ResultQuery = $databaseConected->consulta($query);
+     
+    if ( $ResultQuery->num_rows > 0) {
+      while ($row =  $ResultQuery->fetch_assoc()) {
+
+        try
+        {
+          $imagesDir =  '../images/slider/';
+          $imagesDirMobile =  '../images/slider/mobile/';
+          unlink($imagesDir . $row['IMAGEN_LAP']);
+          unlink($imagesDirMobile . $row['IMAGEN_MOVIL']);
+        } 
+        catch(Exception $e){
+          $is_success = false;
+        }
+      }
+      return $is_success;
+    }
+    $databaseConected->desconectar();
   }
+
 }
