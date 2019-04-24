@@ -15,8 +15,8 @@ jQuery(function($) {
 
 //Builds options for the genres
 function fillOptions(genres){
-  let options, checks = ''
-  console.log("con datos");
+  let options = ''
+
   if(genres.length > 0){
     genres.forEach(genre =>{
       options +='<option value="'+genre.id_genre+'">'+genre.genre+'</option>'
