@@ -51,26 +51,47 @@ class ShowBO
   { 
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
+  
+    $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` WHERE ID_ESPECTACULO= ".$idShow.";";
+    $ResultQuery = $databaseConected->consulta($query);
+     
+    if ($ResultQuery->num_rows > 0) {
+      while ($row =  $ResultQuery->fetch_assoc()) {
+
+        try
+        {
+          $imagesDir =  '../images/slider/';
+          $imagesDirMobile =  '../images/slider/mobile/';
+          unlink($imagesDir . $row['IMAGEN_LAP']);
+          unlink($imagesDirMobile . $row['IMAGEN_MOVIL']);
+        } 
+        catch(Exception $e){
+          return json_encode(array('error' => FALSE));
+        }
+      }
+    }
+
 
     $query ="DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = ".$idShow.";";
-    $resultReservation = $databaseConected->consulta($query);
+    $databaseConected->consulta($query);
   
         $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  ".$idShow.";";
-        $resultShowGenre = $databaseConected->consulta($query);
+        $databaseConected->consulta($query);
 
           $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO=  ".$idShow."; ";
-          $resultDateHr = $databaseConected->consulta($query);
+          $databaseConected->consulta($query);
 
-              $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`= ".$idShow."";
+              $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`=  ".$idShow."; ";
               $ShowInfo = $databaseConected->consulta($query);
           
-    $databaseConected->desconectar();
-    if ($ShowInfo) {
+      $databaseConected->desconectar();
+     if ($ShowInfo) {
       return json_encode(TRUE);
-    } else {
+    } else { 
       return json_encode(array('error' => FALSE));
     }
   }
+
   public function UpdateShow($showData)
   { 
     $databaseConected = new ConectDB();
@@ -97,6 +118,7 @@ class ShowBO
     $query = "SELECT espectaculos.ID_ESPECTACULO, fecha_hr_espectaculo.ID_FECHA_HR, espectaculos.ARTISTA,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA 
     FROM `espectaculos` 
     INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO
+    GROUP BY ID_ESPECTACULO
     ORDER BY fecha_hr_espectaculo.FECHA DESC
     ";
 
@@ -172,33 +194,6 @@ class ShowBO
     $databaseConected->desconectar();
 
     return $schedules;
-  }
-
-  public function deleteImage($id_show){
-    $is_success = true;
-    $databaseConected = new ConectDB();
-    $databaseConected->conectar();
-
-    $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` WHERE ID_ESPECTACULO= ".$id_show.";";
-    $ResultQuery = $databaseConected->consulta($query);
-     
-    if ( $ResultQuery->num_rows > 0) {
-      while ($row =  $ResultQuery->fetch_assoc()) {
-
-        try
-        {
-          $imagesDir =  '../images/slider/';
-          $imagesDirMobile =  '../images/slider/mobile/';
-          unlink($imagesDir . $row['IMAGEN_LAP']);
-          unlink($imagesDirMobile . $row['IMAGEN_MOVIL']);
-        } 
-        catch(Exception $e){
-          $is_success = false;
-        }
-      }
-      return $is_success;
-    }
-    $databaseConected->desconectar();
   }
 
 }

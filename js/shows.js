@@ -77,6 +77,7 @@ jQuery(function($) {
   $("#cancel-new-show").click(function() {
     $("#add-newShow").hide();
     $("#list-show").show();
+    resetForm();
   });
 });
 
@@ -142,9 +143,9 @@ jQuery(function($) {
 //Handle Delete buttons show
 jQuery(function($) {
   $("#table-shows tbody").on("click", "button.delete-show", function() {
-    //alert($(this).attr("show-id"));
     const idShow = $(this).attr("show-id");
-    deleteImage(idShow);
+    //deleteImage(idShow);
+    deleteShow(idShow);
   });
 });
 
@@ -184,6 +185,7 @@ jQuery(function($) {
           dataType: "json",
           success: function(data) {
             sendImages()
+            resetForm();
           },
           error: function(errMsg) {
             console.error(errMsg.responseJSON.error);
@@ -225,27 +227,7 @@ function resetForm(){
   $('#multiple-checkboxes').multiselect('updateButtonText');
 }
 
-function deleteImage(idShow){
-  const showData = {
-    idShow: idShow
-  };
-  $.ajax({
-    type: "POST",
-    url: "controller/controller-deleteImage.php",
-    data: JSON.stringify(showData),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function(data) {
-      deleteShow(idShow);
-    },
-    error: function(errMsg) {
-      console.error(errMsg.responseJSON.error);
-    }
-  });
-
-}
-
-  function deleteShow(idShow){
+function deleteShow(idShow){
    
     const showData = {
       idShow: idShow
@@ -257,13 +239,13 @@ function deleteImage(idShow){
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(showData) {
+        console.log(showData);
         notifications ("Espectaculo eliminado exitosamente.", 'success')
-        $("#add-newShow").hide();
         getShowList()
-        $("#list-show").show();
       },
       error: function(errMsg) {
-        console.error(errMsg);
+      console.log(errMsg);
+        notifications ("Error al eliminar un espectaculo.", 'error')
       }
     });
   }

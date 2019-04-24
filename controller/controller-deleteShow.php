@@ -17,6 +17,6 @@ if($deleteShow){
 else{
   header('HTTP/1.1 420 Method Failure');
   header('Content-Type: application/json; charset=UTF-8');
-  die(json_encode (array('error'=>'Incorrecto')));
+  die(json_encode (array('error'=>'Error al eliminar un espectáculo')));
 } 
 ?>
