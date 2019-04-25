@@ -77,6 +77,7 @@ jQuery(function($) {
   $("#cancel-new-show").click(function() {
     $("#add-newShow").hide();
     $("#list-show").show();
+    resetForm();
   });
 });
 
@@ -84,9 +85,9 @@ jQuery(function($) {
 Gets shows list to display
 */
 jQuery(function($) {
-  getShowList()
+  getShowList();
 });
-function getShowList(){
+function getShowList() {
   $.ajax({
     type: "GET",
     url: "controller/controller-list-shows.php",
@@ -120,7 +121,8 @@ function fillTableShows(shows) {
         '" type="button" class="btn btn-primary btn-lg update-show"><i class="mdi mdi-pencil mdi-24px"></i></button>' +
         '<button show-id="' +
         show.id_show +
-        '" type="button" class="btn btn-primary btn-lg delete-show"><i class="mdi mdi-delete mdi-24px"></i></button>' +
+        '" type="button" class="btn btn-primary btn-lg delete-show" >' +
+        '<i class="mdi mdi-delete mdi-24px"></i></button>' +
         " </td>";
 
       tr += "<tr>" + information + "</tr>";
@@ -142,7 +144,13 @@ jQuery(function($) {
 //Handle Delete buttons show
 jQuery(function($) {
   $("#table-shows tbody").on("click", "button.delete-show", function() {
-    alert($(this).attr("show-id"));
+    const idShow = $(this).attr("show-id");
+    conf = confirm("El espectáculo será eliminado. ¿Desea continuar?");
+    if (conf) {
+      deleteShow(idShow);
+    } else {
+      return false;
+    }
   });
 });
 
@@ -150,7 +158,6 @@ jQuery(function($) {
   Gets all the values from the form
 */
 jQuery(function($) {
-
   $("#save-new-show").click(function() {
     if (validateRequiredFileds(".form-add-newshow")) {
       let genres = [];
@@ -167,11 +174,11 @@ jQuery(function($) {
       ) {
         const showData = {
           artist: $("#nameShow").val(),
-          amount:$("#money").val(),
+          amount: $("#money").val(),
           genres: genres,
           datesTime: dateTimes,
-          imgMobile: $('#img-mobile')[0].files[0].name,
-          imgDesktop: $("#img-desktop")[0].files[0].name,
+          imgMobile: $("#img-mobile")[0].files[0].name,
+          imgDesktop: $("#img-desktop")[0].files[0].name
         };
 
         $.ajax({
@@ -181,22 +188,22 @@ jQuery(function($) {
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data) {
-            sendImages()
+            sendImages();
+            resetForm();
           },
           error: function(errMsg) {
             console.error(errMsg.responseJSON.error);
           }
         });
-
       }
     }
   });
 });
 
-function sendImages(){
-  const form_data = new FormData();                  
-  form_data.append('img-desktop', $("#img-desktop").prop('files')[0]);
-  form_data.append('img-mobile', $("#img-mobile").prop('files')[0]);
+function sendImages() {
+  const form_data = new FormData();
+  form_data.append("img-desktop", $("#img-desktop").prop("files")[0]);
+  form_data.append("img-mobile", $("#img-mobile").prop("files")[0]);
   $.ajax({
     type: "POST",
     url: "controller/controller-create-shows-images.php",
@@ -205,9 +212,9 @@ function sendImages(){
     contentType: false,
     processData: false,
     success: function() {
-      notifications ("Espectáculo creado.", 'success')
+      notifications("Espectáculo creado.", "success");
       $("#add-newShow").hide();
-      getShowList()
+      getShowList();
       $("#list-show").show();
     },
     error: function(errMsg) {
@@ -216,9 +223,31 @@ function sendImages(){
   });
 }
 
-function resetForm(){
-  $('.form-add-newshow').trigger("reset");
+function resetForm() {
+  $(".form-add-newshow").trigger("reset");
   dateTimes = [];
   $("#date-timeShowList").empty();
-  $('#multiple-checkboxes').multiselect('updateButtonText');
+  $("#multiple-checkboxes").multiselect("updateButtonText");
+}
+
+function deleteShow(idShow) {
+  const showData = {
+    idShow: idShow
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-deleteShow.php",
+    data: JSON.stringify(showData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(showData) {
+      console.log(showData);
+      notifications("Espectaculo eliminado exitosamente.", "success");
+      getShowList();
+    },
+    error: function(errMsg) {
+      console.log(errMsg);
+      notifications("Error al eliminar un espectaculo.", "error");
+    }
+  });
 }
