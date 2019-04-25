@@ -205,7 +205,7 @@ class ReservationsBO
         </ul>
         <p>Recuerda que tu reservación tiene un tiempo máximo de 15 minutos de tolerancia, después de dicho tiempo se cancelará automáticamente y deberás pasar a la lista de espera presencial. El cover lo pagarás al acceder al evento y el pago es únicamente en efectivo. </p>
       ';
-    if($reservation->no_people >7 ){
+    if($reservation->no_people >= 7 ){
       $message .= '
       <p>Para realizar una reservación de 7 o más personas requerimos depositar el 100% de los covers del total de personas que nos visitarán, el acceso por persona es de $150.00, de este modo podemos asegurar tu mesa.  
       Una vez realizado el depósito envía una foto con el comprobante a <a href="mailto:operacion@parker-lenox.com">operacion@parker-lenox.com</a> o manda Whats App <a href="https://wa.me/=5215578933140">5578933140</a>, en caso de que esto no ocurra el espacio será liberado. Gracias por compartir la experiencia Parker&Lenox.</p>
