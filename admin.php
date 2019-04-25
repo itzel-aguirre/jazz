@@ -225,8 +225,32 @@
           </div>
 
         </div>
-        <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">...
-
+        <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
+          <div class="container-fluid" id="list-reservation">
+            <div class="row">
+              <div class="col-12">
+                <div class="row row--margin-top-bottom justify-content-end">
+                  <button type="button" id="add-show" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Descargar Excel</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            <div class="table-responsive">
+              <table id="table-reservation" class="table table--with-70 table-hover">
+                  <thead>
+                    <th>Cliente</th>
+                    <th>Espectáculo</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+              </div>  
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">...
 
@@ -248,6 +272,7 @@
   <script src="js/login.js"></script>
   <script src="js/shows.js"></script>
   <script src="js/genre.js"></script>
+  <script src="js/reservation.js"></script>
 </body>
 
 </html>

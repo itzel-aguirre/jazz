@@ -81,7 +81,7 @@ function notifications(text, type, isTemporal=true) {
       currentClass = "alert-info";
       break;
     case "warning":
-      information = "<strong>¡Advetrencia!</strong> ";
+      information = "<strong>¡Advertencia!</strong> ";
       $(".alert").addClass("alert-warning");
       currentClass = "alert-warning";
       break;
