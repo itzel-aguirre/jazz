@@ -9,7 +9,7 @@ class ReservationsBO
 
   public function __construct()
   { }
-  public function selectReservation()
+  public function GetReservations()
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();

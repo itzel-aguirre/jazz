@@ -49,3 +49,59 @@ function validarReservation() {
     }
   }
 }
+
+/*
+Gets shows list to display
+*/
+jQuery(function($) {
+  $('#reservations-tab').on('click', function(e) {    
+    getReservationList()
+  });
+
+});
+
+function  getReservationList(){
+  $.ajax({
+    type: "GET",
+    url: "controller/controller-reservation-list.php",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(reservations) {
+      fillTableReservation(reservations);
+    }
+  });
+}
+
+//Builds the table body
+function fillTableReservation(reservations) {
+  let tr = "";
+
+  if (reservations.length > 0) {
+    reservations.forEach(reservation => {
+      const information =
+        "<td>" +
+        reservation.full_name +
+        "</td>" +
+        "<td>" +
+        reservation.artist +
+        "</td>" +
+        "<td>" +
+        moment(reservation.date).format("DD/MMMM/YYYY") +
+        "</td>" +
+        "<td>" +
+        `${moment(reservation.hour).format("HH:mm")} h` +
+        "</td>" +
+        '<td class="actions-buttons">' +
+        '<button reservation-id="' +
+        reservation.id_reservation +
+        '" type="button" class="btn btn-primary btn-lg delete-reservation"><i class="mdi mdi-delete mdi-24px"></i></button>' +
+        " </td>";
+
+      tr += "<tr>" + information + "</tr>";
+    });
+  } else {
+    tr = '<tr><td colspan="4" class="text-center">No hay resultados</td></tr>';
+  }
+
+  $("#table-reservation").html(tr);
+}
