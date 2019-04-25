@@ -185,16 +185,16 @@ class ReservationsBO
     $to = $reservation->mail; // note the comma
 
     // Subject
-    $subject = 'Reservación Parker & Lenox';
+    $subject = 'Reservación Parker&Lenox';
 
     // Message
     $message = '
       <html>
       <head>
-        <title>Reservación Parker & Lenox</title>
+        <title>Reservación Parker&Lenox</title>
       </head>
       <body>
-        <p>Tu experiencia Parker & Lenox comienza ahora, prepárate para disfrutar de una mágica experiencia sonora, la mejor gastronómica y una exclusiva selección de cócteles clásicos y de autor.</p>
+        <p>Tu experiencia Parker&Lenox comienza ahora, prepárate para disfrutar de una mágica experiencia sonora, la mejor gastronómica y una exclusiva selección de cócteles clásicos y de autor.</p>
         <p><strong>Datos de la reservación</strong></p>
         <ul>
           <li><strong>Reservación a nombre de: </strong>'.$reservation->full_name.'</li>
@@ -205,8 +205,11 @@ class ReservationsBO
         </ul>
         <p>Recuerda que tu reservación tiene un tiempo máximo de 15 minutos de tolerancia, después de dicho tiempo se cancelará automáticamente y deberás pasar a la lista de espera presencial. El cover lo pagarás al acceder al evento y el pago es únicamente en efectivo. </p>
       ';
-    if(strpos($reservation->no_table,'Sala Jack') !== false && $reservation->no_people >6 ){
-      $message .= '<p><strong>Datos bancarios</strong></p>'.
+    if($reservation->no_people >7 ){
+      $message .= '
+      <p>Para realizar una reservación de 7 o más personas requerimos depositar el 100% de los covers del total de personas que nos visitarán, el acceso por persona es de $150.00, de este modo podemos asegurar tu mesa.  
+      Una vez realizado el depósito envía una foto con el comprobante a <a href="mailto:operacion@parker-lenox.com">operacion@parker-lenox.com</a> o manda Whats App <a href="https://wa.me/=5215578933140">5578933140</a>, en caso de que esto no ocurra el espacio será liberado. Gracias por compartir la experiencia Parker&Lenox.</p>
+      <p><strong>Datos bancarios</strong></p>'.
       '<ul>
         <li><strong>CLABE: </strong>07218 0002 1167 62696</li>
         <li><strong>Banco: </strong> Banorte</li>
