@@ -204,9 +204,19 @@ class ReservationsBO
           <li><strong>Folio: </strong>'.$reservation->folio.'</li>
         </ul>
         <p>Recuerda que tu reservación tiene un tiempo máximo de 15 minutos de tolerancia, después de dicho tiempo se cancelará automáticamente y deberás pasar a la lista de espera presencial. El cover lo pagarás al acceder al evento y el pago es únicamente en efectivo. </p>
-      </body>
-      </html>
       ';
+    if(strpos($reservation->no_table,'Sala Jack') !== false && $reservation->no_people >6 ){
+      $message .= '<p><strong>Datos bancarios</strong></p>'.
+      '<ul>
+        <li><strong>CLABE: </strong>07218 0002 1167 62696</li>
+        <li><strong>Banco: </strong> Banorte</li>
+      </ul>
+      <p>A nombre de <strong>Dos Con Todo SA de CV</strong></p>
+      <p>Pago directo en ventanilla a la cuenta <strong>0211676269</strong></p>';
+    }
+
+    $message .= '</body>
+    </html>';
 
     // To send HTML mail, the Content-type header must be set
     $headers[] = 'MIME-Version: 1.0';
