@@ -1,52 +1,52 @@
-/* line 4, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 4, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .row--background-red {
   background: #721422;
 }
 
-/* line 7, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 7, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .row--background-black {
   background: #000;
 }
 
-/* line 10, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 10, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .row--margin-top-bottom {
   margin: 1rem 0;
 }
 
-/* line 16, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 16, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .col--border-red {
   border: 2px solid #721422;
   border-radius: 5px;
 }
 
-/* line 23, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 23, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link {
   color: #c14d14;
   font-size: 1.3rem;
 }
 
-/* line 26, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 26, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .nav-tabs .nav-link.active {
   font-weight: 700;
 }
 
-/* line 32, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 32, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .bootstrap-datetimepicker-widget table td.separator {
   width: 1px;
 }
 
-/* line 38, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 38, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .multiselect-container.dropdown-menu.show {
   width: 50rem;
   columns: auto 4;
 }
 
-/* line 44, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 44, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .alert {
   display: none;
 }
 
-/* line 46, ../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
+/* line 46, ../../../../../xampp/htdocs/jazz/sass/overwrite-bootstrap.scss */
 .alert .information {
   margin: 0;
 }

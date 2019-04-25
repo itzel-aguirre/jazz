@@ -46,12 +46,12 @@ class ReservationsBO
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
 
-    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION=" . $idReservation->id_reservation . ";";
+    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION= ".$idReservation.";";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
       return json_encode(TRUE);
-    } else {
+    } else { 
       return json_encode(array('error' => FALSE));
     }
   }
@@ -94,7 +94,7 @@ class ReservationsBO
     $databaseConected->desconectar();
     if ($resultQuery) {
       $reservation = $this->getDataToEmail($reservation);
-      $this->sendEmail($reservation);
+     // $this->sendEmail($reservation);
       return (true);
       
     } else {

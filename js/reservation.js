@@ -105,3 +105,37 @@ function fillTableReservation(reservations) {
 
   $("#table-reservation").html(tr);
 }
+
+//Handle Delete buttons show
+jQuery(function($) {
+  $("#table-reservation").on("click", "button.delete-reservation", function() {
+    const idReservation = $(this).attr("reservation-id");
+    conf = confirm("La reservación será eliminada. ¿Desea continuar?");
+    if (conf) {
+      deleteReservations(idReservation);
+    } else {
+      return false;
+    }
+  });
+});
+
+function deleteReservations(idReservation) {
+  const reservationsData = {
+    idReservation: idReservation
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-deleteReservations.php",
+    data: JSON.stringify(reservationsData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(reservationsData) {
+      notifications("Reservación eliminada exitosamente.", "success");
+      getReservationList();
+    },
+    error: function(errMsg) {
+      console.log(errMsg);
+      notifications("Error al eliminar una reservación.", "error");
+    }
+  });
+}
