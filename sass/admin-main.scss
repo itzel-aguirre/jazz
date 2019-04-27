@@ -71,19 +71,6 @@ header{
   }
 }
 
-.form-add-newshow{
-  fieldset{
-    margin: 1.5rem 0;
-  }
-  .label{
-    font-size: 1.2rem;
-    font-weight: $font-bold;
-  }
-  .labels{
-    display: flex;
-    justify-content: space-around;
-  }
-}
 
 .title{
   font-size: 2rem;
@@ -108,3 +95,32 @@ header{
     left: calc(50% - 250px);
   }
 }
+
+.form{
+  fieldset{
+    margin: 1.5rem 0;
+  }
+  .label{
+    font-size: 1.2rem;
+    font-weight: $font-bold;
+  }
+  &.form-add-newshow{
+
+    .labels{
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  &.form-genre{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &.form-video{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+

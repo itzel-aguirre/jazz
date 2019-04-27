@@ -17,6 +17,9 @@
     border: 2px solid $pl-red;
     border-radius: 5px;
   }
+  &--border-right{
+    border-right: 1px solid $pl-gray-aux;
+  }
 }
 
 .nav-tabs{

@@ -106,7 +106,7 @@
     <div class="admin-container">
       <div class="alert alert-success alert-dismissible">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p class="information"><strong>¡Éxito!</strong>  </p>
+        <p class="information"><strong>¡Éxito!</strong> </p>
       </div>
 
       <ul class="nav nav-tabs" id="adminTabs" role="tablist">
@@ -150,22 +150,22 @@
             <div class="row">
               <div class="col-12">
                 <p class="title">Crear nuevo espectáculo</p>
-                <form action="" class="form-add-newshow" enctype="multipart/form-data">
+                <form action="" class="form form-add-newshow" enctype="multipart/form-data">
                   <div class="form-row justify-content-center">
                     <fieldset class="col-12 col-md-6 col-xl-3 mr-sm-3">
                       <div class="form-group">
                         <label for="nameShow" class="label">Nombre espectáculo</label>
-                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="50" required/>
+                        <input id="nameShow" type="text" class="form-control input-text" placeholder="Espectáculo" maxlength="50" required />
                         <p class="error"></p>
                       </div>
                       <div class="form-group">
                         <label for="img-mobile" class="label">Imagen Móvil</label>
-                        <input id="img-mobile" type="file" class="form-control input-text" accept=".png,.jpg"  required/>
+                        <input id="img-mobile" type="file" class="form-control input-text" accept=".png,.jpg" required />
                         <p class="error"></p>
                       </div>
                       <div class="form-group">
                         <label for="img-desktop" class="label">Imagen Desktop</label>
-                        <input id="img-desktop" type="file" class="form-control input-text" accept=".png,.jpg" required/>
+                        <input id="img-desktop" type="file" class="form-control input-text" accept=".png,.jpg" required />
                         <p class="error"></p>
                       </div>
                       <div class="form-group">
@@ -175,7 +175,7 @@
 
                       <div class="form-group">
                         <label for="nameShow" class="label">Género(s) del espectáculo</label>
-                        
+
                         <select id="multiple-checkboxes" multiple="multiple">
                         </select>
                         <p class="error"></p>
@@ -235,8 +235,8 @@
               </div>
             </div>
             <div class="row">
-            <div class="table-responsive">
-            <table id="table-reservation" class="table table--with-70 table-hover">
+              <div class="table-responsive">
+                <table id="table-reservation" class="table table--with-70 table-hover">
                   <thead>
                     <th>Cliente</th>
                     <th>Espectáculo</th>
@@ -246,15 +246,109 @@
                     <th></th>
                   </thead>
                   <tbody>
-                    
+
                   </tbody>
                 </table>
-              </div>  
+              </div>
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">...
+        <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
+          <div class="row">
+            <div class="col col--border-right">
+              <p class="title">Géneros</p>
+              <div class="row">
+                <div class="col-12">
+                  <form class="form form-genre" action="">
+                    <div class="form-group">
+                      <label for="genre-input" class="label">Género</label>
+                      <input type="text" id="genre-input" maxlength="50" class="form-control input-text" placeholder="Jazz" required>
+                      <p class="error"></p>
+                    </div>
 
+                    <button type="button" id="add-genre" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Género</button>
+                  </form>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="table-responsive">
+                  <table id="table-genres" class="table table--with-70 table-hover">
+                    <thead>
+                      <th>Género</th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col col--border-right">
+              <p class="title">Mesas</p>
+              <div class="row">
+                <div class="col-12">
+                  <form class="form form-tables" action="">
+                    <div class="form-group">
+                      <div class="row align-items-end">
+                        <div class="col-6">
+                          <label for="table-input" class="label"># Mesa</label>
+                          <input type="text" id="table-input" maxlength="25" class="form-control input-text" placeholder="52" required>
+                          <p class="error"></p>
+                        </div>
+                        <div class="col-3">
+                          <label for="min-person-input" class="label"># Mínimo de personas</label>
+                          <input type="number" id="min-person-input" class="form-control input-text" value="1" min="1" max="30" required>
+                          <p class="error"></p>
+                        </div>
+                        <div class="col-3">
+                          <label for="max-person-input" class="label"># Máximo de personas</label>
+                          <input type="number" id="max-person-input" class="form-control input-text" value="1" min="1" max="30" required>
+                          <p class="error"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="row row--margin-top-bottom justify-content-end">
+                        <button type="button" id="add-table" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Agregar Mesa</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="table-responsive">
+                  <table id="table-tables" class="table table--with-70 table-hover">
+                    <thead>
+                      <th>Mesa</th>
+                      <th># Mínimo de personas</th>
+                      <th># Máximo de personas</th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <p class="title">Video</p>
+              <div class="row">
+                <div class="col-12">
+                  <form action="" class="form form-video">
+                    <div class="form-group">
+                      <label for="video-input" class="label">Video</label>
+                      <input type="text" id="video-input" class="form-control input-text" required>
+                      <p class="error"></p>
+                    </div>
+                    <button type="button" id="save-video" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Guardar</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
