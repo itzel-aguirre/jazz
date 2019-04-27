@@ -1,19 +1,19 @@
   <footer class="container-fluid footer">
       <div class="p-2 d-flex justify-content-center">
           <a href="https://www.facebook.com/parkerandlenox/" target="_blank">
-              <i class="mdi mdi-facebook mdi-24px  icon icon--margin-right icon--color-gold"></i>
+              <i class="mdi mdi-facebook mdi-24px  icon icon--margin-right"></i>
           </a>
           <a href="https://twitter.com/parkerandlenox" target="_blank">
-              <i class="mdi mdi-twitter mdi-24px icon icon--margin-right icon--color-gold"></i>
+              <i class="mdi mdi-twitter mdi-24px icon icon--margin-right"></i>
           </a>
           <a href="https://www.instagram.com/parkerandlenox/" target="_blank">
-              <i class="mdi mdi-instagram mdi-24px icon icon--margin-right icon--color-gold"></i>
+              <i class="mdi mdi-instagram mdi-24px icon icon--margin-right"></i>
           </a>
-          <i class="mdi mdi-spotify mdi-24px icon icon--margin-right icon--color-gold"></i>
+          <i class="mdi mdi-spotify mdi-24px icon icon--margin-right"></i>
       </div>
       <div class="row justify-content-center">
           <div class="col-10 col-md-5">
-              <p class="address"><span class="logo"><img src="images/footer/logo-lenox.png" alt="Logotipo Lenox"></span>Milán 14, col. Juárez CDMX</p>
+              <p class="address"><span class="logo"><img src="images/footer/logo-lenox.svg" alt="Logotipo Lenox" class="img-logo"></span>Milán 14, col. Juárez CDMX</p>
           </div>
       </div>
       <div class="row justify-content-center">

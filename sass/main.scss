@@ -34,38 +34,38 @@ header {
     background: -moz-linear-gradient(
       left,
       $pl-black 0%,
-      $pl-gold 51%,
+      $pl-white 51%,
       $pl-black 100%
     );
     background: -webkit-gradient(
       left top,
       right top,
       color-stop(0%, $pl-black),
-      color-stop(51%, $pl-gold),
+      color-stop(51%, $pl-white),
       color-stop(100%, $pl-black)
     );
     background: -webkit-linear-gradient(
       left,
       $pl-black 0%,
-      $pl-gold 51%,
+      $pl-white 51%,
       $pl-black 100%
     );
     background: -o-linear-gradient(
       left,
       $pl-black 0%,
-      $pl-gold 51%,
+      $pl-white 51%,
       $pl-black 100%
     );
     background: -ms-linear-gradient(
       left,
       $pl-black 0%,
-      $pl-gold 51%,
+      $pl-white 51%,
       $pl-black 100%
     );
     background: linear-gradient(
       to right,
       $pl-black 0%,
-      $pl-gold 51%,
+      $pl-white 51%,
       $pl-black 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pl-black', endColorstr='$pl-black', GradientType=1 );
@@ -75,7 +75,7 @@ header {
     }
   }
   .address {
-    color: $pl-gold;
+    color: $pl-white;
     font-size: 1.2rem;
     line-height: 1.2rem;
     margin-top: 1rem;
@@ -84,11 +84,15 @@ header {
     justify-content: center;
     .logo {
       margin-right: 0.875rem;
+      .img-logo{
+        width: 40px;
+        height: 40px;
+      }
     }
   }
   .link {
     margin-top: 1rem;
-    color: $pl-gold;
+    color: $pl-white;
     font-weight: $font-bold;
   }
   a:hover{
@@ -97,6 +101,7 @@ header {
 }
 
 .icon {
+  color: $pl-white;
   &--margin-right {
     margin-right: 0.5rem;
   }
