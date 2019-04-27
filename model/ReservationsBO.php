@@ -123,7 +123,7 @@ class ReservationsBO
     $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'NOMBRE');
     $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'CORREO');
     $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'CELULAR');
-    $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'DEPOSITO REALZADO');
+    $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'DEPÓSITO REALZADO');
     $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'NO. PERSONAS');
     $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'ARTISTA');
     $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'COVER');
@@ -139,7 +139,7 @@ class ReservationsBO
       $objPHPExcel->getActiveSheet()->SetCellValue('C' . $j, $obj->cell_phone);
       
       if ($obj->deposit_made == 1){
-        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Deposito realizado");
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Depósito realizado");
       }
       else{
         if ($obj->no_people < 7){

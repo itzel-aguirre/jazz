@@ -230,8 +230,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="row row--margin-top-bottom justify-content-end">
-                <!--   <button type="button" id="add-show" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Descargar Excel</button> -->
-                  <a href="http://localhost/jazz/temp/Reservaciones.xlsx"><button type="button" id="add-show" class="btn btn-primary btn-lg">Descargar Excel</button></a>
+                  <a href="/temp/Reservaciones.xlsx"><button type="button" id="add-show" class="btn btn-primary btn-lg">Descargar Excel</button></a>
                 </div>
               </div>
             </div>

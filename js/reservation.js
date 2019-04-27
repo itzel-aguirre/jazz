@@ -188,11 +188,11 @@ function update_Deposit(idReservation, deposito) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(reservationsData) {
-      notifications("Deposito registrado exitosamente.", "success");
+      notifications("Depósito registrado exitosamente.", "success");
       getReservationList();
     },
     error: function(errMsg) {
-      notifications("Error al registrar el deposito.", "error");
+      notifications("Error al registrar el depósito.", "error");
     }
   });
 }
