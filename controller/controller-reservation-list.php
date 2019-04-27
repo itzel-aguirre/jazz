@@ -6,5 +6,5 @@ $reservations = $reservationLogic->GetReservations();
 
 header('Content-Type: application/json');
 print json_encode($reservations);
-
+$reservationLogic->generateExcel($reservations); 
 ?>

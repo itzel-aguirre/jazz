@@ -26,7 +26,7 @@ class ReservationsBO
     $query .= " INNER JOIN `mesas` ON reservaciones.ID_MESA = mesas.ID_MESA";
 
     $resultQuery = $databaseConected->consulta($query);
-
+    
     if ($resultQuery->num_rows > 0) {
 
       while ($row = $resultQuery->fetch_assoc()) {
@@ -35,10 +35,10 @@ class ReservationsBO
       }
       /* $databaseConected->desconectar(); */
       return $reservation_list;
-    } else {
-      return json_encode(array('error' => "Sin reservaciones"));
-    }
+
+    } 
     $databaseConected->desconectar();
+    return $reservation_list;
   }
 
   public function DeleteReservation($idReservation)
@@ -46,12 +46,12 @@ class ReservationsBO
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
 
-    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION=" . $idReservation->id_reservation . ";";
+    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION= ".$idReservation.";";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
       return json_encode(TRUE);
-    } else {
+    } else { 
       return json_encode(array('error' => FALSE));
     }
   }
@@ -93,8 +93,8 @@ class ReservationsBO
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
-      $reservation = $this->getDataToEmail($reservation);
-      $this->sendEmail($reservation);
+     // $reservation = $this->getDataToEmail($reservation);
+     // $this->sendEmail($reservation);
       return (true);
       
     } else {
@@ -102,12 +102,14 @@ class ReservationsBO
     }
   }
 
-  public function generateExcel()
+  public function generateExcel($reservation_list)
   {
     //excel
     $objPHPExcel = new PHPExcel();
-    $reservationLogic = new ReservationsBO();
-    $usrResponse = $reservationLogic->generateExcel();
+  
+    $reservationlist = array();
+    $reservationlist = $reservation_list;
+    $usrResponse = $reservationlist;
 
     $objPHPExcel->getProperties()->setCreator("Parker & Lenox");
     $objPHPExcel->getProperties()->setTitle("Listado de reservaciones");
@@ -121,7 +123,7 @@ class ReservationsBO
     $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'NOMBRE');
     $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'CORREO');
     $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'CELULAR');
-    $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'DEPOSITO REALZADO');
+    $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'DEPÓSITO REALZADO');
     $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'NO. PERSONAS');
     $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'ARTISTA');
     $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'COVER');
@@ -135,11 +137,23 @@ class ReservationsBO
       $objPHPExcel->getActiveSheet()->SetCellValue('A' . $j, $obj->full_name);
       $objPHPExcel->getActiveSheet()->SetCellValue('B' . $j, $obj->mail);
       $objPHPExcel->getActiveSheet()->SetCellValue('C' . $j, $obj->cell_phone);
-      $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, $obj->deposit_made);
+      
+      if ($obj->deposit_made == 1){
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Depósito realizado");
+      }
+      else{
+        if ($obj->no_people < 7){
+          $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "No aplica");
+        }
+        else{
+          $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Pendiente");
+        }
+      }
+      
       $objPHPExcel->getActiveSheet()->SetCellValue('E' . $j, $obj->no_people);
       $objPHPExcel->getActiveSheet()->SetCellValue('F' . $j, $obj->artist);
       $objPHPExcel->getActiveSheet()->SetCellValue('G' . $j, $obj->cover);
-      $objPHPExcel->getActiveSheet()->SetCellValue('H' . $j, $obj->date);
+      $objPHPExcel->getActiveSheet()->SetCellValue('H' . $j, date("d-m-Y", strtotime($obj->date)));
       $objPHPExcel->getActiveSheet()->SetCellValue('I' . $j, date("H:i", strtotime($obj->hour)));
       $objPHPExcel->getActiveSheet()->SetCellValue('J' . $j, $obj->no_table);
       $j++;
@@ -231,5 +245,18 @@ class ReservationsBO
 
     // Mail it
     mail($to, $subject, wordwrap($message, 80), implode("\r\n", $headers));
+  }
+
+  public function updateDeposit($idReservation, $deposito){
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+   $query = "UPDATE `reservaciones` SET `DEPOSITO_REALIZADO`= ".$deposito." WHERE ID_RESERVACION = ".$idReservation."";
+    $resultQuery = $databaseConected->consulta($query);
+    $databaseConected->desconectar();
+    if ($resultQuery) {
+      return json_encode(TRUE);
+    } else {
+      return json_encode(array('error' => FALSE));
+    }
   }
 }

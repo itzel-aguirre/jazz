@@ -241,12 +241,10 @@ function deleteShow(idShow) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(showData) {
-      console.log(showData);
       notifications("Espectaculo eliminado exitosamente.", "success");
       getShowList();
     },
     error: function(errMsg) {
-      console.log(errMsg);
       notifications("Error al eliminar un espectaculo.", "error");
     }
   });

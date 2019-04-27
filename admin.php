@@ -230,18 +230,19 @@
             <div class="row">
               <div class="col-12">
                 <div class="row row--margin-top-bottom justify-content-end">
-                  <button type="button" id="add-show" class="btn btn-primary btn-lg"><i class="mdi mdi-plus icon--margin-right"></i>Descargar Excel</button>
+                  <a href="/temp/Reservaciones.xlsx"><button type="button" id="add-show" class="btn btn-primary btn-lg">Descargar Excel</button></a>
                 </div>
               </div>
             </div>
             <div class="row">
             <div class="table-responsive">
-              <table id="table-reservation" class="table table--with-70 table-hover">
+            <table id="table-reservation" class="table table--with-70 table-hover">
                   <thead>
                     <th>Cliente</th>
                     <th>Espectáculo</th>
                     <th>Fecha</th>
                     <th>Hora</th>
+                    <th></th>
                     <th></th>
                   </thead>
                   <tbody>

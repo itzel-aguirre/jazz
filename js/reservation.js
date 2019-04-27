@@ -2,7 +2,6 @@ jQuery(function($) {
   $("#btnEnviar").click(function() {
     validarReservation();
   });
- 
 });
 
 function validarReservation() {
@@ -34,10 +33,14 @@ function validarReservation() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data) {
-          notifications ("Reservación realizada exitosamente.", 'success')
-          $('#reserveForm').trigger("reset");
-          $("#table").find('option').remove();
-          $("#table").append('<option value="" disabled="" selected="">Selecciona</option>');
+          notifications("Reservación realizada exitosamente.", "success");
+          $("#reserveForm").trigger("reset");
+          $("#table")
+            .find("option")
+            .remove();
+          $("#table").append(
+            '<option value="" disabled="" selected="">Selecciona</option>'
+          );
         },
         error: function(errMsg) {
           console.error(errMsg);
@@ -54,10 +57,9 @@ function validarReservation() {
 Gets shows list to display
 */
 jQuery(function($) {
-  $('#reservations-tab').on('click', function(e) {    
-    getReservationList()
+  $("#reservations-tab").on("click", function(e) {
+    getReservationList();
   });
-
 });
 
 function  getReservationList(){
@@ -75,8 +77,9 @@ function  getReservationList(){
 //Builds the table body
 function fillTableReservation(reservations) {
   let tr = "";
-
+  let InfoCheck ="";
   if (reservations.length > 0) {
+   
     reservations.forEach(reservation => {
       const information =
         "<td>" +
@@ -95,13 +98,101 @@ function fillTableReservation(reservations) {
         '<button reservation-id="' +
         reservation.id_reservation +
         '" type="button" class="btn btn-primary btn-lg delete-reservation"><i class="mdi mdi-delete mdi-24px"></i></button>' +
-        " </td>";
+        " </td>"
 
-      tr += "<tr>" + information + "</tr>";
+       if (reservation.no_people >= 7) {
+        if ((reservation.deposit_made == 1)) {
+          InfoCheck =
+          "<td>" +
+          '<input type="checkbox"  name="checkDeposito" id="Deposito" value="' +
+          reservation.id_reservation +
+          '" checked="checked"> Depósito Realizado</input>' +
+          "</td>";
+        } else {
+          InfoCheck =
+            "<td>" +
+            '<input type="checkbox"  name="checkDeposito" id="Deposito" value="' +
+            reservation.id_reservation +
+            '"> Depósito Pendiente</input>' +
+            "</td>";
+        }
+      } else {
+        InfoCheck = "<td>" + "</td>";
+      } 
+
+      tr += "<tr>" + information + InfoCheck + "</tr>";
     });
   } else {
-    tr = '<tr><td colspan="4" class="text-center">No hay resultados</td></tr>';
+    tr = '<tr><td colspan="6" class="text-center">No hay resultados</td></tr>';
   }
 
-  $("#table-reservation").html(tr);
+  $("#table-reservation tbody").html(tr);
+}
+
+jQuery(function($) {
+  $("#table-reservation tbody").delegate("#Deposito", "change", function() {
+    const idReservation = $(this).val();
+    if ($(this).is(":checked")) {
+      update_Deposit(idReservation, 1); //Deposito recibido
+    } else {
+      update_Deposit(idReservation, 0);
+    }
+    getReservationList();
+  });
+});
+
+//Handle Delete buttons show
+jQuery(function($) {
+  $("#table-reservation tbody").on("click", "button.delete-reservation", function() {
+    const idReservation = $(this).attr("reservation-id");
+    conf = confirm("La reservación será eliminada. ¿Desea continuar?");
+    if (conf) {
+      deleteReservations(idReservation);
+    } else {
+      return false;
+    }
+  });
+});
+
+function deleteReservations(idReservation) {
+  const reservationsData = {
+    idReservation: idReservation
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-deleteReservations.php",
+    data: JSON.stringify(reservationsData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(reservationsData) {
+
+      getReservationList();
+      notifications("Reservación eliminada exitosamente.", "success");
+      
+    },
+    error: function(errMsg) {
+      notifications("Error al eliminar una reservación.", "error");
+    }
+  });
+}
+
+function update_Deposit(idReservation, deposito) {
+  const reservationsData = {
+    idReservation: idReservation,
+    deposito: deposito
+  };
+  $.ajax({
+    type: "POST",
+    url: "controller/controller-updateDeposit.php",
+    data: JSON.stringify(reservationsData),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(reservationsData) {
+      notifications("Depósito registrado exitosamente.", "success");
+      getReservationList();
+    },
+    error: function(errMsg) {
+      notifications("Error al registrar el depósito.", "error");
+    }
+  });
 }
