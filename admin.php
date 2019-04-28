@@ -368,6 +368,7 @@
   <script src="js/shows.js"></script>
   <script src="js/genre.js"></script>
   <script src="js/reservation.js"></script>
+  <script src="js/table.js"></script>
 </body>
 
 </html>

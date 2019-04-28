@@ -7,14 +7,14 @@
 @import "overwrite-bootstrap";
 @import "common";
 
-.contenido-login{
+.contenido-login {
   height: 100vh;
-  .login-wrapper{
-    border: 10px solid rgba($pl-light-blue, 0.60);
-      background: $pl-white;
-      border-radius: 10px;
-      box-shadow: -7px 5px 3px 0em $pl-dark-blue;
-      padding: 40px 35px;
+  .login-wrapper {
+    border: 10px solid rgba($pl-light-blue, 0.6);
+    background: $pl-white;
+    border-radius: 10px;
+    box-shadow: -7px 5px 3px 0em $pl-dark-blue;
+    padding: 40px 35px;
   }
 }
 
@@ -31,14 +31,14 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-header{
+header {
   padding: 0.75rem 1rem;
   background: $pl-black;
   display: flex;
   align-content: center;
   justify-content: flex-end;
   margin-bottom: 2rem;
-  .welcome-text{
+  .welcome-text {
     margin: 0;
     color: $pl-white;
     display: flex;
@@ -47,46 +47,45 @@ header{
   }
 }
 
-.admin-container{
-  @media(min-width: 1440px){
+.admin-container {
+  @media (min-width: 1440px) {
     padding: 0 4rem;
   }
 }
 
-.table{
-  &--with-70{
+.table {
+  &--with-70 {
     width: 70%;
   }
-  th{
-    font-size:1.2rem; 
+  th {
+    font-size: 1.2rem;
   }
-  td{
+  td {
     vertical-align: middle;
-    font-size:1.1rem; 
+    font-size: 1.1rem;
   }
-  .actions-buttons{
+  .actions-buttons {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
   }
 }
 
-
-.title{
+.title {
   font-size: 2rem;
   font-weight: $font-bold;
-  color:$pl-orange;
+  color: $pl-orange;
 }
 
-.small-info{
-  font-size: .875rem;
+.small-info {
+  font-size: 0.875rem;
   font-weight: $font-normal;
-  color:$pl-grey;
+  color: $pl-grey;
 }
 
-.admin-container{
+.admin-container {
   position: relative;
-  .alert{
+  .alert {
     z-index: 10;
     position: absolute;
     top: 3.8rem;
@@ -96,31 +95,28 @@ header{
   }
 }
 
-.form{
-  fieldset{
+.form {
+  fieldset {
     margin: 1.5rem 0;
   }
-  .label{
+  .label {
     font-size: 1.2rem;
     font-weight: $font-bold;
   }
-  &.form-add-newshow{
-
-    .labels{
+  &.form-add-newshow {
+    .labels {
       display: flex;
       justify-content: space-around;
     }
   }
-  &.form-genre{
+  &.form-genre {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  &.form-video{
+  &.form-video {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 }
-
-

@@ -4,49 +4,49 @@
   &--background-red {
     background: $pl-red;
   }
-  &--background-black{
+  &--background-black {
     background: $pl-black;
   }
-  &--margin-top-bottom{
+  &--margin-top-bottom {
     margin: 1rem 0;
   }
 }
 
-.col{
-  &--border-red{
+.col {
+  &--border-red {
     border: 2px solid $pl-red;
     border-radius: 5px;
   }
-  &--border-right{
+  &--border-right {
     border-right: 1px solid $pl-gray-aux;
   }
 }
 
-.nav-tabs{
-  .nav-link{
+.nav-tabs {
+  .nav-link {
     color: $pl-orange;
     font-size: 1.3rem;
-    &.active{
+    &.active {
       font-weight: $font-bold;
     }
   }
-} 
+}
 
-.bootstrap-datetimepicker-widget table td.separator{
+.bootstrap-datetimepicker-widget table td.separator {
   width: 1px;
 }
 
-.multiselect-container{
+.multiselect-container {
   &.dropdown-menu {
-    &.show{
+    &.show {
       width: 50rem;
       columns: auto 4;
     }
   }
-} 
-.alert{
+}
+.alert {
   display: none;
-  .information{
+  .information {
     margin: 0;
   }
 }

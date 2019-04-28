@@ -1,62 +1,63 @@
 /*
-Gets shows list to display
-*/ 
+Gets genres list to display
+*/
+
 jQuery(function($) {
-  getsGenreList()
+  getsGenreList();
 });
 
-function getsGenreList(){
+function getsGenreList() {
   $.ajax({
     type: "GET",
     url: "controller/controller-list-genre.php",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(genres) {
-      fillOptions(genres)
-      fillTableGenres(genres)
+      fillOptions(genres);
+      fillTableGenres(genres);
     }
   });
 }
 
-
 //Builds options for the genres
-function fillOptions(genres){
-  let options = ''
+function fillOptions(genres) {
+  let options = "";
 
-  if(genres.length > 0){
-    genres.forEach(genre =>{
-      options +='<option value="'+genre.id_genre+'">'+genre.genre+'</option>'
-    })
+  if (genres.length > 0) {
+    genres.forEach(genre => {
+      options +=
+        '<option value="' + genre.id_genre + '">' + genre.genre + "</option>";
+    });
   }
 
-  $("#multiple-checkboxes").html(options)
-  $('#multiple-checkboxes').multiselect('rebuild');
+  $("#multiple-checkboxes").html(options);
+  $("#multiple-checkboxes").multiselect("rebuild");
 }
 
 //Builds the table of genres to
-function fillTableGenres(genres){
-    let tr = "";
-  
-    if(genres.length > 0){
-      genres.forEach(genre =>{
-        const information =
-          "<td>" +
-          genre.genre +
-          "</td>" +
-          '<td class="actions-buttons">' +
-          '<button genre-id="' +
-          genre.id_genre +
-          '" type="button" class="btn btn-primary btn-lg delete-genre" >' +
-          '<i class="mdi mdi-delete mdi-24px"></i></button>' +
-          " </td>";
-  
-        tr += "<tr>" + information + "</tr>";
-      });
-    } else {
-      tr = '<tr><td colspan="2" class="text-center">No hay resultados</td></tr>';
-    }
-  
-    $("#table-genres tbody").html(tr);
+function fillTableGenres(genres) {
+  let tr = "";
+
+  if (genres.length > 0) {
+    genres.forEach(genre => {
+      const information =
+        "<td>" +
+        genre.genre +
+        "</td>" +
+        '<td class="actions-buttons">' +
+        '<button genre-id="' +
+        genre.id_genre +
+        '" type="button" class="btn btn-primary btn-lg delete-genre" >' +
+        '<i class="mdi mdi-delete mdi-24px"></i></button>' +
+        " </td>";
+
+      tr += "<tr>" + information + "</tr>";
+    });
+  } else {
+    tr = '<tr><td colspan="2" class="text-center">No hay resultados</td></tr>';
+  }
+
+  $("#table-genres tbody").html(tr);
 }
 
 //Handle Delete buttons show
@@ -84,7 +85,7 @@ function deleteGenre(idGenre) {
     dataType: "json",
     success: function(genreData) {
       notifications("Género eliminado exitosamente.", "success");
-      getsGenreList()
+      getsGenreList();
     },
     error: function(errMsg) {
       notifications(errMsg.responseJSON.error, "error");
@@ -98,7 +99,7 @@ jQuery(function($) {
   $("#add-genre").click(function() {
     if (validateRequiredFileds(".form-genre")) {
       const genreData = {
-        genre: $("#genre-input").val(),
+        genre: $("#genre-input").val()
       };
       $.ajax({
         type: "POST",
@@ -108,7 +109,7 @@ jQuery(function($) {
         dataType: "json",
         success: function(data) {
           notifications("Género creado exitosamente.", "success");
-          getsGenreList()
+          getsGenreList();
           $(".form-genre").trigger("reset");
         },
         error: function(errMsg) {
