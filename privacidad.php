@@ -13,7 +13,7 @@ include 'header.php';
     </div>
   </div>
   <div class="container">
-    <p class="paragraph-privacy">
+    <p class="paragraph-legal">
       DOS CON TODO, S.A. DE C.V., con domicilio ubicado en Calle Milán Número 14
       Planta Baja, Colonia Juárez, Delegación Cuauhtémoc, Código Postal 06600,
       Ciudad de México, correo electrónico hola@parker-lenox.com, será el
@@ -26,7 +26,7 @@ include 'header.php';
       Ley Federal de Protección de Datos Personales en Posesión de los
       Particulares y los relativos a su reglamento hace de su conocimiento.
     </p>
-    <p class="paragraph-privacy">
+    <p class="paragraph-legal">
       DOS CON TODO, S.A. DE C.V., hace de su conocimiento que los datos personales
       que usted voluntariamente nos proporciona, serán tratados de manera
       confidencial, debidamente conservados y resguardados bajo un estricto orden
@@ -40,13 +40,13 @@ include 'header.php';
       antelación, o bien, las señaladas en el Aviso de Privacidad Integral de esta
       empresa.
     </p>
-    <p class="paragraph-privacy">
+    <p class="paragraph-legal">
       DOS CON TODO, S.A. DE C.V., entenderá que el titular ha manifestado su
       consentimiento, si este, no manifiesta la revocación a través del
       procedimiento referido en el Aviso de Privacidad Integral, que puede ser
       consultado en los portales electrónicos de esta empresa.
     </p>
-    <p class="paragraph-privacy">
+    <p class="paragraph-legal">
       Para mayor información de los términos y condiciones, favor de consultar el
       Aviso de Privacidad Integral o bien de manera física dentro de las
       instalaciones por el personal autorizado.
