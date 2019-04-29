@@ -27,6 +27,14 @@ class DataTable implements JsonSerializable
     $instance->max_person= $max_person;
     return $instance; 
   }
+
+  public static function constructPost($tableData){
+    $instance = new self();
+    $instance->no_table = $tableData->noTable;
+    $instance->min_person =  $tableData->minPerson;
+    $instance->max_person =  $tableData->maxPerson;
+    return $instance; 
+  }
 //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
