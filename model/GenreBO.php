@@ -12,10 +12,10 @@ class GenreBO
   }
 
   //Methods
-   public function CreateGenre($genre){
+   public function CreateGenre($genreData){
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $query = "INSERT INTO `GENEROS` (`GENERO`) VALUES ('".$genre."');";
+    $query = "INSERT INTO `GENEROS` (`GENERO`) VALUES ('" . $genreData->genre . "');";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if($resultQuery){
@@ -26,10 +26,10 @@ class GenreBO
     }
   }
 
-  public function DeleteGenre($idGenre){
+  public function DeleteGenre($genreData){
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $query = "DELETE FROM `generos` WHERE `id_genero`=".$idGenre." ";
+    $query = "DELETE FROM `generos` WHERE `id_genero`= '" . $genreData->id_genre . "'";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery){

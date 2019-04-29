@@ -25,13 +25,7 @@ class Genre implements JsonSerializable{
     return $instance;
   }
 
-  public static function constructShowJson($genre ) {
-    $instance = new self();
-    $instance->genre = $genre;
-
-    return $instance;
-  }
-  //Methods
+   //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
     if(method_exists($this, $name)){
