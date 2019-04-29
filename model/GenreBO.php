@@ -12,7 +12,7 @@ class GenreBO
   }
 
   //Methods
-   public function CreateGenre($genreData){
+   public function CreateGenre($genre){
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
     $query = "INSERT INTO `GENEROS` (`GENERO`) VALUES ('".$genre."');";
