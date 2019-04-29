@@ -19,7 +19,7 @@
       <div class="row justify-content-center">
           <hr class="horizontal-line">
           <div class="col-6 col-md-4">
-              <a href="#">
+              <a href="terminos-condiciones.php">
                   <p class="text-center link">Términos y Condiciones</p>
               </a>
           </div>
