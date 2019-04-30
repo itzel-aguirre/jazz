@@ -25,7 +25,9 @@ jQuery(function($) {
         .siblings(".error")
         .hide();
       $("#date-time").removeClass("input-text--error");
-      llenarMesas($("#clients").val(), $("#date-time").val());
+      if ($("#clients").val()){
+        llenarMesas($("#clients").val(), $("#date-time").val());
+      }
     }
   });
 
@@ -67,6 +69,9 @@ function llenarMesas(no_table, fecha_Hr) {
     },
     error: function(errMsg) {
       console.error(errMsg);
+      $("#table").append(
+        '<option value="" disabled="" selected="">Sin mesas disponibles</option>'
+      );
       $("#login-form")
         .siblings(".error")
         .text(errMsg);
