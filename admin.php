@@ -428,6 +428,7 @@
   <script src="js/reservation.js"></script>
   <script src="js/table.js"></script>
   <script src="js/video.js"></script>
+  <script src="js/user.js"></script>
 </body>
 
 </html>
