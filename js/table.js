@@ -1,4 +1,10 @@
 jQuery(function($) {
+  $("#general-tab").on("click", function(e) {
+    getsTablesList();
+  });
+});
+
+jQuery(function($) {
   const tablesParcialView = [1, 20, 56, 54];
   $("#clients").change(function() {
     if (!$("#date-time").val()) {
@@ -72,12 +78,7 @@ function llenarMesas(no_table, fecha_Hr) {
 Gets tables list to display
 */
 
-jQuery(function($) {
-  getsTablesList();
-});
-
 function getsTablesList() {
- 
   $.ajax({
     type: "GET",
     url: "controller/controller-list-all-tables.php",

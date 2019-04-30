@@ -1,6 +1,9 @@
 jQuery(function($) {
-  getCurrentVideo()
+  $("#general-tab").on("click", function(e) {
+    getCurrentVideo();
+  });
 });
+
 function getCurrentVideo(){
   let valorUrl = "";
   $.ajax({
@@ -12,7 +15,6 @@ function getCurrentVideo(){
       video.forEach(dataVideo => {
          valorUrl = dataVideo.url;
       }); 
-      alert(valorUrl);
      $("#video-input").val(valorUrl);
     }
   });
