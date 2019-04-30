@@ -61,6 +61,12 @@
 
   </script>
 
+  <script>
+    const getUrl = window.location;
+    const baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+    $('#main-logo').attr("href",baseUrl)
+  </script>
+
   <!-- Your customer chat code -->
   <div class="fb-customerchat" attribution=install_email page_id="388926777938003">
   </div>
