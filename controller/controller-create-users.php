@@ -7,7 +7,7 @@ $json_str = file_get_contents('php://input');
 # Get as an object
 $json_obj = json_decode($json_str);
 
-$showLogic = new UserBO();
+$userLogic = new UserBO();
 $userData = User::constructUserJson($json_obj);
 try{
   $userLogic->CreateUser($userData);

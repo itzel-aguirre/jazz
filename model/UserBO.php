@@ -48,7 +48,7 @@ class UserBO
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
 
-    $query = "INSERT INTO `usuarios` (`USUARIO`, `CONTRASEÑA`, `ROL`, `CORREO`) VALUES ('" . $userData->user . "', '" . $userData->password . "'', '" . $userData->role . "', '" . $userData->email . "'); ";
+    $query = "INSERT INTO `usuarios` (`USUARIO`, `CONTRASEÑA`, `ROL`, `CORREO`) VALUES ('" . $userData->name . "', '" . $userData->password . "', '" . $userData->type . "', '" . $userData->email . "'); ";
     $resultUser = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultUser) {
