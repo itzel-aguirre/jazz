@@ -1,16 +1,24 @@
 jQuery(function($) {
-  getCurrentVideo()
+  $("#general-tab").on("click", function(e) {
+    getCurrentVideo();
+  });
 });
+
 function getCurrentVideo(){
+  let valorUrl = "";
   $.ajax({
     type: "GET",
     url: "controller/controller-get-current-video.php",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(video) {
-      $("video-input").val(video.url)
+      video.forEach(dataVideo => {
+         valorUrl = dataVideo.url;
+      }); 
+     $("#video-input").val(valorUrl);
     }
   });
+  
 }
 
 /**
@@ -34,7 +42,7 @@ jQuery(function($) {
         },
         error: function(errMsg) {
           notifications(errMsg.responseJSON.error, "error");
-          console.error(errMsg.responseJSON.error);
+          console.error(errMsg.responseJSON.error); 
         }
       });
     }

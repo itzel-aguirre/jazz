@@ -19,6 +19,6 @@ if($deleteGenre){
 else{
   header('HTTP/1.1 420 Method Failure');
   header('Content-Type: application/json; charset=UTF-8');
-  die(json_encode (array('error'=>'Error al eliminar una reservación')));
+  die(json_encode (array('error'=>'Error al eliminar un genero')));
 } 
 ?>
