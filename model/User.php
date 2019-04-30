@@ -4,9 +4,9 @@ class User implements JsonSerializable
 {
   //Attributes
   private $id_user;
-  private $name;
+  private $user;
   private $password;
-  private $type;
+  private $role;
   private $email;
 
   //Constructor
@@ -19,6 +19,26 @@ class User implements JsonSerializable
     $instance->password = $dataUser->password;
     return $instance;
   }
+
+  public static function constructUserJson($userData){
+    $instance = new self();
+    $instance->user = $userData->user;
+    $instance->password = $userData->password;
+    $instance->role = $userData->role;
+    $instance->email = $userData->email;
+    return $instance;
+  }
+
+  public static function constructUserList($id_user, $user, $password ,$role) {
+    $instance = new self();
+    $instance->id_user = $id_user;
+    $instance->user = $user;
+    $instance->password = $password;
+    $instance->role = $role;
+    //$instance->email = $email;
+    return $instance;
+  }
+
   //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name, $value)
@@ -43,8 +63,10 @@ class User implements JsonSerializable
   {
     return
       [
-        'name' => $this->name,
-        'type' => $this->type,
+        'id_user' => $this->id_user,
+        'user' => $this->user,
+        'password' => $this->password,
+        'role' => $this->role,
       ];
   }
 }
