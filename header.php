@@ -70,7 +70,7 @@
 <body>
     <header class="container-fluid">
         <div class="row justify-content-center">
-            <a href="http://localhost/jazz/">
+            <a id="main-logo" href="">
                 <picture>
                     <source media="(min-width: 768px)" srcset="images/logo/logo-tablet.png" />
                     <img src="images/logo/logo.png" alt="Parker & Lenox Logo" class="img-fluid navbar-brand">

@@ -3,6 +3,11 @@ include_once 'ConectDB.php';
 include_once 'Reservations.php';
 include '../lib/PHPExcel.php';
 include '../lib/PHPExcel/Writer/Excel2007.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'phpmailer/Exception.php';
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
 
 class ReservationsBO
 {
@@ -26,7 +31,7 @@ class ReservationsBO
     $query .= " INNER JOIN `mesas` ON reservaciones.ID_MESA = mesas.ID_MESA";
 
     $resultQuery = $databaseConected->consulta($query);
-    
+
     if ($resultQuery->num_rows > 0) {
 
       while ($row = $resultQuery->fetch_assoc()) {
@@ -35,8 +40,7 @@ class ReservationsBO
       }
       /* $databaseConected->desconectar(); */
       return $reservation_list;
-
-    } 
+    }
     $databaseConected->desconectar();
     return $reservation_list;
   }
@@ -46,12 +50,12 @@ class ReservationsBO
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
 
-    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION= ".$idReservation.";";
+    $query = "DELETE FROM `reservaciones` WHERE reservaciones.ID_RESERVACION= " . $idReservation . ";";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
       return json_encode(TRUE);
-    } else { 
+    } else {
       return json_encode(array('error' => FALSE));
     }
   }
@@ -93,12 +97,11 @@ class ReservationsBO
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
-     // $reservation = $this->getDataToEmail($reservation);
-     // $this->sendEmail($reservation);
-      return (true);
+      $reservation = $this->getDataToEmail($reservation);
       
+      return $this->sendEmail($reservation);
     } else {
-      return json_encode(array('error' => FALSE));
+      return false;
     }
   }
 
@@ -106,7 +109,7 @@ class ReservationsBO
   {
     //excel
     $objPHPExcel = new PHPExcel();
-  
+
     $reservationlist = array();
     $reservationlist = $reservation_list;
     $usrResponse = $reservationlist;
@@ -137,19 +140,17 @@ class ReservationsBO
       $objPHPExcel->getActiveSheet()->SetCellValue('A' . $j, $obj->full_name);
       $objPHPExcel->getActiveSheet()->SetCellValue('B' . $j, $obj->mail);
       $objPHPExcel->getActiveSheet()->SetCellValue('C' . $j, $obj->cell_phone);
-      
-      if ($obj->deposit_made == 1){
+
+      if ($obj->deposit_made == 1) {
         $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Depósito realizado");
-      }
-      else{
-        if ($obj->no_people < 7){
+      } else {
+        if ($obj->no_people < 7) {
           $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "No aplica");
-        }
-        else{
+        } else {
           $objPHPExcel->getActiveSheet()->SetCellValue('D' . $j, "Pendiente");
         }
       }
-      
+
       $objPHPExcel->getActiveSheet()->SetCellValue('E' . $j, $obj->no_people);
       $objPHPExcel->getActiveSheet()->SetCellValue('F' . $j, $obj->artist);
       $objPHPExcel->getActiveSheet()->SetCellValue('G' . $j, $obj->cover);
@@ -195,13 +196,9 @@ class ReservationsBO
   }
   public function sendEmail($reservation)
   {
-    // Multiple recipients
-    $to = $reservation->mail; // note the comma
 
-    // Subject
-    $subject = 'Reservación Parker&Lenox';
-
-    // Message
+    // Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
     $message = '
       <html>
       <head>
@@ -235,22 +232,45 @@ class ReservationsBO
     $message .= '</body>
     </html>';
 
-    // To send HTML mail, the Content-type header must be set
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+    try {
+      //Server settings
+      $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+      $mail->isSMTP();                                            // Set mailer to use SMTP
+      $mail->Host       = 'mail.somefriends.pro';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+      $mail->Username   = 'contacto@somefriends.pro';                     // SMTP username
+      $mail->Password   = 'hq,+!(&iHhyt';                               // SMTP password
+      $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+      $mail->Port       = 587;                                    // TCP port to connect to
+      $mail->CharSet = 'UTF-8';
 
-    // Additional headers
-    $headers[] = 'To: ' . $reservation->full_name . ' <' . $reservation->mail . '>';
-    $headers[] = 'From: Somefriends <contacto@somefriends.pro>';
+      //Recipients
+      $mail->setFrom('contacto@somefriends.pro', 'Somefriends');
+      $mail->addAddress($reservation->mail, $reservation->full_name);     // Add a recipient
+      $mail->addReplyTo('contacto@somefriends.pro', 'Information');
 
-    // Mail it
-    mail($to, $subject, wordwrap($message, 80), implode("\r\n", $headers));
+      // Content
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = 'Reservación Parker&Lenox';
+      $mail->Body    = $message;
+      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+      $mail->send();
+      echo 'Message has been sent';
+    } catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      return false;
+    }
+    finally{
+      return true;
+    }
   }
 
-  public function updateDeposit($idReservation, $deposito){
+  public function updateDeposit($idReservation, $deposito)
+  {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-   $query = "UPDATE `reservaciones` SET `DEPOSITO_REALIZADO`= ".$deposito." WHERE ID_RESERVACION = ".$idReservation."";
+    $query = "UPDATE `reservaciones` SET `DEPOSITO_REALIZADO`= " . $deposito . " WHERE ID_RESERVACION = " . $idReservation . "";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
