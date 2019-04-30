@@ -11,7 +11,7 @@ include 'header.php';
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 mh-100 p-0 d-flex align-self-end">
-      <iframe src="https://www.youtube.com/embed/O0rUauUjKVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-yt"></iframe>
+      <iframe id="main-video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video-yt"></iframe>
     </div>
   </div>
   <div class="row row--background-red">
