@@ -13,7 +13,7 @@ function getCurrentVideo(){
          valorUrl = dataVideo.url;
       }); 
       alert(valorUrl);
-     $("video-input").val(valorUrl);
+     $("#video-input").val(valorUrl);
     }
   });
   
