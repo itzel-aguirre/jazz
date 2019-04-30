@@ -2,9 +2,7 @@
 Gets genres list to display
 */
 jQuery(function($) {
-  $("#general-tab").on("click", function(e) {
     getsGenreList();
-  });
 });
 
 function getsGenreList() {

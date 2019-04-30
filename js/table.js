@@ -5,7 +5,7 @@ jQuery(function($) {
 });
 
 jQuery(function($) {
-  const tablesParcialView = [1, 20, 56, 54];
+  const tablesParcialView = [2, 3, 20, 56];
   $("#clients").change(function() {
     if (!$("#date-time").val()) {
       $("#date-time")
