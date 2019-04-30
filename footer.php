@@ -39,6 +39,7 @@
   <script src="js/slider.js"></script>
   <script src="js/table.js"></script>
   <script src="js/reservation.js"></script>
+  <script src="js/video.js"></script>
   <!-- End Carousel -->
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>

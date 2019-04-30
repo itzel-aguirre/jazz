@@ -26,20 +26,20 @@ class UpdateUrlBO
    {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $Urls = array();
+    $url=null;
     
     $query = "SELECT * FROM `video`";
 
     $urlInfo = $databaseConected->consulta($query);
     if ($urlInfo->num_rows > 0) {
 		  while($row = $urlInfo->fetch_assoc()) {
-            $url = UpdateUrl::constructNewUrlJson($row["url"]);
-			      $Urls[]= $url;
+            $url = UpdateUrl::constructNewUrl($row["url"]);
+
 			}
 		}
     $databaseConected->desconectar();
 
-    return $Urls;
+    return $url;
    }
 }
 ?>
