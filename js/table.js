@@ -77,6 +77,7 @@ jQuery(function($) {
 });
 
 function getsTablesList() {
+ 
   $.ajax({
     type: "GET",
     url: "controller/controller-list-all-tables.php",

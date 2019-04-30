@@ -4,6 +4,8 @@ class DataTable implements JsonSerializable
  //Attributes
  protected $id_table;
  protected $no_table;
+ protected $min_person;
+ protected $max_person;
  //Constructor
  public function __construct()
  {
@@ -14,6 +16,23 @@ class DataTable implements JsonSerializable
     $instance = new self();
     $instance->id_table = $id_table;
     $instance->no_table = $no_table;
+    return $instance; 
+  }
+
+  public static function constructNewTableJson($id_table, $no_table, $min_person, $max_person) {
+    $instance = new self();
+    $instance->id_table = $id_table;
+    $instance->no_table = $no_table;
+    $instance->min_person = $min_person;
+    $instance->max_person= $max_person;
+    return $instance; 
+  }
+
+  public static function constructPost($tableData){
+    $instance = new self();
+    $instance->no_table = $tableData->noTable;
+    $instance->min_person =  $tableData->minPerson;
+    $instance->max_person =  $tableData->maxPerson;
     return $instance; 
   }
 //Methods
@@ -42,8 +61,8 @@ class DataTable implements JsonSerializable
     [
       'no_table' => $this->no_table,
       'id_table' => $this->id_table,
-      'no_people_min' => $this->no_people_min,
-      'no_people_max' => $this->no_people_max,
+      'min_person' => $this->min_person,
+      'max_person' => $this->max_person,
     ];
   }
 }
