@@ -17,7 +17,7 @@ class UpdateUrl implements JsonSerializable
   }
 
   
- public static function constructNewUrlJson($url) {
+ public static function constructNewUrl($url) {
   $instance = new self();
   $instance->url = $url;
   return $instance;

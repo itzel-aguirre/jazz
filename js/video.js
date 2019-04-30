@@ -1,7 +1,7 @@
 jQuery(function($) {
-  $("#general-tab").on("click", function(e) {
+
     getCurrentVideo();
-  });
+
 });
 
 function getCurrentVideo(){
@@ -12,10 +12,8 @@ function getCurrentVideo(){
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(video) {
-      video.forEach(dataVideo => {
-         valorUrl = dataVideo.url;
-      }); 
-     $("#video-input").val(valorUrl);
+     $("#video-input").val( video.url);
+     $("#main-video").attr('src',`https://www.youtube.com/embed/${video.url}`)
     }
   });
   

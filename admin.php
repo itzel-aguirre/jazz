@@ -119,6 +119,9 @@
         <li class="nav-item">
           <a class="nav-link" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="false">General</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="false">Usuarios</a>
+        </li>
       </ul>
       <div class="tab-content" id="adminTabsContent">
         <div class="tab-pane fade show active" id="show" role="tabpanel" aria-labelledby="show-tab">
@@ -346,6 +349,61 @@
                   </form>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-6">
+                  <form action="" class="form form-user">
+                    <div class="form-group">
+                        <label for="nameUser" class="label">Nombre</label>
+                        <input id="nameUser" type="text" class="form-control input-text" maxlength="100" required />
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="passUser" class="label">Contraseña</label>
+                        <input id="passUser" type="password" class="form-control input-text" maxlength="50" required />
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="rolUser" class="label">Rol</label>
+                        <select id="rolUser" class="form-control select-text" required>
+                          <option value="" disabled selected>Selecciona</option>
+                          <option value="ADMIN">Administrador</option>
+                          <option value="EDIT">Editor</option>
+                        </select>
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailUser" class="label">Correo</label>
+                        <input id="emailUser" type="email" class="form-control input-text" maxlength="100" required />
+                        <p class="error"></p>
+                    </div>
+                    <div class="col-12">
+                      <div class="row justify-content-end">
+                        <button type="button" class="btn btn-primary btn-lg" id="btnAddUsr">Guardar</button>
+                        </a>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+              <div class="col-6">
+                <div class="table-responsive">
+                  <table id="table-user" class="table table-hover">
+                    <thead>
+                      <th>Nombre</th>
+                      <th>Rol</th>
+                      <th>Contraseña</th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
