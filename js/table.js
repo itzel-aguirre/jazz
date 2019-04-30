@@ -25,7 +25,9 @@ jQuery(function($) {
         .siblings(".error")
         .hide();
       $("#date-time").removeClass("input-text--error");
-      llenarMesas($("#clients").val(), $("#date-time").val());
+      if ($("#clients").val()){
+        llenarMesas($("#clients").val(), $("#date-time").val());
+      }
     }
   });
 
