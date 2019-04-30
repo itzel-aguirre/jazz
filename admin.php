@@ -369,6 +369,7 @@
   <script src="js/genre.js"></script>
   <script src="js/reservation.js"></script>
   <script src="js/table.js"></script>
+  <script src="js/video.js"></script>
 </body>
 
 </html>

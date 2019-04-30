@@ -1,31 +1,29 @@
 <?php
+class UpdateUrl implements JsonSerializable
+{
 
-class Genre implements JsonSerializable{
-  //Attributes
-  protected $id_genre;
-  protected $genre;
+ //Attributes
+ protected $url;
   //Constructor
   public function __construct()
   {
 
   }
 
-  public static function constructPost($dataGenreInfo){
+  public static function constructPost($dataInfo){
     $instance = new self();
-    $instance->id_genre = $dataGenreInfo->id_genre;
-    $instance->genre = $dataGenreInfo->genre;
+    $instance->url = $dataInfo->url;
     return $instance;
   }
 
-  public static function constructNewGenre( $id_genre, $genre ) {
-    $instance = new self();
-    $instance->id_genre = $id_genre;
-    $instance->genre = $genre;
+  
+ public static function constructNewUrlJson($url) {
+  $instance = new self();
+  $instance->url = $url;
+  return $instance;
+ }
 
-    return $instance;
-  }
-
-   //Methods
+  //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
     if(method_exists($this, $name)){
@@ -35,6 +33,7 @@ class Genre implements JsonSerializable{
       $this->$name = $value;
       }
   }
+
   // Getter/Setter not defined so return property if it exists
   public function __get($name){
       if(method_exists($this, $name)){
@@ -45,13 +44,14 @@ class Genre implements JsonSerializable{
       }
       return null;
   }
+
   public function jsonSerialize()
   {
       return 
       [
-        'id_genre' => $this->id_genre,
-        'genre' => $this->genre,
+        'url' => $this->url,
       ];
   }
 }
+
 ?>
