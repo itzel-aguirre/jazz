@@ -55,6 +55,9 @@ function login(email, password) {
       $(".welcome-text").text("Bienvenido " + data.name);
       $("#admin").show();
       $("#login").hide();
+
+      if(data.type !== 'ADMIN')
+        $("#user-tab").addClass('d-none')
       if (typeof Storage !== "undefined") {
         sessionStorage.setItem("loginData", JSON.stringify(loginData));
       } else {
