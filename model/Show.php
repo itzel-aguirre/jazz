@@ -13,6 +13,7 @@ class Show implements JsonSerializable{
   protected $url_img_desktop;
   protected $genres;
   protected $datesTime;
+  protected $sold_out;
   //Constructor
   public function __construct()
   {
@@ -73,6 +74,7 @@ class Show implements JsonSerializable{
         'url_img_mobile' => $this->url_img_mobile,
         'url_img_desktop' => $this->url_img_desktop,
         'genres' => $this->genres,
+        'sold_out' => $this->sold_out,
       ];
   }
 }
