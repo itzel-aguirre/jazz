@@ -75,9 +75,6 @@ function llenarMesas(no_table, fecha_Hr) {
       $("#table").append(
         '<option value="" disabled="" selected="">Sin mesas disponibles</option>'
       );
-      $("#login-form")
-        .siblings(".error")
-        .text(errMsg);
     }
   });
 }

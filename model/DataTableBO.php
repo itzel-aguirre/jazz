@@ -32,7 +32,7 @@ class DataTableBO
           }
             return $list_Array;
           } else {
-            return false; // json_encode (array('error'=>"Sin mesas"));
+            return false; 
         }
         $databaseConected->desconectar();
     }
