@@ -140,6 +140,8 @@ class ShowBO
     $shows = array();
 
     $query = "SELECT espectaculos.ID_ESPECTACULO, fecha_hr_espectaculo.ID_FECHA_HR, espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,espectaculos.IMAGEN_LAP,espectaculos.COVER,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA 
+    , CASE WHEN (SELECT  COUNT(DISTINCT ID_MESA) a FROM `reservaciones` WHERE ID_ESPECTACULO =espectaculos.ID_ESPECTACULO AND ID_FECHA_HR=fecha_hr_espectaculo.ID_FECHA_HR) = (SELECT COUNT(ID_MESA) from `mesas`)
+       THEN 1 ELSE 0 END AS souldOut
     FROM `espectaculos` 
     INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  
     ORDER BY `fecha_hr_espectaculo`.`FECHA` ASC;";
@@ -156,6 +158,7 @@ class ShowBO
         $show->time = $row['HORA'];
         $show->url_img_mobile = $row['IMAGEN_MOVIL'];
         $show->url_img_desktop = $row['IMAGEN_LAP'];
+        $show->sould_out = $row['souldOut'];  
 
         $query ="SELECT generos.GENERO
         FROM `espectaculo-genero` 
@@ -195,5 +198,31 @@ class ShowBO
 
     return $schedules;
   }
+
+  /* public function tableSouldOut($showData)
+    {
+      $databaseConected = new ConectDB();
+      $databaseConected->conectar();
+      $url=null;
+      $query ="SELECT 
+      CASE WHEN (SELECT  COUNT(DISTINCT ID_MESA) a FROM `reservaciones` WHERE ID_ESPECTACULO = '" . $showData->id_show . "'
+      AND ID_FECHA_HR=  '" . $showData->id_date_hr . "') = (SELECT COUNT(ID_MESA) from `mesas`)
+      THEN 1 ELSE 0 END AS RowLleno
+      FROM  `reservaciones`  GROUP BY  RowLleno";
+      $resultQuery = $databaseConected->consulta($query);
+      ;
+      $urlInfo = $databaseConected->consulta($query);
+      if ($urlInfo->num_rows > 0) {
+        while($row = $urlInfo->fetch_assoc()) {
+              $url = UpdateUrl::constructNewUrl($row["url"]);
+  
+        }
+      }
+      $databaseConected->desconectar();
+  
+      return $url;
+     }
+
+    } */
 
 }
