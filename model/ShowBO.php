@@ -158,7 +158,7 @@ class ShowBO
         $show->time = $row['HORA'];
         $show->url_img_mobile = $row['IMAGEN_MOVIL'];
         $show->url_img_desktop = $row['IMAGEN_LAP'];
-        $show->sould_out = $row['souldOut'];  
+        $show->sold_out = $row['souldOut'];  
 
         $query ="SELECT generos.GENERO
         FROM `espectaculo-genero` 
