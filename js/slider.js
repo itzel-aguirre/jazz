@@ -73,11 +73,16 @@ function fillSlider(shows){
                               '</p>'+
                           '</div>'+
                           '<div class="col-6 align-self-center">'+
-                            '<div class="row justify-content-center">'+
-                              '<button show-id='+show.id_show+' type="button" class="btn btn-primary btn-lg reserve">'+
-                                'Reserva'+
-                              '</button>'+
-                            '</div>'+
+                            '<div class="row justify-content-center">';
+                            show.sold_out === 0 ?
+                              items +='<button show-id='+show.id_show+' type="button" class="btn btn-primary btn-lg reserve">'+
+                                  'Reserva'+
+                                '</button>'
+                              :
+                              items +='<p class="ticket">'+
+                                  'Agotado'+
+                                '</p>'
+                            items +='</div>'+
                         '</div>'+
                     '</div>'+
                   '</div>'+
