@@ -326,3 +326,29 @@ select:-webkit-autofill:focus {
     text-align: justify;
   }
 }
+
+.ticket{
+  padding: 6px 12px;
+  background: $pl-red-error;
+  color: #fff;
+  font-weight: $font-bold;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  &::before , &::after{
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute !important;
+    z-index: 100;
+    top: 10px;
+    border: 7px solid $pl-white;
+    border-radius: 8px;
+  }
+  &::before{
+    left: -10px;
+  }
+  &::after{
+    right: -10px;
+  }
+}
