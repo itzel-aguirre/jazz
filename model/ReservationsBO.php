@@ -93,7 +93,7 @@ class ReservationsBO
 
     $query = "INSERT INTO `reservaciones` ";
     $query .= "(`ID_ESPECTACULO`, `ID_MESA`, `ID_FECHA_HR`, `NOMBRE_COMPLETO`, `CORREO`, `CELULAR`, `DEPOSITO_REALIZADO`, `NO_PERSONAS`, `FOLIO`) VALUES ";
-    $query .= "(" . $reservation->id_show . ", " . $reservation->id_table . ", " . $reservation->id_date_hr . ", '" . $reservation->full_name . "', '" . $reservation->mail . "', " . $reservation->cell_phone . ", '0', " . $reservation->no_people . ", '" . $var_Folio . "')";
+    $query .= "(" . $reservation->id_show . ", " . $reservation->id_table . ", " . $reservation->id_date_hr . ", '" . str_replace("'", "\'",$reservation->full_name) . "', '" . $reservation->mail . "', " . $reservation->cell_phone . ", '0', " . $reservation->no_people . ", '" . $var_Folio . "')";
     $resultQuery = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($resultQuery) {
