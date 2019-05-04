@@ -1,6 +1,8 @@
 <?php
 include_once 'ConectDB.php';
 include_once 'Show.php';
+include_once 'Genre.php';
+include_once 'GenreBO.php';
 class ShowBO
 {
   //Attributes
@@ -15,88 +17,87 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
- 
+
     $query = "INSERT INTO `ESPECTACULOS` (`ID_ESPECTACULO`,  `ARTISTA`, `COVER`, `IMAGEN_MOVIL`, `IMAGEN_LAP`) VALUES (NULL, '" . $showData->artist . "', '" . $showData->amount . "', '" . $showData->url_img_desktop . "', '" . $showData->url_img_mobile . "');";
     $is_success = $databaseConected->consulta($query);
-    
-    if($is_success){
+
+    if ($is_success) {
       $idShow = $databaseConected->getMYSQLI()->insert_id;
       for ($i = 0; $i < sizeof($showData->genres); $i++) {
-          $query = "INSERT INTO `espectaculo-genero` (`id_espectaculo`, `id_genero`) VALUES (".$idShow.", ".$showData->genres[$i].");";
-          $databaseConected->consulta($query);
+        $query = "INSERT INTO `espectaculo-genero` (`id_espectaculo`, `id_genero`) VALUES (" . $idShow . ", " . $showData->genres[$i] . ");";
+        $databaseConected->consulta($query);
       }
-    
+
       foreach ($showData->datesTime as $dateTime) {
-          $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`) VALUES (NULL, ".$idShow.", '".$dateTime->date."', '".date("Y-m-d H:i:s", strtotime($dateTime->time))."');";
-          $databaseConected->consulta($query);
+        $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`) VALUES (NULL, " . $idShow . ", '" . $dateTime->date . "', '" . date("Y-m-d H:i:s", strtotime($dateTime->time)) . "');";
+        $databaseConected->consulta($query);
       }
-        $databaseConected->desconectar();
+      $databaseConected->desconectar();
     }
   }
-  public function saveImages($files){
+  public function saveImages($files)
+  {
     $is_success = false;
     $imagesDir =  '../images/slider/';
-    $name= $files['img-desktop']['name'];
+    $name = $files['img-desktop']['name'];
     $tmp_name = $files['img-desktop']['tmp_name'];
-    $is_success = move_uploaded_file($tmp_name, $imagesDir.$name);
+    $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
 
     $imagesDir =  '../images/slider/mobile/';
-    $name= $files['img-mobile']['name'];
+    $name = $files['img-mobile']['name'];
     $tmp_name = $files['img-mobile']['tmp_name'];
-    $is_success = move_uploaded_file($tmp_name, $imagesDir.$name);
+    $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
 
     return $is_success;
   }
   public function DeleteShow($idShow)
-  { 
+  {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-  
-    $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` WHERE ID_ESPECTACULO= ".$idShow.";";
+
+    $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` WHERE ID_ESPECTACULO= " . $idShow . ";";
     $ResultQuery = $databaseConected->consulta($query);
-     
+
     if ($ResultQuery->num_rows > 0) {
       while ($row =  $ResultQuery->fetch_assoc()) {
 
-        try
-        {
+        try {
           $imagesDir =  '../images/slider/';
           $imagesDirMobile =  '../images/slider/mobile/';
           unlink($imagesDir . $row['IMAGEN_LAP']);
           unlink($imagesDirMobile . $row['IMAGEN_MOVIL']);
-        } 
-        catch(Exception $e){
+        } catch (Exception $e) {
           return json_encode(array('error' => FALSE));
         }
       }
     }
 
 
-    $query ="DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = ".$idShow.";";
+    $query = "DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = " . $idShow . ";";
     $databaseConected->consulta($query);
-  
-        $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  ".$idShow.";";
-        $databaseConected->consulta($query);
 
-          $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO=  ".$idShow."; ";
-          $databaseConected->consulta($query);
+    $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  " . $idShow . ";";
+    $databaseConected->consulta($query);
 
-              $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`=  ".$idShow."; ";
-              $ShowInfo = $databaseConected->consulta($query);
-          
-      $databaseConected->desconectar();
-     if ($ShowInfo) {
+    $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO=  " . $idShow . "; ";
+    $databaseConected->consulta($query);
+
+    $query = "DELETE FROM `espectaculos` WHERE `id_espectaculo`=  " . $idShow . "; ";
+    $ShowInfo = $databaseConected->consulta($query);
+
+    $databaseConected->desconectar();
+    if ($ShowInfo) {
       return json_encode(TRUE);
-    } else { 
+    } else {
       return json_encode(array('error' => FALSE));
     }
   }
 
   public function UpdateShow($showData)
-  { 
+  {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $query = "UPDATE `espectaculos` SET  `ARTISTA`='".$showData->artist."', `COVER`=".$showData->amount.", `IMAGEN_MOVIL`='".$showData->url_img_mobile."', `IMAGEN_LAP`='".$showData->url_img_desktop."' WHERE `ID_ESPECTACULO`= ".$showData->id_show."; ";
+    $query = "UPDATE `espectaculos` SET  `ARTISTA`='" . $showData->artist . "', `COVER`=" . $showData->amount . ", `IMAGEN_MOVIL`='" . $showData->url_img_mobile . "', `IMAGEN_LAP`='" . $showData->url_img_desktop . "' WHERE `ID_ESPECTACULO`= " . $showData->id_show . "; ";
     $ShowInfo = $databaseConected->consulta($query);
     $databaseConected->desconectar();
     if ($ShowInfo) {
@@ -139,12 +140,17 @@ class ShowBO
     $databaseConected->conectar();
     $shows = array();
 
-    $query = "SELECT espectaculos.ID_ESPECTACULO, fecha_hr_espectaculo.ID_FECHA_HR, espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,espectaculos.IMAGEN_LAP,espectaculos.COVER,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA 
-    , CASE WHEN (SELECT  COUNT(DISTINCT ID_MESA) a FROM `reservaciones` WHERE ID_ESPECTACULO =espectaculos.ID_ESPECTACULO AND ID_FECHA_HR=fecha_hr_espectaculo.ID_FECHA_HR) = (SELECT COUNT(ID_MESA) from `mesas`)
-       THEN 1 ELSE 0 END AS souldOut
-    FROM `espectaculos` 
-    INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  
-    ORDER BY `fecha_hr_espectaculo`.`FECHA` ASC;";
+    $query = "SELECT espectaculos.ID_ESPECTACULO, fecha_hr_espectaculo.ID_FECHA_HR, espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,";
+    $query .= " espectaculos.IMAGEN_LAP,espectaculos.COVER,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA ";
+    $query .= " , CASE WHEN (SELECT  COUNT(DISTINCT ID_MESA) a FROM `reservaciones` WHERE ID_ESPECTACULO =espectaculos.ID_ESPECTACULO AND ";
+    $query .= " ID_FECHA_HR=fecha_hr_espectaculo.ID_FECHA_HR) = (SELECT COUNT(ID_MESA) from `mesas`)";
+    $query .= " THEN 1 ELSE 0 END AS souldOut ";
+    $query .= " FROM `espectaculos` ";
+    $query .= " INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  ";
+   /*  if ($id_show != 0) {
+      $query .= " WHERE  espectaculos.ID_ESPECTACULO= " . $id_show . " ";
+     } */
+    $query .= " ORDER BY `fecha_hr_espectaculo`.`FECHA` ASC;";
 
     $showsInfo = $databaseConected->consulta($query);
     if ($showsInfo->num_rows > 0) {
@@ -158,12 +164,12 @@ class ShowBO
         $show->time = $row['HORA'];
         $show->url_img_mobile = $row['IMAGEN_MOVIL'];
         $show->url_img_desktop = $row['IMAGEN_LAP'];
-        $show->sold_out = $row['souldOut'];  
+        $show->sold_out = $row['souldOut'];
 
-        $query ="SELECT generos.GENERO
+        $query = "SELECT generos.ID_GENERO, generos.GENERO
         FROM `espectaculo-genero` 
         INNER JOIN generos ON `espectaculo-genero`.`id_genero` = generos.ID_GENERO
-        WHERE `espectaculo-genero`.`id_espectaculo`= ".$show->id_show.";";
+        WHERE `espectaculo-genero`.`id_espectaculo`= " . $show->id_show . ";";
         $genresInfo = $databaseConected->consulta($query);
         while ($genre = $genresInfo->fetch_assoc()) {
           $genres[] = $genre['GENERO'];
@@ -177,15 +183,16 @@ class ShowBO
     return $shows;
   }
 
-  public function ListShedules($id_show){
+  public function ListShedules($id_show)
+  {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
     $schedules = array();
     $query = "SELECT ID_FECHA_HR ,FECHA, HORA FROM `fecha_hr_espectaculo` 
-    WHERE ID_ESPECTACULO = ".$id_show." ORDER BY FECHA ASC";
-    
+    WHERE ID_ESPECTACULO = " . $id_show . " ORDER BY FECHA ASC";
+
     $scheduleInfo = $databaseConected->consulta($query);
-     if ( $scheduleInfo->num_rows > 0) {
+    if ($scheduleInfo->num_rows > 0) {
       while ($row =  $scheduleInfo->fetch_assoc()) {
         $show = new Show();
         $show->date = $row['FECHA'];
@@ -199,30 +206,61 @@ class ShowBO
     return $schedules;
   }
 
-  /* public function tableSouldOut($showData)
-    {
-      $databaseConected = new ConectDB();
-      $databaseConected->conectar();
-      $url=null;
-      $query ="SELECT 
-      CASE WHEN (SELECT  COUNT(DISTINCT ID_MESA) a FROM `reservaciones` WHERE ID_ESPECTACULO = '" . $showData->id_show . "'
-      AND ID_FECHA_HR=  '" . $showData->id_date_hr . "') = (SELECT COUNT(ID_MESA) from `mesas`)
-      THEN 1 ELSE 0 END AS RowLleno
-      FROM  `reservaciones`  GROUP BY  RowLleno";
-      $resultQuery = $databaseConected->consulta($query);
-      ;
-      $urlInfo = $databaseConected->consulta($query);
-      if ($urlInfo->num_rows > 0) {
-        while($row = $urlInfo->fetch_assoc()) {
-              $url = UpdateUrl::constructNewUrl($row["url"]);
-  
+  public function GetListShowsUpdate($id_show)
+  {
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+    $shows = array();
+
+    $query = "SELECT espectaculos.ID_ESPECTACULO,  espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,";
+    $query .= " espectaculos.IMAGEN_LAP, espectaculos.COVER ";
+    //fecha_hr_espectaculo.ID_FECHA_HR,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA ";
+    $query .= " FROM `espectaculos` ";
+    $query .= " INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  ";
+    $query .= " WHERE  espectaculos.ID_ESPECTACULO= " . $id_show . " ";
+    $query .= " ORDER BY `fecha_hr_espectaculo`.`FECHA` ASC;";
+
+    $showsInfo = $databaseConected->consulta($query);
+    if ($showsInfo->num_rows > 0) {
+      while ($row = $showsInfo->fetch_assoc()) {
+        $genres = array();
+        $show = new Show();
+        $datesTime_Info = array();
+        $show->id_show = $row['ID_ESPECTACULO'];
+        $show->artist = $row['ARTISTA'];
+        $show->amount = $row['COVER'];
+        //$show->date = $row['FECHA'];
+        //$show->time = $row['HORA'];
+        $show->url_img_mobile = $row['IMAGEN_MOVIL'];
+        $show->url_img_desktop = $row['IMAGEN_LAP'];
+
+        $query = "SELECT generos.ID_GENERO, generos.GENERO
+        FROM `espectaculo-genero` 
+        INNER JOIN generos ON `espectaculo-genero`.`id_genero` = generos.ID_GENERO
+        WHERE `espectaculo-genero`.`id_espectaculo`= " . $show->id_show . ";";
+        $genresInfo = $databaseConected->consulta($query);
+        while ($genre = $genresInfo->fetch_assoc()) {
+          $constructGenre = Genre::constructNewGenre($genre["ID_GENERO"], $genre["GENERO"]);
+          $genres[] =$constructGenre; 
         }
+        $show->genres = $genres;
+
+        $query = "SELECT 
+        ID_FECHA_HR, FECHA, HORA
+        FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO= " . $show->id_show . "";
+        $date_timeInfo= $databaseConected->consulta($query);
+        while ($info = $date_timeInfo->fetch_assoc()){
+          $constructInfoDateTime = Show::constructDateTimeList($info["ID_FECHA_HR"], $info["FECHA"], $info["HORA"]);
+          $datesTime_Info[] = $constructInfoDateTime; 
+        }
+        $show->datesTime= $datesTime_Info;
+
+        
+        $shows[] = $show;
       }
-      $databaseConected->desconectar();
-  
-      return $url;
-     }
+    }
+    $databaseConected->desconectar();
 
-    } */
-
+    return $shows;
+  }   
 }
