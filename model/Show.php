@@ -40,6 +40,14 @@ class Show implements JsonSerializable{
     return $instance;
   }
 
+  public static function constructDateTimeList($id_show, $fecha, $hora){
+    $instance = new self();
+    $instance->id_show = $id_show;
+    $instance->date = $fecha;
+    $instance->time = $hora;
+    return $instance;
+  }
+
   //Methods
   // Getter/Setter not defined so set as property of object
   public function __set($name,$value){
@@ -75,6 +83,7 @@ class Show implements JsonSerializable{
         'url_img_desktop' => $this->url_img_desktop,
         'genres' => $this->genres,
         'sold_out' => $this->sold_out,
+        'datesTime' => $this->datesTime,
       ];
   }
 }

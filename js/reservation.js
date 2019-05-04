@@ -44,6 +44,7 @@ function validarReservation() {
         },
         error: function(errMsg) {
           console.error(errMsg);
+          notifications("Error al registar una reservación.", "error");
           $("#login-form")
             .siblings(".error")
             .text(errMsg);
