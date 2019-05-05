@@ -40,9 +40,9 @@ class Show implements JsonSerializable{
     return $instance;
   }
 
-  public static function constructDateTimeList($id_show, $fecha, $hora){
+  public static function constructDateTimeList( $id_date_hr, $fecha, $hora){
     $instance = new self();
-    $instance->id_show = $id_show;
+    $instance->id_date_hr = $id_date_hr;
     $instance->date = $fecha;
     $instance->time = $hora;
     return $instance;
