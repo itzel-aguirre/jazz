@@ -210,11 +210,10 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $shows = array();
+    $show = new Show();
 
     $query = "SELECT espectaculos.ID_ESPECTACULO,  espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,";
     $query .= " espectaculos.IMAGEN_LAP, espectaculos.COVER ";
-    //fecha_hr_espectaculo.ID_FECHA_HR,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA ";
     $query .= " FROM `espectaculos` ";
     $query .= " INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  ";
     $query .= " WHERE  espectaculos.ID_ESPECTACULO= " . $id_show . " ";
@@ -224,13 +223,10 @@ class ShowBO
     if ($showsInfo->num_rows > 0) {
       while ($row = $showsInfo->fetch_assoc()) {
         $genres = array();
-        $show = new Show();
         $datesTime_Info = array();
         $show->id_show = $row['ID_ESPECTACULO'];
         $show->artist = $row['ARTISTA'];
         $show->amount = $row['COVER'];
-        //$show->date = $row['FECHA'];
-        //$show->time = $row['HORA'];
         $show->url_img_mobile = $row['IMAGEN_MOVIL'];
         $show->url_img_desktop = $row['IMAGEN_LAP'];
 
@@ -255,12 +251,10 @@ class ShowBO
         }
         $show->datesTime= $datesTime_Info;
 
-        
-        $shows[] = $show;
       }
     }
     $databaseConected->desconectar();
 
-    return $shows;
+    return $show;
   }   
 }
