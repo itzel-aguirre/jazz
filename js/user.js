@@ -17,6 +17,8 @@ function getsUsersList() {
 }
 function fillTableUsers(users) {
   let tr = "";
+  let DeleteControl = "";
+  var banderaAdmin = false;
 
   if (users.length > 0) {
     users.forEach(user => {
@@ -29,15 +31,22 @@ function fillTableUsers(users) {
         "</td>" +
         "<td>" +
         user.password +
-        "</td>" +
-        '<td class="actions-buttons">' +
-        '<button user-id="' +
-        user.id_user +
-        '" type="button" class="btn btn-primary btn-lg delete-user" >' +
-        '<i class="mdi mdi-delete mdi-24px"></i></button>' +
-        " </td>";
+        "</td>";
+      if (user.type === "ADMIN" && banderaAdmin == false) 
+      {
+        DeleteControl = "<td>" + "</td>";
+        banderaAdmin = true;
+      } else {
+        DeleteControl =
+          '<td class="actions-buttons">' +
+          '<button user-id="' +
+          user.id_user +
+          '" type="button" class="btn btn-primary btn-lg delete-user" >' +
+          '<i class="mdi mdi-delete mdi-24px"></i></button>' +
+          " </td>";
+      }
 
-      tr += "<tr>" + information + "</tr>";
+      tr += "<tr>" + information + DeleteControl + "</tr>";
     });
   } else {
     tr = '<tr><td colspan="4" class="text-center">No hay resultados</td></tr>';
@@ -85,14 +94,16 @@ function deleteUser(idUser) {
 jQuery(function($) {
   $("#btnAddUsr").click(function() {
     const email = $("#emailUser").val();
-    if (validateRequiredFileds(".form-user")&&
-    validateEmail(email, "#emailUser")) {
-       {
+    if (
+      validateRequiredFileds(".form-user") &&
+      validateEmail(email, "#emailUser")
+    ) {
+      {
         const userData = {
           name: $("#nameUser").val(),
           password: $("#passUser").val(),
           rol: $("#rolUser").val(),
-          email: $("#emailUser").val(),
+          email: $("#emailUser").val()
         };
 
         $.ajax({
