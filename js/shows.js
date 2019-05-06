@@ -7,17 +7,22 @@ jQuery(function($) {
   $("#multiple-checkboxes").multiselect({
     includeSelectAllOption: true
   });
-  $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
-    icons: {
-      time: "mdi mdi-clock-outline",
-      date: "mdi mdi-calendar-range",
-      up: "mdi mdi-chevron-up mdi-24px",
-      down: "mdi mdi-chevron-down mdi-24px"
-    },
-    locale: "es" });
+  $.fn.datetimepicker.Constructor.Default = $.extend(
+    {},
+    $.fn.datetimepicker.Constructor.Default,
+    {
+      icons: {
+        time: "mdi mdi-clock-outline",
+        date: "mdi mdi-calendar-range",
+        up: "mdi mdi-chevron-up mdi-24px",
+        down: "mdi mdi-chevron-down mdi-24px"
+      },
+      locale: "es"
+    }
+  );
   $("#dateShow").datetimepicker({
     inline: true,
-    sideBySide: true,
+    sideBySide: true
   });
   $("#addDateTime").click(function() {
     const dateTimeInfo = $("#dateShow").datetimepicker("date");
@@ -70,13 +75,14 @@ jQuery(function($) {
   $("#add-newShow").hide();
 
   $("#add-show").click(function() {
-    activateRequiredFields()
+    activateRequiredFields();
     $("#group-dates").hide();
-    $('.image-name').hide();
+    $(".image-name").hide();
     $("#add-newShow").show();
     $("#list-show").hide();
     $("#titleShows").text("Crear nuevo espectáculo");
-    $("#update-show").attr("id", "save-new-show");
+    $("#save-new-show").show();
+    $("#update-show").hide();
   });
 
   $("#cancel-new-show").click(function() {
@@ -200,9 +206,9 @@ jQuery(function($) {
 
 function sendImages(message) {
   const form_data = new FormData();
-  if($("#img-desktop").length>0)
+  if ($("#img-desktop").length > 0)
     form_data.append("img-desktop", $("#img-desktop").prop("files")[0]);
-  if($("#img-mobile").length>0)
+  if ($("#img-mobile").length > 0)
     form_data.append("img-mobile", $("#img-mobile").prop("files")[0]);
   $.ajax({
     type: "POST",
@@ -253,19 +259,19 @@ function deleteShow(idShow) {
 //Handle Update buttons show
 jQuery(function($) {
   $("#table-shows tbody").on("click", "button.update-show", function() {
-    desactivateRequiredFields()
+    desactivateRequiredFields();
     $("#add-newShow").show();
     $("#group-dates").show();
-    $('.image-name').show();
+    $(".image-name").show();
     $("#list-show").hide();
     $("#titleShows").text("Actualizar espectáculo");
     getInformationShow($(this).attr("show-id"));
-    $("#save-new-show").attr("id", "update-show");
+    $("#save-new-show").hide();
+    $("#update-show").show();
   });
 });
 
 function getInformationShow(idShow) {
-
   const showData = {
     idShow: idShow
   };
@@ -293,36 +299,45 @@ function setInformationShow(showData) {
     .siblings(".image-name")
     .text(showData.url_img_desktop);
   $("#money").val(showData.amount);
-  
+
   const genres = showData.genres.map(genre => genre.id_genre);
   $("#multiple-checkboxes").multiselect("select", genres);
 
-  createCurrentDates(showData.datesTime, showData.id_show)
-  
+  createCurrentDates(showData.datesTime, showData.id_show);
 }
 
-function createCurrentDates(datesTime, idShow){
-  let dateInput =""
+function createCurrentDates(datesTime, idShow) {
+  let dateInput = "";
 
-  datesTime.forEach(date=>{
-     dateInput+=
-    '<div class="input-group date current-dates" id="'+date.id_date_hr+'" id-show="'+idShow+'" data-target-input="nearest">'+
-      '<input type="text" class="form-control datetimepicker-input" data-target="#'+date.id_date_hr+'" />'+
-      '<div class="input-group-append" data-target="#'+date.id_date_hr+'" data-toggle="datetimepicker">'+
-        '<div class="input-group-text"><i class="mdi mdi-calendar"></i></div>'+
-      '</div>'+
+  datesTime.forEach(date => {
+    dateInput +=
+      '<div class="input-group date current-dates" id="' +
+      date.id_date_hr +
+      '" id-show="' +
+      idShow +
+      '" data-target-input="nearest">' +
+      '<input type="text" class="form-control datetimepicker-input" data-target="#' +
+      date.id_date_hr +
+      '" />' +
+      '<div class="input-group-append" data-target="#' +
+      date.id_date_hr +
+      '" data-toggle="datetimepicker">' +
+      '<div class="input-group-text"><i class="mdi mdi-calendar"></i></div>' +
+      "</div>" +
       '<button show-id="' +
-        idShow +
-        '" date-id="'+date.id_date_hr+'" type="button" class="btn btn-primary btn-lg delete-date-show" >' +
-        '<i class="mdi mdi-delete mdi-24px"></i></button>' +
-    '</div>'
-  })
+      idShow +
+      '" date-id="' +
+      date.id_date_hr +
+      '" type="button" class="btn btn-primary btn-lg delete-date-show" >' +
+      '<i class="mdi mdi-delete mdi-24px"></i></button>' +
+      "</div>";
+  });
   $(".container-current-dates").html(dateInput);
-  datesTime.forEach(date=>{
-    $('#'+date.id_date_hr).datetimepicker({
-      date: date.date+' '+moment(date.time).format("HH:mm"),
+  datesTime.forEach(date => {
+    $("#" + date.id_date_hr).datetimepicker({
+      date: date.date + " " + moment(date.time).format("HH:mm")
     });
-  })
+  });
 }
 
 //Handle Update show
@@ -340,24 +355,25 @@ jQuery(function($) {
           "Selecciona al menos un género"
         )
       ) {
-        let imgMobilename=''
-        let imgDesktopname=''
-        if(!$("#img-mobile").val()){
-          imgMobilename = $("#img-mobile")[0].files[0].name
+        let imgMobilename = "";
+        let imgDesktopname = "";
+
+        if ($("#img-mobile").val() !== "") {
+          imgMobilename = $("#img-mobile")[0].files[0].name;
         }
-        if(!$("#img-desktop").val()){
-          imgDesktopname = $("#img-desktop")[0].files[0].name
+        if ($("#img-desktop").val() !== "") {
+          imgDesktopname = $("#img-desktop")[0].files[0].name;
         }
-        
-        let currentDates = []
-        $(".current-dates").each(function(){
-          let idDate = $(this).attr('id')
-          const dateTimeInfo = $(`#${idDate}`).datetimepicker("date")
-          currentDates [currentDates.length]={
-            idDate: $(this).attr('id'),
+
+        let currentDates = [];
+        $(".current-dates").each(function() {
+          let idDate = $(this).attr("id");
+          const dateTimeInfo = $(`#${idDate}`).datetimepicker("date");
+          currentDates[currentDates.length] = {
+            idDate: $(this).attr("id"),
             date: dateTimeInfo.format("YYYY-MM-DD"),
             time: dateTimeInfo.format("HH:mm")
-          }
+          };
         });
 
         const showData = {
@@ -378,10 +394,9 @@ jQuery(function($) {
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data) {
-            if(!$("#img-mobile").val() || !$("#img-desktop").val()){
+            if ($("#img-mobile").val() !== '' || $("#img-desktop").val()  !== '') {
               sendImages("Espectáculo actualizado.");
-            }
-            else{
+            } else {
               notifications("Espectáculo actualizado.", "success");
               $("#add-newShow").hide();
               getShowList();
@@ -398,31 +413,36 @@ jQuery(function($) {
   });
 });
 
-function desactivateRequiredFields(){
-
-    $('#img-mobile').prop('required',false);
-    $('#img-desktop').prop('required',false);
+function desactivateRequiredFields() {
+  $("#img-mobile").prop("required", false);
+  $("#img-desktop").prop("required", false);
 }
 
-function activateRequiredFields(){
-  $('#img-mobile').prop('required',true);
-  $('#img-desktop').prop('required',true);
+function activateRequiredFields() {
+  $("#img-mobile").prop("required", true);
+  $("#img-desktop").prop("required", true);
 }
 //Handle Delete date show
 jQuery(function($) {
-  $(".container-current-dates").on("click", "button.delete-date-show", function() {
-    const idShow = $(this).attr("show-id")
-    const idDate = $(this).attr("date-id")
-    const conf = confirm("La fecha con sus reservaciones será eliminado. ¿Desea continuar?");
-    if (conf) {
-      deleteScheduleDate(idShow, idDate);
-    } else {
-      return false;
+  $(".container-current-dates").on(
+    "click",
+    "button.delete-date-show",
+    function() {
+      const idShow = $(this).attr("show-id");
+      const idDate = $(this).attr("date-id");
+      const conf = confirm(
+        "La fecha con sus reservaciones será eliminado. ¿Desea continuar?"
+      );
+      if (conf) {
+        deleteScheduleDate(idShow, idDate);
+      } else {
+        return false;
+      }
     }
-  });
+  );
 });
 
-function deleteScheduleDate(idShow, idDate){
+function deleteScheduleDate(idShow, idDate) {
   const showData = {
     idShow: idShow,
     idDate: idDate

@@ -14,6 +14,7 @@ class Show implements JsonSerializable{
   protected $genres;
   protected $datesTime;
   protected $sold_out;
+  protected $currentDates;
   //Constructor
   public function __construct()
   {
@@ -37,6 +38,20 @@ class Show implements JsonSerializable{
     $instance->datesTime = $showData->datesTime;
     $instance->url_img_mobile = $showData->imgMobile;
     $instance->url_img_desktop = $showData->imgDesktop;
+    return $instance;
+  }
+
+  public static function constructUpdateShowJson($showData){
+    $instance = new self();
+    $instance->id_show = $showData->idShow;
+    $instance->artist = $showData->artist;
+    $instance->amount = $showData->amount;
+    $instance->genres = $showData->genres;
+    $instance->datesTime = $showData->datesTime;
+    $instance->url_img_mobile = $showData->imgMobile;
+    $instance->url_img_desktop = $showData->imgDesktop;
+    $instance->currentDates = $showData->currentDates;
+
     return $instance;
   }
 

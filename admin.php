@@ -226,6 +226,7 @@
                         <div class="row justify-content-end">
                           <button type="button" id="cancel-new-show" class="btn btn--margin-right btn-secundary btn-lg">Cancelar</button>
                           <button type="button" id="save-new-show" class="btn btn-primary btn-lg">Guardar</button>
+                          <button type="button" id="update-show" class="btn btn-primary btn-lg">Guardar</button>
                         </div>
                       </div>
                     </fieldset>
