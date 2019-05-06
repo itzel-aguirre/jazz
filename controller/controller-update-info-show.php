@@ -8,10 +8,10 @@ $json_str = file_get_contents('php://input');
 $json_obj = json_decode($json_str);
 
 $showLogic = new ShowBO();
-$showData = Show::constructShowJson($json_obj);
+$showData = Show::constructUpdateShowJson($json_obj);
 try{
- // $showLogic->funcion($showData);
-  print true;
+  $showLogic->UpdateShow($showData);
+  echo true;
 }
 catch(Exception $e){
   header('HTTP/1.1 420 Method Failure');

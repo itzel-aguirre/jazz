@@ -37,23 +37,21 @@ class ShowBO
   }
   public function saveImages($files)
   {
-    if ($files['img-desktop'])
-    {
-     $is_success = false;
-     $imagesDir =  '../images/slider/';
-     $name = $files['img-desktop']['name'];
-     $tmp_name = $files['img-desktop']['tmp_name'];
-     $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
+    $is_success = false;
+    if (isset($files['img-desktop'])) {
+      $imagesDir =  '../images/slider/';
+      $name = $files['img-desktop']['name'];
+      $tmp_name = $files['img-desktop']['tmp_name'];
+      $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
     }
-    
-    if ($files['img-mobile'])
-    {
+
+    if (isset($files['img-mobile'])) {
       $imagesDir =  '../images/slider/mobile/';
       $name = $files['img-mobile']['name'];
       $tmp_name = $files['img-mobile']['tmp_name'];
       $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
     }
-    
+
     return $is_success;
   }
   public function DeleteShow($idShow)
@@ -105,20 +103,18 @@ class ShowBO
     $databaseConected->conectar();
     $query = "UPDATE `espectaculos` SET  ";
     $query .= "`ARTISTA`='" . $showData->artist . "'";
-    $query .= ", `COVER`=" . $showData->amount . " ";
-    if ($showData->url_img_mobile != "")
-    {
+    $query .= ", `COVER`='" . $showData->amount . "' ";
+    if ($showData->url_img_mobile != "") {
       $query .= " , `IMAGEN_MOVIL`='" . $showData->url_img_mobile . "' ";
     }
-    if ($showData->url_img_desktop)
-    {
+    if ($showData->url_img_desktop) {
       $query .= " , `IMAGEN_LAP`='" . $showData->url_img_desktop . "'  ";
     }
-    
-    $query .= " WHERE `ID_ESPECTACULO`= " . $showData->id_show . "; "; 
+
+    $query .= " WHERE `ID_ESPECTACULO`= " . $showData->id_show . "; ";
     $ShowInfo = $databaseConected->consulta($query);
 
-    if ($ShowInfo){
+    if ($ShowInfo) {
       $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  " . $showData->id_show . ";";
       $databaseConected->consulta($query);
       for ($i = 0; $i < sizeof($showData->genres); $i++) {
@@ -128,21 +124,21 @@ class ShowBO
       }
 
 
-      foreach ($showData->datesTime as $dateTime) {
-        if ($showData->id_show != 0){
+      foreach ($showData->currentDates as $currentDate) {
+        if ($showData->id_show != 0) {
           $query = "UPDATE `fecha_hr_espectaculo` SET 
           `ID_ESPECTACULO`=" . $showData->id_show . ", 
-          `FECHA`='" . $dateTime->date . "', 
-          `HORA`='" . date("Y-m-d H:i:s", strtotime($dateTime->time)) . "'
-           WHERE `ID_FECHA_HR`= " . $showData->idDate . "";
+          `FECHA`='" . $currentDate->date . "', 
+          `HORA`='" . date("Y-m-d H:i:s", strtotime($currentDate->time)) . "'
+           WHERE `ID_FECHA_HR`= " . $currentDate->idDate . "";
           $databaseConected->consulta($query);
         }
       }
 
-      foreach ($showData->currentDates as $currentDate) {
+      foreach ($showData->datesTime as $dateTime) {
         $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`)
-        VALUES (NULL, " . $currentDate->id_show . ", '" . $currentDate->date . "', '" . date("Y-m-d H:i:s", strtotime($currentDate->time)) . "');";
-      $databaseConected->consulta($query);
+        VALUES (NULL, " . $showData->id_show . ", '" . $dateTime->date . "', '" . date("Y-m-d H:i:s", strtotime($dateTime->time)) . "');";
+        $databaseConected->consulta($query);
       }
 
       $databaseConected->desconectar();
@@ -189,7 +185,7 @@ class ShowBO
     $query .= " THEN 1 ELSE 0 END AS souldOut ";
     $query .= " FROM `espectaculos` ";
     $query .= " INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  ";
-   /*  if ($id_show != 0) {
+    /*  if ($id_show != 0) {
       $query .= " WHERE  espectaculos.ID_ESPECTACULO= " . $id_show . " ";
      } */
     $query .= " ORDER BY `fecha_hr_espectaculo`.`FECHA` ASC;";
@@ -252,11 +248,10 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $shows = array();
+    $show = new Show();
 
     $query = "SELECT espectaculos.ID_ESPECTACULO,  espectaculos.ARTISTA,espectaculos.IMAGEN_MOVIL,";
     $query .= " espectaculos.IMAGEN_LAP, espectaculos.COVER ";
-    //fecha_hr_espectaculo.ID_FECHA_HR,  fecha_hr_espectaculo.FECHA, fecha_hr_espectaculo.HORA ";
     $query .= " FROM `espectaculos` ";
     $query .= " INNER JOIN `fecha_hr_espectaculo` ON espectaculos.ID_ESPECTACULO= fecha_hr_espectaculo.ID_ESPECTACULO  ";
     $query .= " WHERE  espectaculos.ID_ESPECTACULO= " . $id_show . " ";
@@ -266,13 +261,10 @@ class ShowBO
     if ($showsInfo->num_rows > 0) {
       while ($row = $showsInfo->fetch_assoc()) {
         $genres = array();
-        $show = new Show();
         $datesTime_Info = array();
         $show->id_show = $row['ID_ESPECTACULO'];
         $show->artist = $row['ARTISTA'];
         $show->amount = $row['COVER'];
-        //$show->date = $row['FECHA'];
-        //$show->time = $row['HORA'];
         $show->url_img_mobile = $row['IMAGEN_MOVIL'];
         $show->url_img_desktop = $row['IMAGEN_LAP'];
 
@@ -283,38 +275,35 @@ class ShowBO
         $genresInfo = $databaseConected->consulta($query);
         while ($genre = $genresInfo->fetch_assoc()) {
           $constructGenre = Genre::constructNewGenre($genre["ID_GENERO"], $genre["GENERO"]);
-          $genres[] =$constructGenre; 
+          $genres[] = $constructGenre;
         }
         $show->genres = $genres;
 
         $query = "SELECT 
         ID_FECHA_HR, FECHA, HORA
         FROM `fecha_hr_espectaculo` WHERE ID_ESPECTACULO= " . $show->id_show . "";
-        $date_timeInfo= $databaseConected->consulta($query);
-        while ($info = $date_timeInfo->fetch_assoc()){
+        $date_timeInfo = $databaseConected->consulta($query);
+        while ($info = $date_timeInfo->fetch_assoc()) {
           $constructInfoDateTime = Show::constructDateTimeList($info["ID_FECHA_HR"], $info["FECHA"], $info["HORA"]);
-          $datesTime_Info[] = $constructInfoDateTime; 
+          $datesTime_Info[] = $constructInfoDateTime;
         }
-        $show->datesTime= $datesTime_Info;
-
-        
-        $shows[] = $show;
+        $show->datesTime = $datesTime_Info;
       }
     }
     $databaseConected->desconectar();
 
-    return $shows;
-  }   
+    return $show;
+  }
 
   public function delete_reservationDatesTime($Data)
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
 
-    $query = "DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = " . $Data->idShow . " AND ID_FECHA_HR = " . $Data->id_date_hr . " ;";
+    $query = "DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = " . $Data->idShow . " AND ID_FECHA_HR = " . $Data->idDate . " ;";
     $databaseConected->consulta($query);
 
-    $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_FECHA_HR=  " . $Data->id_date_hr . "; ";
+    $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_FECHA_HR=  " . $Data->idDate . "; ";
     $ShowInfo = $databaseConected->consulta($query);
 
     $databaseConected->desconectar();
