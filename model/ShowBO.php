@@ -101,6 +101,20 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
+    $img_mobile = "";
+    $img_lap = "";
+
+     //Eliminar imagen
+     $query = "SELECT IMAGEN_MOVIL, IMAGEN_LAP FROM `espectaculos` 
+     WHERE ID_ESPECTACULO= " . $showData->id_show . "  ;";
+     $ResultQuery = $databaseConected->consulta($query);
+     if ($ResultQuery->num_rows > 0) {
+       while ($row = $ResultQuery->fetch_assoc()) {
+         $img_mobile = $row['IMAGEN_MOVIL'];
+         $img_lap = $row['IMAGEN_LAP'];
+       }
+     }
+
     $query = "UPDATE `espectaculos` SET  ";
     $query .= "`ARTISTA`='" . $showData->artist . "'";
     $query .= ", `COVER`='" . $showData->amount . "' ";
@@ -115,6 +129,25 @@ class ShowBO
     $ShowInfo = $databaseConected->consulta($query);
 
     if ($ShowInfo) {
+
+      if ($showData->url_img_mobile != "") {
+        try {
+          $imagesDirMobile =  '../images/slider/mobile/';
+          unlink($imagesDirMobile . $img_mobile);
+        } catch (Exception $e) {
+          return json_encode(array('error' => FALSE));
+        }
+      }
+  
+      if ($showData->url_img_desktop) {
+        try {
+          $imagesDir =  '../images/slider/';
+          unlink($imagesDir . $img_lap);
+        } catch (Exception $e) {
+          return json_encode(array('error' => FALSE));
+        }
+      }
+      
       $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  " . $showData->id_show . ";";
       $databaseConected->consulta($query);
       for ($i = 0; $i < sizeof($showData->genres); $i++) {
