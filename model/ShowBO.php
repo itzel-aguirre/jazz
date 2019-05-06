@@ -37,17 +37,23 @@ class ShowBO
   }
   public function saveImages($files)
   {
-    $is_success = false;
-    $imagesDir =  '../images/slider/';
-    $name = $files['img-desktop']['name'];
-    $tmp_name = $files['img-desktop']['tmp_name'];
-    $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
-
-    $imagesDir =  '../images/slider/mobile/';
-    $name = $files['img-mobile']['name'];
-    $tmp_name = $files['img-mobile']['tmp_name'];
-    $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
-
+    if ($files['img-desktop'])
+    {
+     $is_success = false;
+     $imagesDir =  '../images/slider/';
+     $name = $files['img-desktop']['name'];
+     $tmp_name = $files['img-desktop']['tmp_name'];
+     $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
+    }
+    
+    if ($files['img-mobile'])
+    {
+      $imagesDir =  '../images/slider/mobile/';
+      $name = $files['img-mobile']['name'];
+      $tmp_name = $files['img-mobile']['tmp_name'];
+      $is_success = move_uploaded_file($tmp_name, $imagesDir . $name);
+    }
+    
     return $is_success;
   }
   public function DeleteShow($idShow)
@@ -97,13 +103,49 @@ class ShowBO
   {
     $databaseConected = new ConectDB();
     $databaseConected->conectar();
-    $query = "UPDATE `espectaculos` SET  `ARTISTA`='" . $showData->artist . "', `COVER`=" . $showData->amount . ", `IMAGEN_MOVIL`='" . $showData->url_img_mobile . "', `IMAGEN_LAP`='" . $showData->url_img_desktop . "' WHERE `ID_ESPECTACULO`= " . $showData->id_show . "; ";
+    $query = "UPDATE `espectaculos` SET  ";
+    $query .= "`ARTISTA`='" . $showData->artist . "'";
+    $query .= ", `COVER`=" . $showData->amount . " ";
+    if ($showData->url_img_mobile != "")
+    {
+      $query .= " , `IMAGEN_MOVIL`='" . $showData->url_img_mobile . "' ";
+    }
+    if ($showData->url_img_desktop)
+    {
+      $query .= " , `IMAGEN_LAP`='" . $showData->url_img_desktop . "'  ";
+    }
+    
+    $query .= " WHERE `ID_ESPECTACULO`= " . $showData->id_show . "; "; 
     $ShowInfo = $databaseConected->consulta($query);
-    $databaseConected->desconectar();
-    if ($ShowInfo) {
-      return json_encode(TRUE);
-    } else {
-      return json_encode(array('error' => FALSE));
+
+    if ($ShowInfo){
+      $query = " DELETE FROM `espectaculo-genero` where ID_ESPECTACULO =  " . $showData->id_show . ";";
+      $databaseConected->consulta($query);
+      for ($i = 0; $i < sizeof($showData->genres); $i++) {
+        $query = "INSERT INTO `espectaculo-genero` (`id_espectaculo`, `id_genero`) 
+        VALUES (" . $showData->id_show . ", " . $showData->genres[$i] . ");";
+        $databaseConected->consulta($query);
+      }
+
+
+      foreach ($showData->datesTime as $dateTime) {
+        if ($showData->id_show != 0){
+          $query = "UPDATE `fecha_hr_espectaculo` SET 
+          `ID_ESPECTACULO`=" . $showData->id_show . ", 
+          `FECHA`='" . $dateTime->date . "', 
+          `HORA`='" . date("Y-m-d H:i:s", strtotime($dateTime->time)) . "'
+           WHERE `ID_FECHA_HR`= " . $showData->idDate . "";
+          $databaseConected->consulta($query);
+        }
+      }
+
+      foreach ($showData->currentDates as $currentDate) {
+        $query = "INSERT INTO `FECHA_HR_ESPECTACULO` (`ID_FECHA_HR`, `ID_ESPECTACULO`, `FECHA`, `HORA`)
+        VALUES (NULL, " . $currentDate->id_show . ", '" . $currentDate->date . "', '" . date("Y-m-d H:i:s", strtotime($currentDate->time)) . "');";
+      $databaseConected->consulta($query);
+      }
+
+      $databaseConected->desconectar();
     }
   }
 
@@ -257,4 +299,23 @@ class ShowBO
 
     return $show;
   }   
+
+  public function delete_reservationDatesTime($Data)
+  {
+    $databaseConected = new ConectDB();
+    $databaseConected->conectar();
+
+    $query = "DELETE FROM `reservaciones` WHERE ID_ESPECTACULO = " . $Data->idShow . " AND ID_FECHA_HR = " . $Data->id_date_hr . " ;";
+    $databaseConected->consulta($query);
+
+    $query = " DELETE FROM `fecha_hr_espectaculo` WHERE ID_FECHA_HR=  " . $Data->id_date_hr . "; ";
+    $ShowInfo = $databaseConected->consulta($query);
+
+    $databaseConected->desconectar();
+    if ($ShowInfo) {
+      return json_encode(TRUE);
+    } else {
+      return json_encode(array('error' => FALSE));
+    }
+  }
 }
